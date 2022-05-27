@@ -12,25 +12,19 @@ import {
 import React, {useState} from 'react';
 
 
-const SearchPage = (props) => {
+const CharactersPage = (props) => {
 
-    const [Results, setResults] = useState([
-      {key: '1', spellName: 'Lorem Ipsum1', level: '1', school: 'School1'},
-      {key: '2', spellName: 'Lorem Ipsum2', level: '2', school: 'School2'},
-      {key: '3', spellName: 'Lorem Ipsum3', level: '3', school: 'School3'},
-    ])
+    const [Chars, setChars] = useState([
+        {key: '1', charName: 'Mike Oxmall', level: '1', class: 'Bard'},
+        {key: '2', charName: 'Mike Oxlong', level: '2', class: 'Monk'},
+        {key: '3', charName: 'Mike Hunt', level: '3', class: 'Druid'},
+      ])
 
     return (
         <SafeAreaView style={styles.base}> 
-          <Text style={styles.title}>Search Spells</Text>
-          <TextInput 
-          style={styles.input}
-          placeholder="Search"
-          onChangeText={(value)=>SetSearch(value)}>
-          
-          </TextInput>
-            <FlatList
-              data={Results}
+          <Text style={styles.title}>Your Characters</Text>
+          <FlatList
+              data={Chars}
               renderItem={({item}) => (
                 <Pressable 
                   onPress={props.onResultPress}
@@ -40,12 +34,12 @@ const SearchPage = (props) => {
                   <View style={styles.schoolBar}>
                     <Image 
                     style={styles.icon}
-                    source={require('../assets/evocation.png')}
+                    source={require('../../../assets/evocation.png')}
                     resizeMode="stretch">
                     </Image>
                   </View>
-                  <Text style={styles.spellTXT}>{item.spellName}</Text>
-                  <Text style={styles.schoolTXT}>{item.school}</Text>
+                  <Text style={styles.spellTXT}>{item.charName}</Text>
+                  <Text style={styles.schoolTXT}>{item.class}</Text>
                 </Pressable>
               )}
             />
@@ -98,4 +92,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default SearchPage;
+export default CharactersPage;

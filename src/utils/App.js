@@ -9,21 +9,41 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import SearchPage from './Search';
-import SpellPage from './Spell';
-import CharactersPage from './Characters';
+import SearchPage from '../screens/Spells/Search';
+import SpellPage from '../screens/Spells/Spell';
+import CharactersPage from '../screens/Characters/YourCharacters';
+import CharacterPage from '../screens/Characters/Character';
+import FilterPage from '../screens/Spells/Filter';
 
 
 function LocalSearch({navigation}){
 
   const onResultPress = () => {
-    navigation.navigate("Spell Information")
+    navigation.navigate("Spell")
+  }
+
+  const onFilterPress = () => {
+    navigation.navigate("Filter Spells")
   }
 
   return(
     <SearchPage 
-      onResultPress={onResultPress}>
+      onResultPress={onResultPress}
+      onFilterPress={onFilterPress}>
     </SearchPage>
+  )
+}
+
+function LocalFilter({navigation}){
+
+  const onBackPress = () => {
+    navigation.navigate("Search Spells")
+  }
+
+  return(
+    <FilterPage>
+
+    </FilterPage>
   )
 }
 
@@ -40,21 +60,35 @@ function LocalSpell({navigation}){
   )
 }
 
-function LocalCharacters({navigation}){
+function LocalYourCharacters({navigation}){
+
+  const onResultPress = () => {
+    navigation.navigate("Character")
+  }
+
+  return(
+    <CharactersPage 
+      onResultPress={onResultPress}>
+    </CharactersPage>
+  )
+}
+function LocalCharacter({navigation}){
 
   const onBack = () => {
     navigation.goBack();
   }
+  const onResultPress = () => {
+    navigation.navigate("CharSpell")
+  }
 
   return(
-    <CharactersPage>
-
-    </CharactersPage>
+    <CharacterPage
+      onResultPress={onResultPress}>
+    </CharacterPage>
   )
 }
 
 const Stack = createStackNavigator();
-
 const MenuTab = createMaterialBottomTabNavigator();
 
 function Spells() {
@@ -68,12 +102,39 @@ function Spells() {
         component={LocalSearch}>        
       </Stack.Screen>
       <Stack.Screen
-        name="Spell Information"
+        name="Filter Spells"
+        component={LocalFilter}>        
+      </Stack.Screen>
+      <Stack.Screen
+        name="Spell"
         component={LocalSpell}>
       </Stack.Screen>
     </Stack.Navigator>
   )
 }
+
+function Characters() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        header: () => null
+      }}>
+      <Stack.Screen
+        name="Your Characters"
+        component={LocalYourCharacters}>        
+      </Stack.Screen>
+      <Stack.Screen
+        name="Character"
+        component={LocalCharacter}>
+      </Stack.Screen>
+      <Stack.Screen
+        name="CharSpell"
+        component={LocalSpell}>
+      </Stack.Screen>
+    </Stack.Navigator>
+  )
+}
+
 
 export default function App() {
   return (
@@ -113,7 +174,7 @@ export default function App() {
         </MenuTab.Screen>
         <MenuTab.Screen
         name="Characters"
-        component={LocalCharacters}>
+        component={Characters}>
 
         </MenuTab.Screen>
       </MenuTab.Navigator>

@@ -12,11 +12,11 @@ import {
 import React, {useState} from 'react';
 
 
-const CharactersPage = (props) => {
+const FilterPage = (props) => {
 
     return (
         <SafeAreaView style={styles.base}> 
-          <Text style={styles.title}>Your Charcters</Text>
+          <Text style={styles.title}>Filter Spells</Text>
         </SafeAreaView>
     );
 }
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default CharactersPage;
+export default FilterPage;
