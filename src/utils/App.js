@@ -11,10 +11,9 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SearchPage from '../screens/Spells/Search';
 import SpellPage from '../screens/Spells/Spell';
-import CharactersPage from '../screens/Characters/YourCharacters';
+import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 import FilterPage from '../screens/Spells/Filter';
-
 
 function LocalSearch({navigation}){
 
@@ -99,15 +98,15 @@ function Spells() {
       }}>
       <Stack.Screen
         name="Search Spells"
-        component={LocalSearch}>        
+        component={SearchPage}>        
       </Stack.Screen>
       <Stack.Screen
         name="Filter Spells"
-        component={LocalFilter}>        
+        component={FilterPage}>        
       </Stack.Screen>
       <Stack.Screen
         name="Spell"
-        component={LocalSpell}>
+        component={SpellPage}>
       </Stack.Screen>
     </Stack.Navigator>
   )
@@ -121,22 +120,24 @@ function Characters() {
       }}>
       <Stack.Screen
         name="Your Characters"
-        component={LocalYourCharacters}>        
+        component={YourCharactersPage}>        
       </Stack.Screen>
       <Stack.Screen
         name="Character"
-        component={LocalCharacter}>
+        component={CharacterPage}>
       </Stack.Screen>
       <Stack.Screen
         name="CharSpell"
-        component={LocalSpell}>
+        component={SpellPage}>
       </Stack.Screen>
     </Stack.Navigator>
   )
 }
 
 
+
 export default function App() {
+
   return (
     <NavigationContainer>
       <MenuTab.Navigator

@@ -9,11 +9,21 @@ import {
     Image,
     
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import SpellList from '../../utils/spell-list';
+import SpellList from '../../utils/SpellList';
+import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 
-const SearchPage = (props) => {
+export default function SearchPage({navigation, route}) {
+
+    const onResultPress = () => {
+      navigation.navigate("Spell")
+    }
+
+    const onFilterPress = () => {
+      navigation.navigate("Filter Spells")
+    }
+
 
     const [Results, setResults] = useState([
       {key: '1', spellName: 'Lorem Ipsum1', level: '1', school: 'School1'},
@@ -21,17 +31,34 @@ const SearchPage = (props) => {
       {key: '3', spellName: 'Lorem Ipsum3', level: '3', school: 'School3'},
     ])
 
+    const [SpellData, setSpellData] = useState([MOCKDATA])
+
+
+    const [users, setUsers] = useState([]);
+
+    const getUsers = () => {
+        fetch('https://jsonplaceholder.typicode.com/users/')
+          .then((response) => response.json())
+          .then((json) => setUsers(json))
+          .catch((error) => console.error(error))
+    }
+    useEffect(() => {
+        getUsers();
+    }, []);
+    
+
     return (
         <SafeAreaView style={styles.base}> 
           <Text style={styles.title}>Search Spells</Text>
           <TextInput 
           style={styles.input}
           placeholder="Search"
+          selectionColor="#Fff"
           onChangeText={(value)=>SetSearch(value)}>
           
           </TextInput>
           <Pressable
-            onPress={props.onFilterPress}>
+            onPress={onFilterPress}>
               <FontAwesome
               name={"filter"}
               size={20}
@@ -39,8 +66,10 @@ const SearchPage = (props) => {
               />
           </Pressable>
             <SpellList
-              onResultPress={props.onResultPress}>
-
+              onResultPress={onResultPress}
+              spellData = {MOCKDATA}
+              navigation={navigation}>
+              
             </SpellList>
         </SafeAreaView>
     );
@@ -91,5 +120,3 @@ const styles = StyleSheet.create({
       "borderTopLeftRadius": 12,
     }
   });
-
-export default SearchPage;

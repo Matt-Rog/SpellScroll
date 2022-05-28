@@ -1,0 +1,26 @@
+[
+    {
+        "ID": 1,
+        "class": "Ranger",
+        "description": "Grr grr fite",
+        "hex": "#E94C4C",
+        "name": "Mike Won",
+        "spells": "2\r\n3\r\n5"
+    },
+    {
+        "ID": 2,
+        "class": "Bard",
+        "description": "La la la hmm hmm",
+        "hex": "#E94CE0",
+        "name": "Mike Too",
+        "spells": "3\r\n4"
+    },
+    {
+        "ID": 3,
+        "class": "Monk",
+        "description": "Ommmmnnnn",
+        "hex": "#CCD2E3",
+        "name": "Mike Threagh",
+        "spells": "0\r\n1\r\n7"
+    }
+]

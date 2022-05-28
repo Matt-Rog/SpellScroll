@@ -10,13 +10,18 @@ import {
     
 } from 'react-native';
 import React, {useState} from 'react';
+import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 
 
-const SpellPage = (props) => {
+export default function SpellPage({navigation, route}) {
+
+    const {id} = route.params;
+    var Spell = MOCKDATA.find(item=>item.ID===id);
+
 
     return (
         <SafeAreaView style={styles.base}> 
-          <Text style={styles.title}>Spell Name</Text>
+          <Text style={styles.title}>{Spell.name}</Text>
         </SafeAreaView>
     );
 }
@@ -34,5 +39,3 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
   });
-
-export default SpellPage;

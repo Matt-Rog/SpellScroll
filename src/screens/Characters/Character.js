@@ -10,11 +10,22 @@ import {
     
 } from 'react-native';
 import React, {useState} from 'react';
-import SpellList from '../../utils/spell-list';
+import SpellList from '../../utils/SpellList';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 
 
-const CharacterPage = (props) => {
+export default function CharacterPage({navigation, route}) {
+
+    const {id} = route.params;
+    var Char = MOCKCHAR.find(item=>item.ID===id);
+
+    const onBack = () => {
+      navigation.goBack();
+    }
+    const onResultPress = () => {
+      navigation.navigate("CharSpell")
+    }
 
     return (
         <SafeAreaView style={styles.base}> 
@@ -27,13 +38,13 @@ const CharacterPage = (props) => {
                 style={styles.icon}></FontAwesome>
               
             </View>
-            <Text style={styles.title}>Character Name</Text>
-            <Text style={styles.spellTXT}>Bard</Text>
-            <Text style={styles.schoolTXT}>Here you'll find a description about your character.</Text>
+            <Text style={styles.title}>{Char.name}</Text>
+            <Text style={styles.spellTXT}>{Char.class}</Text>
+            <Text style={styles.schoolTXT}>{Char.description}</Text>
           </View>
           <Text style={styles.schoolTXT}>Known Spells:</Text>
           <SpellList
-            onResultPress={props.onResultPress}>
+            onResultPress={onResultPress}>
 
           </SpellList>
         </SafeAreaView>
@@ -86,5 +97,3 @@ const styles = StyleSheet.create({
     marginVertical: 10
   }
   });
-
-export default CharacterPage;

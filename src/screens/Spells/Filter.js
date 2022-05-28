@@ -12,7 +12,11 @@ import {
 import React, {useState} from 'react';
 
 
-const FilterPage = (props) => {
+export default function FilterPage({navigation, route}) {
+
+    const onBackPress = () => {
+        navigation.navigate("Search Spells")
+    }
 
     return (
         <SafeAreaView style={styles.base}> 
@@ -34,5 +38,3 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
   });
-
-export default FilterPage;
