@@ -34,7 +34,7 @@ export default function YourCharactersPage({navigation, route}) {
               data={MOCKCHAR}
               renderItem={({item}) => (
                 <Pressable 
-                  onPress={() => navigation.navigate("Character", {id: item.ID})}
+                  onPress={() => navigation.navigate("Character", {charID: item.ID})}
                   style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
                   

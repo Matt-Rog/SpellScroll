@@ -14,6 +14,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SpellList from '../../utils/SpellList';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 
+
 export default function SearchPage({navigation, route}) {
 
     const onResultPress = () => {
@@ -25,50 +26,62 @@ export default function SearchPage({navigation, route}) {
     }
 
 
-    const [Results, setResults] = useState([
-      {key: '1', spellName: 'Lorem Ipsum1', level: '1', school: 'School1'},
-      {key: '2', spellName: 'Lorem Ipsum2', level: '2', school: 'School2'},
-      {key: '3', spellName: 'Lorem Ipsum3', level: '3', school: 'School3'},
-    ])
-
-    const [SpellData, setSpellData] = useState([MOCKDATA])
+    // sample data entry - will need to be replaced by filtered spell ids
 
 
-    const [users, setUsers] = useState([]);
 
-    const getUsers = () => {
-        fetch('https://jsonplaceholder.typicode.com/users/')
-          .then((response) => response.json())
-          .then((json) => setUsers(json))
-          .catch((error) => console.error(error))
+    const [allSpells, setAllSpells] = useState(MOCKDATA)
+    const [filterSpells, setFilterSpells] = useState(MOCKDATA)
+    const [search, setSearch] = useState()
+
+    function getSpellIDs(spellList) {
+      var spellIDs = []
+      for(const spell of spellList){
+        spellIDs.push(spell.ID);
+      }
+      return spellIDs;
     }
-    useEffect(() => {
-        getUsers();
-    }, []);
-    
+
+    const searchSpells = (text) => {
+      if (text) {
+        const newData = allSpells.filter(function(item) {
+          return (item.name.toUpperCase().startsWith(text.toUpperCase()))
+        })
+        setFilterSpells(newData)
+        setSearch(text)
+      } else {
+        setFilterSpells(allSpells)
+        setSearch(text);
+      }
+    }
 
     return (
         <SafeAreaView style={styles.base}> 
           <Text style={styles.title}>Search Spells</Text>
-          <TextInput 
-          style={styles.input}
-          placeholder="Search"
-          selectionColor="#Fff"
-          onChangeText={(value)=>SetSearch(value)}>
-          
-          </TextInput>
-          <Pressable
-            onPress={onFilterPress}>
+          <View style={styles.searchBox}>
+            <TextInput 
+            style={styles.input}
+            placeholder="Search"
+            selectionColor="#Fff"
+            placeholderTextColor="#fff"
+            onChangeText={(text)=> searchSpells(text)}
+            >
+            </TextInput>
+            <Pressable
+            onPress={onFilterPress}
+            style={styles.filterIcon}>
               <FontAwesome
               name={"filter"}
-              size={20}
+              size={35}
               color={"#fff"}
               />
           </Pressable>
+          </View>
             <SpellList
               onResultPress={onResultPress}
-              spellData = {MOCKDATA}
-              navigation={navigation}>
+              spellIDs = {getSpellIDs(filterSpells)}
+              navigation={navigation}
+              prevScreen="Search Spells">
               
             </SpellList>
         </SafeAreaView>
@@ -89,14 +102,18 @@ const styles = StyleSheet.create({
     },
     resultContainer: {
     },
-    resultBox: {
-      margin: 8,
+    searchBox: {
+      marginBottom: 8,
+      marginTop: 8,
+      marginLeft: 30,
+      marginRight: 30,
       borderRadius: 12,
-      padding: 10,
+      flexDirection:'row',
+      justifyContent: 'space-between'
     },
     spellTXT: {
       color: "#FFFFFF",
-      fontSize: 15
+      fontSize: 15,
     },
     schoolTXT:{
       color: "#CCD2E3",
@@ -106,17 +123,13 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       backgroundColor: "#373C48",
       borderColor: "#373C48",
-      width: "50%",
       borderRadius: 12,
       fontSize: 15,
-      padding: 5,
-
+      paddingLeft: 17,
+      width: "80%",
+      height: 40
     },
-    icon: {
-      width: 36,
-      "height": 36,
-      "backgroundColor": "#4CBBE9",
-      "borderBottomLeftRadius": 12,
-      "borderTopLeftRadius": 12,
+    filterIcon: {
+      alignSelf: "flex-end",
     }
   });

@@ -17,12 +17,24 @@ import {
     Body,
     Content
 } from 'native-base';
-
+import MOCKDATA from "../../MOCK_SPELL_DATA.json"
 
 
 
 const SpellList = (props) => {
 
+    // Spell ID -> Spell Data
+    const spellIDs = props.spellIDs
+    var spells = []
+    for(const item of MOCKDATA){
+        if( spellIDs.includes(item.ID)){
+          spells.push(item)
+        }
+    }
+    
+
+    // Conditionally decides which sub-stack is visiting Spell.js
+    var next = (props.prevScreen==="Search Spells") ? "Spell" : "CharSpell";
 
     function schoolHexCode({item}) {
       var school = item.school.toLowerCase()
@@ -42,17 +54,17 @@ const SpellList = (props) => {
 
     function levelLogic({item}){
       if(item.level == 0){
-        return "    Cantrip"
+        return "Cantrip"
       }
-      return "    Lv." + `${item.level}`
+      return "Lv." + `${item.level}`
     }
 
     return (
             <FlatList
-              data={props.spellData}
+              data={spells}
               renderItem={({item}) => (
                 <Pressable 
-                  onPress={() => props.navigation.navigate("Spell", {id: item.ID})}
+                  onPress={() => props.navigation.navigate(next, {id: item.ID})}
                   style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
               
@@ -63,12 +75,18 @@ const SpellList = (props) => {
                     resizeMode="stretch">
                     </Image>
                   </View>
-                  <View>
-                    <View style={{flexDirection: "row"}}>
+                  <View style={styles.text}>
+                    <View style={styles.rowOne}>
                       <Text style={styles.spellTXT}>{item.name}</Text>
-                      <Text style={[{marginRight: "auto"},styles.spellTXT]}>{levelLogic({item})}</Text>
+                      <Text style={styles.spellTXT}>{levelLogic({item})}</Text>
                     </View>
                     <Text style={styles.schoolTXT}>{item.school}</Text>
+                    <View style={styles.rowOne}>
+                      <Text style={styles.subTXT}>Amongously</Text>
+                      <Text style={styles.subTXT}>Meaningless</Text>
+                      <Text style={styles.subTXT}>Text</Text>
+                    </View>
+
                   </View>
                 </Pressable>
               )}
@@ -89,17 +107,17 @@ const styles = StyleSheet.create({
       color: "#FFFFFF",
       fontSize: 15,
       fontWeight: "bold",
-      marginLeft: 9,
-      marginTop: 9,
     },
     schoolTXT:{
       color: "#CCD2E3",
       fontSize: 14,
       fontWeight: "bold",
-      marginLeft: 9,
-      marginTop: 3,
-      marginBottom: 9
     },
+    subTXT:{
+      color: "#CCD2E3",
+      fontSize: 14,
+    },
+
     input:{
       borderWidth: 1,
       backgroundColor: "#373C48",
@@ -120,7 +138,20 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       height: 70,
-      width: 40
+      width: 40,
+      flex: 1,
+    },
+    text: {
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+      marginLeft: 9,
+      flex: 6,
+      marginRight: 12
+    },
+    rowOne: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
     }
   });
 

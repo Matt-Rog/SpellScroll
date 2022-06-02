@@ -11,9 +11,9 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SearchPage from '../screens/Spells/Search';
 import SpellPage from '../screens/Spells/Spell';
+import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
-import FilterPage from '../screens/Spells/Filter';
 
 function LocalSearch({navigation}){
 

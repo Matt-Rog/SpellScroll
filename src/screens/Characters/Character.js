@@ -17,8 +17,14 @@ import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 
 export default function CharacterPage({navigation, route}) {
 
-    const {id} = route.params;
-    var Char = MOCKCHAR.find(item=>item.ID===id);
+    const {charID} = route.params;
+    var Char = MOCKCHAR.find(item=>item.ID===charID);
+    console.log(Char)
+    var spellIDs = []
+
+    for (const spellID of Char.spells){
+      spellIDs.push(spellID);
+    }
 
     const onBack = () => {
       navigation.goBack();
@@ -44,7 +50,10 @@ export default function CharacterPage({navigation, route}) {
           </View>
           <Text style={styles.schoolTXT}>Known Spells:</Text>
           <SpellList
-            onResultPress={onResultPress}>
+            onResultPress={onResultPress}
+            spellIDs={spellIDs}
+            navigation={navigation}
+            prevScreen="Character">
 
           </SpellList>
         </SafeAreaView>

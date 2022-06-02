@@ -5,7 +5,7 @@
         "description": "Grr grr fite",
         "hex": "#E94C4C",
         "name": "Mike Won",
-        "spells": "2\r\n3\r\n5"
+        "spells": [2,3,5]
     },
     {
         "ID": 2,
@@ -13,7 +13,7 @@
         "description": "La la la hmm hmm",
         "hex": "#E94CE0",
         "name": "Mike Too",
-        "spells": "3\r\n4"
+        "spells": [3,4]
     },
     {
         "ID": 3,
@@ -21,6 +21,6 @@
         "description": "Ommmmnnnn",
         "hex": "#CCD2E3",
         "name": "Mike Threagh",
-        "spells": "0\r\n1\r\n7"
+        "spells": [0,1,7]
     }
 ]
