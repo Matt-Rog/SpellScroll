@@ -15,6 +15,9 @@ import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 
+import MOCKDATA from "../../MOCK_SPELL_DATA.json"
+
+
 function LocalSearch({navigation}){
 
   const onResultPress = () => {
@@ -98,7 +101,8 @@ function Spells() {
       }}>
       <Stack.Screen
         name="Search Spells"
-        component={SearchPage}>        
+        component={SearchPage}
+        initialParams={{INITDATA: MOCKDATA}}>        
       </Stack.Screen>
       <Stack.Screen
         name="Filter Spells"

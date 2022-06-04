@@ -52,13 +52,13 @@ const ModalList = (props) => {
                     <Text style={styles.name}>{props.name}</Text>
                     <View style={{flexDirection: "row"}}>
                         <Pressable
-                            onPress={() => (selected.length===options.length ? setSelected([]) : setSelected(options))}
+                            onPress={() => (selected.length>1 ? setSelected([]) : setSelected(options))}
                             style={[{flexDirection: "row", alignItems: "center"},styles.clearBTN]}    
                         >
                             <FontAwesome
-                                name={((selected.length===options.length) ? "minus-square" : "check-square")}
+                                name={((selected.length>0) ? "minus-square" : "check-square")}
                                 size={30}
-                                color={((selected.length===options.length) ? "#CCD2E3" : "#4CBBE9")}
+                                color={((selected.length>0) ? "#CCD2E3" : "#4CBBE9")}
                             />
                             <Text style={styles.allTXT}>
                                 All Items

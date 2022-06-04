@@ -20,9 +20,6 @@ const FilterSlider = (props) => {
 
     const options = props.options
 
-    const enableScroll = () => props.setScrollEnabled(true);
-    const disableScroll = () => props.setScrollEnabled(false);
-
     const [min, setMin] = useState(options[0])
     const [max,setMax] = useState(options[1])
 

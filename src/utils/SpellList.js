@@ -18,6 +18,7 @@ import {
     Content
 } from 'native-base';
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
+import Images from '../utils/Images';
 
 
 
@@ -39,18 +40,26 @@ const SpellList = (props) => {
     function schoolHexCode({item}) {
       var school = item.school.toLowerCase()
       if(school==="evocation"){
-        return "#E94C4C"
+        return "#ef5c3e"
       } else if(school==="abjuration"){
-        return "#4CBBE9"
+        return "#88b9ed"
       } else if(school==="enchantment"){
       return "#E94CE0"
       } else if(school==="conjuration"){
-        return "#E9A14C"
+        return "#e88636"
       } else if(school==="necromancy"){
-        return "#7CE94C"
+        return "#b0f389"
+      } else if(school==="transmutation"){
+        return "#f2a261"
+      } else if(school==="divination"){
+        return "#91acbd"
+      } else if(school==="illusion"){
+        return "#b98cfc"
       }
+      
       return "#373C48"
     }
+
 
     function levelLogic({item}){
       if(item.level == 0){
@@ -71,7 +80,7 @@ const SpellList = (props) => {
                   <View style={[{backgroundColor: schoolHexCode({item})},styles.schoolBar]}>
                     <Image 
                     style={styles.icon}
-                    source={require('../../assets/evocation.png')}
+                    source={Images.school[item.school.toLowerCase()]}
                     resizeMode="stretch">
                     </Image>
                   </View>
@@ -105,7 +114,7 @@ const styles = StyleSheet.create({
     },
     spellTXT: {
       color: "#FFFFFF",
-      fontSize: 15,
+      fontSize: 17,
       fontWeight: "bold",
     },
     schoolTXT:{

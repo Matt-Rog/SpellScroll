@@ -17,19 +17,25 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 const FilterButton = (props) => {
 
 
-  const options = props.options
-    const [selected, setSelected] = useState([]) 
-    console.log(selected)
+    const options = props.options
+    const [selected, setSelected] = useState((props.selected.length==options.length ? [] : props.selected)) 
 
     function onButtonPress(item){
+      console.log(" ")
+      console.log("SELECTEDvv")
       console.log(item)
       if(!selected.includes(item)){
         var joined = selected.concat(item);
         setSelected(joined)
-      } else {
+        if(joined.length>0){
+          props.setFilterProp({name: props.name, selected: joined})
+        }} 
+        else {
         var removed = selected.filter(i => i !== item)
         setSelected(removed)
-      }
+        if(removed.length>0){
+          props.setFilterProp({name: props.name, selected: removed})
+        }} 
     }
 
     return (
