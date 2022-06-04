@@ -7,6 +7,7 @@ import {
     Pressable,
     View,
     Image,
+    Modal
     
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -32,7 +33,7 @@ export default function SearchPage({navigation, route}) {
 
     const [allSpells, setAllSpells] = useState(MOCKDATA)
     const [filterSpells, setFilterSpells] = useState(MOCKDATA)
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState("")
 
     function getSpellIDs(spellList) {
       var spellIDs = []
@@ -59,23 +60,36 @@ export default function SearchPage({navigation, route}) {
         <SafeAreaView style={styles.base}> 
           <Text style={styles.title}>Search Spells</Text>
           <View style={styles.searchBox}>
+            <View>
+              <Pressable
+              onPress={onFilterPress}
+              style={styles.filterIcon}>
+                <FontAwesome
+                name={"sliders"}
+                size={35}
+                color={"#fff"}
+                />
+              </Pressable>
+            </View>
             <TextInput 
-            style={styles.input}
-            placeholder="Search"
-            selectionColor="#Fff"
-            placeholderTextColor="#fff"
-            onChangeText={(text)=> searchSpells(text)}
+              style={styles.input}
+              placeholder="Search"
+              value=''
+              selectionColor="#Fff"
+              placeholderTextColor="#fff"
+              onChangeText={(text)=> searchSpells(text)}
             >
             </TextInput>
+            
             <Pressable
             onPress={onFilterPress}
             style={styles.filterIcon}>
               <FontAwesome
-              name={"filter"}
+              name={"sliders"}
               size={35}
               color={"#fff"}
               />
-          </Pressable>
+            </Pressable>
           </View>
             <SpellList
               onResultPress={onResultPress}
