@@ -15,27 +15,18 @@ const HEIGHT = Dimensions.get('window').height
 
 const ModalList = (props) => {
 
+
     const options = props.options
+    const [selected, setSelected] = useState(props.selected) 
 
-
-
-    const onPressItem = (item) => {
-        props.addSelection(item)
-    }
-
-    const [selected, setSelected] = useState(props.selected)
-
-    function onButtonPress(item){
-        if(!selected.includes(item)){
+    function onOptionPress(item){
+        if(!selected.includes(item) && !props.selected.includes(item)){
           var joined = selected.concat(item);
           setSelected(joined)
         } else {
           var removed = selected.filter(i => i !== item)
           setSelected(removed)
         }
-    }
-
-    function allOnPress(bool){
     }
 
     function onApplyPress(){
@@ -52,7 +43,7 @@ const ModalList = (props) => {
                     <Text style={styles.name}>{props.name}</Text>
                     <View style={{flexDirection: "row"}}>
                         <Pressable
-                            onPress={() => (selected.length>1 ? setSelected([]) : setSelected(options))}
+                            onPress={() => (selected.length>0 ? setSelected([]) : setSelected(options))}
                             style={[{flexDirection: "row", alignItems: "center"},styles.clearBTN]}    
                         >
                             <FontAwesome
@@ -73,7 +64,7 @@ const ModalList = (props) => {
                         return (
                             <Pressable
                                 style={styles.option}
-                                onPress={() => onButtonPress(item)}
+                                onPress={() => onOptionPress(item)}
                             >
                                 <FontAwesome
                                 name={(selected.includes(item) ? "check-square" : "square")}

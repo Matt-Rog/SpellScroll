@@ -12,14 +12,14 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import {ModalList} from '../utils/ModalList'
+import {ModalList} from './ModalList'
 
 
 const FilterList = (props) => {
 
     const options = props.options
 
-    const [selected, setSelected] = useState([])
+    const [selected, setSelected] = useState(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected)) 
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     const changeModalVisibility = (bool) => {
@@ -31,14 +31,29 @@ const FilterList = (props) => {
 
     }
 
-    function applySelection(selection){
-      setSelected(selection)
-    }
-
     function onXPress(item){
+      console.log("X PRESS")
       if(selected.includes(item)){
+        console.log("X PRESS INCLUDES")
         var removed = selected.filter(i => i !== item)
         setSelected(removed)
+      }
+      console.log("X PRESS REMOVED")
+      console.log(removed)
+      setFilterProp(removed)
+    }
+
+    function applySelection(selection){
+      setFilterProp(selection)
+      setSelected(selection)
+      
+    }
+
+    function setFilterProp(selection){
+      if(selection.length>0){
+        props.setFilterProp({name: props.name, selected: selection})
+      } else {
+        props.removeFilterProp({name: props.name})
       }
     }
 
@@ -69,7 +84,8 @@ const FilterList = (props) => {
                     changeModalVisibility={changeModalVisibility}
                     options={options}
                     selected={selected}
-                    applySelection={applySelection}
+                    setFilterProp={(params) => props.setFilterProp(params)}
+                    applySelection={(selected) => applySelection(selected)}
                   >
                   </ModalList>
               </Modal>
@@ -120,7 +136,7 @@ const styles = StyleSheet.create({
     },
     spellTXT: {
       color: "#FFFFFF",
-      fontSize: 15,
+      fontSize: 18,
       fontWeight: "bold",
     },
     nullTXT: {

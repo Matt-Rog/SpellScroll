@@ -13,7 +13,7 @@ import {
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import SliderCustomLabel from "../utils/SliderLabel";
+import SliderCustomLabel from "./SliderLabel";
 
 
 const FilterSlider = (props) => {
@@ -37,9 +37,14 @@ const FilterSlider = (props) => {
     }
 
     const textTransformerTimes = (value) => {
-        return value === 0
-          ? "Cantrip"
-          : "Lvl " + value;
+        switch (value) {
+          case 0:
+            return "Cantrip"
+          case 10:
+            return "Lvl. 9"
+          default:
+            return "Lvl. " + value
+        }
       };
 
     return (

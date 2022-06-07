@@ -18,7 +18,7 @@ const FilterButton = (props) => {
 
 
     const options = props.options
-    const [selected, setSelected] = useState((props.selected.length==options.length ? [] : props.selected)) 
+    const [selected, setSelected] = useState(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected)) 
 
     function onButtonPress(item){
       console.log(" ")
@@ -29,13 +29,16 @@ const FilterButton = (props) => {
         setSelected(joined)
         if(joined.length>0){
           props.setFilterProp({name: props.name, selected: joined})
-        }} 
-        else {
+        }}
+      else {
         var removed = selected.filter(i => i !== item)
         setSelected(removed)
         if(removed.length>0){
           props.setFilterProp({name: props.name, selected: removed})
-        }} 
+        } else {
+          props.removeFilterProp({name: props.name})
+        }
+      } 
     }
 
     return (
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
     },
     spellTXT: {
       color: "#FFFFFF",
-      fontSize: 15,
+      fontSize: 18,
       fontWeight: "bold",
     },
     nullTXT: {

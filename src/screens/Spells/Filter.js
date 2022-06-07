@@ -12,11 +12,12 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import FilterList from '../../utils/FilterList'
-import FilterButton from '../../utils/FilterButton'
-import FilterSlider from '../../utils/FilterSlider';
+import FilterList from '../../utils/Filters/FilterList'
+import FilterButton from '../../utils/Filters/FilterButton'
+import FilterSlider from '../../utils/Filters/FilterSlider';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 import PROPERTIES from "../../../PROPERTIES.json"
+import FilterRange from '../../utils/Filters/FilterRange';
 
 
 export default function FilterPage({navigation, route}) {
@@ -27,7 +28,6 @@ export default function FilterPage({navigation, route}) {
 
     const [allSpells, setAllSpells] = useState(MOCKDATA)
     const [filterSpells, setFilterSpells] = useState()
-    const [search, setSearch] = useState("")
     const [filter, setFilter] = useState(route.params.FILTER)
 
 
@@ -41,31 +41,59 @@ export default function FilterPage({navigation, route}) {
       }))
     }
 
+    function removeFilterProp(params){
+      let removed = {...filter}
+      delete removed[params.name]
+      setFilter(removed)
+    }
 
+
+    // Filter is apply implicitly 
     function onFilterApply(){
       console.log("APPLY FILTER VVV")
       console.log(filter)
 
-
       var newData = allSpells.filter(function(item) {
-        for(var key in filter){
-          console.log(item[key.toLowerCase()])
-          if(item[key.toLowerCase()] === undefined){
+        for (const [key, value] of Object.entries(filter)) {
+          // key: the name of the filter property
+
+          const filterArr = filter[key]   // Specified property options
+          const spellArr = item[key.toLowerCase()]    // Spell properties
+
+          console.log(spellArr)
+
+          if(spellArr === undefined){
             return false;
-          // If 
-          } if (filter[key].some(opt => item[key.toLowerCase()].includes(opt))){
+          }
+
+          // Spell properties need to include at least one filter property
+          const intersect = false
+          if(Array.isArray(spellArr)){
+            intersect = filterArr.some(function (option) {
+              return spellArr.indexOf(option) >= 0;
+            });
+          } else {
+            if(filterArr.includes(spellArr)){
+              intersect=true
+            }
+          }
+          if (intersect) {
             return true
           }
           return false;
-        }
+        };
+        // If property not specified by filter, include in result.
+        return true;
       })
       console.log("Filter.js results: " + newData.length)
       setFilterSpells(newData)
       navigation.navigate("Search Spells", {INITDATA: newData, FILTER: filter, RESET: false})
     }
 
+    // Reset filter and send user to search page
     function onFilterReset(){
       setFilterSpells([])
+      setFilter([])
       navigation.navigate("Search Spells", {INITDATA: [], FILTER: [], RESET: true})
     }
 
@@ -79,13 +107,19 @@ export default function FilterPage({navigation, route}) {
                 optionName="Classes"
                 options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
                 setFilterProp={(params) => setFilterProp(params)}
+                removeFilterProp={(params) => removeFilterProp(params)}
+                selected={filter.Class}
             ></FilterList>
 
             {/* Level */}
-            <FilterSlider
-              name="Level"
-              options={[0,9]}
-            ></FilterSlider>
+            <FilterRange
+                name="Level"
+                optionName="Level Range"
+                options={[0,1,2,3,4,5,6,7,8,9]}
+                setFilterProp={(params) => setFilterProp(params)}
+                removeFilterProp={(params) => removeFilterProp(params)}
+                selected={filter.Level}
+            ></FilterRange>
 
             {/* Components */}
             <FilterButton
@@ -94,21 +128,14 @@ export default function FilterPage({navigation, route}) {
               optionName="Components"
               selected={filter.Components}
               setFilterProp={(params) => setFilterProp(params)}
+              removeFilterProp={(params) => removeFilterProp(params)}
             ></FilterButton>
 
-            {/* Casting Time */}
-            <FilterList
-                name="Casting Time"
-                optionName="Casting Times"
-                options={["1 Action", "1 Bonus Action", "1 Reaction", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "12 Hours", "24 Hours"]}
-            ></FilterList>
-
-            {/* Casting Range */}
-            <FilterList
-                name="Casting Range"
-                optionName="Casting Ranges"
-                options={["1 Action", "1 Bonus Action", "1 Reaction", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "12 Hours", "24 Hours"]}
-            ></FilterList>
+            {/* TEMP */}
+            <FilterSlider
+              name="Level (old)"
+              options={[0,9]}
+            ></FilterSlider>
 
             
           </ScrollView>

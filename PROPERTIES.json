@@ -1,3 +1,4 @@
 {    
+    "Class": ["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
     "Components": ["Material", "Somatic", "Verbal"]
 }
