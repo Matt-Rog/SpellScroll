@@ -22,14 +22,18 @@ const ModalRange = (props) => {
     function onOptionPress(item){
 
         var range = []
-        if(props.max){ // Selecting the MAX
-            range = props.range.filter(function(x) {
-                return x <= item
-            })
-        } else { // Selecting the MIN
-            range = props.range.filter(function(x) {
-                return x >= item
-            })
+        if(!props.single){
+            if(props.max){ // Selecting the MAX
+                range = props.range.filter(function(x) {
+                    return x <= item
+                })
+            } if(!props.max) { // Selecting the MIN
+                range = props.range.filter(function(x) {
+                    return x >= item
+                })
+            }
+        } else {
+            range.push(item)
         }
 
         props.applySelection(range)

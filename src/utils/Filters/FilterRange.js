@@ -27,12 +27,77 @@ const FilterRange = (props) => {
     const [range, setRange] = useState(options)
 
     const [isMax, setIsMax] = useState()
+    const [isSingle, setIsSingle] = useState(false)
+    const [toggled, setToggled] = useState((selected.length<=1) ? "Single" : "Range")
+
+
+
+
+
+    const singleView = 
+      <View style={styles.content}>
+        <Pressable
+          onPress={() => onMinPress()}>
+            <View style={{flexDirection: "column", alignItems: "flex-start"}}>
+                <Text style={styles.label}>Select</Text>                    
+                <View style={styles.button}>
+                    <Text style={styles.option}>{(selected[0]==0 ? "Cantrip" : "Lvl " + selected[0])}</Text>
+                </View>
+            </View>
+        </Pressable>
+      </View>
+
+  const rangeView = 
+    <View style={styles.content}>
+      <Pressable
+        onPress={() => onMinPress()}>
+          <View style={{flexDirection: "column", alignItems: "flex-start"}}>
+              <Text style={styles.label}>From</Text>                    
+              <View style={styles.button}>
+                  <Text style={styles.option}>{(min==0 ? "Cantrip" : "Lvl " + min)}</Text>
+              </View>
+          </View>
+      </Pressable>
+      <FontAwesome
+                name={"arrow-right"}
+                size={20}
+                color={"#CCD2E3"}
+                style={styles.arrowIcon}
+                />
+      <Pressable
+        onPress={() => onMaxPress()}>
+          <View style={{flexDirection: "column", alignItems: "flex-start"}}>
+              <Text style={styles.label}>To</Text>                    
+              <View style={styles.button}>
+                  <Text style={styles.option}>{(max==0 ? "Cantrip" : "Lvl " + max)}</Text>
+              </View>
+          </View>
+      </Pressable>
+    </View>
+
+
+
+    const [modeView, setModeView] = useState(rangeView)
 
     
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     const changeModalVisibility = (bool) => {
       setIsModalVisible(bool)
+    }
+
+    function onModeToggle(mode){
+      setToggled(mode)
+      if(mode=="Single"){
+        setRange(options)
+        setModeView(singleView)
+        setIsSingle(true)
+        setFilterProp(selected[0])
+      } else {
+        setModeView(rangeView)
+        setIsSingle(false)
+        setFilterProp(selected)
+      }
     }
 
     function onMinPress(){
@@ -51,17 +116,6 @@ const FilterRange = (props) => {
         changeModalVisibility(true)
     }
 
-    function onXPress(item){
-      console.log("X PRESS")
-      if(selected.includes(item)){
-        console.log("X PRESS INCLUDES")
-        var removed = selected.filter(i => i !== item)
-        setSelected(removed)
-      }
-      console.log("X PRESS REMOVED")
-      console.log(removed)
-      setFilterProp(removed)
-    }
 
     function applySelection(selection){
       setSelected(selection)
@@ -94,10 +148,11 @@ const FilterRange = (props) => {
                 style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
                 nRequestClose={() => changeModalVisibility(false)}>
                   <ModalRange
-                    name={(isMax ? "Level Maximum" : "Level Minimum")}
+                    name={(toggled=="Range" ? (isMax==true ? "Level Maximum" : "Level Minimum") : "Level Select")}
                     changeModalVisibility={changeModalVisibility}
                     options={options}
                     max={isMax}
+                    single={isSingle}
                     selected={selected}
                     range={range}
                     applySelection={(selected) => applySelection(selected)}
@@ -105,32 +160,19 @@ const FilterRange = (props) => {
                   </ModalRange>
               </Modal>
             </View>
-            <View style={styles.content}>
-                <Pressable
-                  onPress={() => onMinPress()}>
-                    <View style={{flexDirection: "column", alignItems: "flex-start"}}>
-                        <Text style={styles.label}>From</Text>                    
-                        <View style={styles.button}>
-                            <Text style={styles.option}>{(min==0 ? "Cantrip" : "Lvl " + min)}</Text>
-                        </View>
-                    </View>
-                </Pressable>
-                <FontAwesome
-                          name={"arrow-right"}
-                          size={20}
-                          color={"#CCD2E3"}
-                          style={styles.arrowIcon}
-                          />
-                <Pressable
-                  onPress={() => onMaxPress()}>
-                    <View style={{flexDirection: "column", alignItems: "flex-start"}}>
-                        <Text style={styles.label}>To</Text>                    
-                        <View style={styles.button}>
-                            <Text style={styles.option}>{(max==0 ? "Cantrip" : "Lvl " + max)}</Text>
-                        </View>
-                    </View>
-                </Pressable>
+            <View style={styles.toggle}>
+              <Pressable
+                onPress={() => onModeToggle("Single")} 
+                style={[{backgroundColor: (toggled=="Single") ? '#4CBBE9' : '#CCD2E3'}, styles.toggleBTN]}>
+                <Text style={styles.option}>Single</Text>
+              </Pressable>
+              <Pressable 
+                onPress={() => onModeToggle("Range")}
+                style={[{backgroundColor: (toggled=="Range") ? '#4CBBE9' : '#CCD2E3'}, styles.toggleBTN]}>
+              <Text style={styles.option}>Range</Text>
+              </Pressable>
             </View>
+            {modeView}
         </View>
     );
 }
@@ -160,10 +202,20 @@ const styles = StyleSheet.create({
       alignItems: "center",
       margin: 9
     },
+    toggle :{
+      flexDirection: "row",
+      justifyContent: "center"
+    },
+    toggleBTN: {
+      margin: 15,
+      borderRadius: 50,
+      padding: 3,
+      marginTop: 0
+    },
     option: {
       fontSize: 17,
       marginLeft: 6,
-      marginRight: 13,
+      marginRight: 6,
       fontWeight: "bold",
       color: "#373C48"
     },

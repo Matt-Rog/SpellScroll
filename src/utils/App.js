@@ -8,6 +8,7 @@ import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SearchPage from '../screens/Spells/Search';
 import SpellPage from '../screens/Spells/Spell';
@@ -91,13 +92,14 @@ function LocalCharacter({navigation}){
 }
 
 const Stack = createStackNavigator();
-const MenuTab = createMaterialBottomTabNavigator();
+const MenuTab = createMaterialBottomTabNavigator()
 
 function Spells() {
   return (
     <Stack.Navigator
       screenOptions={{
-        header: () => null
+        header: () => null,
+        tabBarShowLabel: false
       }}>
       <Stack.Screen
         name="Search Spells"
@@ -120,7 +122,7 @@ function Characters() {
   return (
     <Stack.Navigator
       screenOptions={{
-        header: () => null
+        header: () => null,
       }}>
       <Stack.Screen
         name="Your Characters"
@@ -145,42 +147,43 @@ export default function App() {
   return (
     <NavigationContainer>
       <MenuTab.Navigator
-      screenOptions={({route})=> ({
-        tabBarIcon: ({focused, size, color}) => {
-          let iconName;
-          if(route.name=="Spells"){
-            iconName="search"
-            size = focused? 25 : 20;
-            color = focused? "#FFF" : "#CCD2E3"
-          }else if(route.name==="Characters"){
-            iconName="group"
-            size = focused? 25 : 20;
-            color = focused? "#FFF" : "#CCD2E3"
-          }
-          return(
-            <FontAwesome
-              name={iconName}
-              size={size}
-              color={color}
-              />
-          )
-        }
-      })}
-        tabBarOptions={{
-          inactiveBackgroundColor: "#373C48",
-          activeBackgroundColor: "#565C6B",
+        screenOptions={({route})=> ({
+          tabBarShowLabel: false,
           showLabel: false,
-          labelStyle: {margin: 3}
-        }}
+          tabBarLabel: "",
+          tabBarStyle: {
+            borderRadius: 15,
+            padding: 15,
+            height: 200
+          },
+          tabBarIcon: ({focused, size, color}) => {
+            let iconName;
+            if(route.name=="Spells"){
+              iconName="search"
+              size = focused? 25 : 23;
+              color = focused? "#FFF" : "#CCD2E3"
+            }else if(route.name=="Characters"){
+              iconName="user"
+              size = focused? 25 : 23;
+              color = focused? "#FFF" : "#CCD2E3"
+            }
+            return(
+              <FontAwesome
+                name={iconName}
+                size={size}
+                color={color}
+                />
+            )
+          }
+        })}
         barStyle={{backgroundColor: "#373C48"}}>
         <MenuTab.Screen
           name="Spells"
           component={Spells}>
         </MenuTab.Screen>
         <MenuTab.Screen
-        name="Characters"
-        component={Characters}>
-
+          name="Characters"
+          component={Characters}>
         </MenuTab.Screen>
       </MenuTab.Navigator>
     </NavigationContainer>

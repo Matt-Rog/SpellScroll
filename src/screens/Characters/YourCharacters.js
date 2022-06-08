@@ -7,31 +7,65 @@ import {
     Pressable,
     View,
     Image,
+    Modal
     
 } from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
+import ModalChar from "../../utils/ModalChar"
 
 
 export default function YourCharactersPage({navigation, route}) {
 
-    const [Chars, setChars] = useState([
-        {key: '1', charName: 'Mike One', level: '1', class: 'Bard'},
-        {key: '2', charName: 'Mike Two', level: '2', class: 'Monk'},
-        {key: '3', charName: 'Mike Three', level: '3', class: 'Druid'},
-      ])
+    const [Chars, setChars] = useState(MOCKCHAR)
+    const [isModalVisible, setIsModalVisible] = useState(false)
+    const [addCharData, setAddCharData] = useState()
+
+    const changeModalVisibility = (bool) => {
+      setIsModalVisible(bool)
+    }
 
 
     const onResultPress = () => {
       navigation.navigate("Character", {item})
     }
+
+    function addCharacter(){
+      changeModalVisibility(true)
+    }
+
+    function applyFromModal(data){
+      Object.assign(data, {id: MOCKCHAR.length})
+
+
+      // const fileSystem = require('../../../../../browserify-fs')
+
+      // const char = JSON.stringify(data)
+      // fileSystem.writeFile('../../../MOCK_CHAR_DATA.json', char, err => {
+      //   if (err) {
+      //     console.log("Error writing file", err)
+      //   } else {
+      //     console.log("Written successfully")
+      //   }
+      // })
+
+
+      // const FileSystem = require("fs");
+
+      // FileSystem.writeFile('../../../MOCK_CHAR_DATA.json', JSON.stringify(data), (error) => {
+      //     if (error) throw error;
+      // });
+
+    }
+
+    
       
     return (
         <SafeAreaView style={styles.base}> 
           <Text style={styles.title}>Your Characters</Text>
           <FlatList
-              data={MOCKCHAR}
+              data={Chars}
               renderItem={({item}) => (
                 <Pressable 
                   onPress={() => navigation.navigate("Character", {charID: item.ID})}
@@ -40,16 +74,43 @@ export default function YourCharactersPage({navigation, route}) {
                   
                   <View style={styles.bar}>
                       <FontAwesome
-                    name={"user"}
-                    size={50}
-                    color={"#fff"}
-                    style={styles.icon}></FontAwesome>
+                      name={"user"}
+                      size={50}
+                      color={"#fff"}
+                      style={styles.icon}></FontAwesome>
                   </View>
                   <Text style={styles.charTitle}>{item.name}</Text>
                   <Text style={styles.schoolTXT}>{item.class}</Text>
                 </Pressable>
               )}
             />
+            <Modal
+                transparent={true}
+                animationType='fade'
+                visible={isModalVisible}
+                nRequestClose={() => changeModalVisibility(false)}
+              >
+              <ModalChar
+                name={"Add a character"}
+                changeModalVisibility={changeModalVisibility}
+                applyFromModal={(data) => applyFromModal(data)}
+                selected={[]}
+              >
+                
+              </ModalChar>
+            </Modal>
+            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 20, right: 0}}>
+              <Pressable
+                  onPress={() => addCharacter()}
+                  style={styles.applyBTN}    
+              >
+                  <FontAwesome
+                    name={"plus"}
+                    size={35}
+                    color={"#fff"}
+                    style={styles.plus}></FontAwesome>
+              </Pressable>
+          </View>
         </SafeAreaView>
     );
 }
@@ -114,5 +175,38 @@ const styles = StyleSheet.create({
     icon: {
       alignSelf: "center",
       marginVertical: 10
-    }
+    },
+    plus: {
+      alignSelf: "center",
+      padding: 10,
+      paddingVertical: 7,
+    },
+    applyBTN: {
+        borderRadius: 100,
+        backgroundColor: "#4CBBE9",
+        padding: 8,
+        marginRight: 30,
+        justifyContent: "center",
+    },
+    cancelBTN: {
+        borderRadius: 12,
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        padding: 8,
+        marginTop: 10,
+        width: "40%",
+        justifyContent: "center",
+        marginRight: 30,
+    },
+    applyTXT: {
+        color: "#fff",
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    cancelTXT: {
+        color: "#CCD2E3",
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "center"
+    },
   });

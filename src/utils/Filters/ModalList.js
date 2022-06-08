@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     Dimensions,
     Pressable,
-    FlatList
+    FlatList,
+    TextInput
 } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
@@ -15,9 +16,8 @@ const HEIGHT = Dimensions.get('window').height
 
 const ModalList = (props) => {
 
-
     const options = props.options
-    const [selected, setSelected] = useState(props.selected) 
+    const [selected, setSelected] = useState(props.selected)
 
     function onOptionPress(item){
         if(!selected.includes(item) && !props.selected.includes(item)){
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
         marginLeft: 13,
         marginRight: 13,
     },
+    
 })
 
 export {ModalList}

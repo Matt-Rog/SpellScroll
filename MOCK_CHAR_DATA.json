@@ -1,6 +1,6 @@
 [
     {
-        "ID": 1,
+        "ID": 0,
         "class": "Ranger",
         "description": "Grr grr fite",
         "hex": "#E94C4C",
@@ -8,7 +8,7 @@
         "spells": [2,3,5]
     },
     {
-        "ID": 2,
+        "ID": 1,
         "class": "Bard",
         "description": "La la la hmm hmm",
         "hex": "#E94CE0",
@@ -16,7 +16,7 @@
         "spells": [3,4]
     },
     {
-        "ID": 3,
+        "ID": 2,
         "class": "Monk",
         "description": "Ommmmnnnn",
         "hex": "#CCD2E3",
