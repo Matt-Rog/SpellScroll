@@ -30,7 +30,7 @@ const ModalChar = (props) => {
 
     const [name, setName] = useState("")
     const [classes, setClasses] = useState([])
-    const [desc, setDesc] = useState("")
+    const [notes, setNotes] = useState("")
 
     function onOptionPress(item){
         if(!selected.includes(item) && !props.selected.includes(item)){
@@ -49,9 +49,10 @@ const ModalChar = (props) => {
     function onApplyPress(){
         if (classes.length>0 && name.length>0){
             props.applyFromModal({
-                "name": name,
-                "description": desc,
-                "classes": classes
+                name: name,
+                notes: notes,
+                classes: classes,
+                spells: [0,1,2,3]
             })
             props.changeModalVisibility(false)
         }
@@ -126,7 +127,7 @@ const ModalChar = (props) => {
                                     <FlatList
                                     scrollEnabled={false}
                                     data={classes}
-                                    numColumns={3}
+                                    numColumns={10}
                                     renderItem={({item}) => {
                                         return (
                                         <View style={[{borderColor: (classes.includes(item))? '#4CBBE9' : '#CCD2E3'}, styles.button]}>
@@ -165,14 +166,14 @@ const ModalChar = (props) => {
                         </View>
                     </View>
                     <View>
-                        <Text style={styles.promptTXT}>Description</Text>
+                        <Text style={styles.promptTXT}>Notes</Text>
                         <View style={{flexDirection: "row", alignItems: "center", margin: 5, marginLeft: 0}}>
                         <TextInput 
                             style={[styles.input, {height: 60}]}
-                            placeholder="Enter a description (optional)"
+                            placeholder="Add character notes (optional)"
                             selectionColor="#373C48"
                             placeholderTextColor="#373C48"
-                            onChangeText={(text) => setDesc(text)}
+                            onChangeText={(text) => setNotes(text)}
                         >
                         </TextInput>
                         </View>

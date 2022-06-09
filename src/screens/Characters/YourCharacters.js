@@ -10,7 +10,8 @@ import {
     Modal
     
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 import ModalChar from "../../utils/ModalChar"
@@ -18,7 +19,36 @@ import ModalChar from "../../utils/ModalChar"
 
 export default function YourCharactersPage({navigation, route}) {
 
-    const [Chars, setChars] = useState(MOCKCHAR)
+    const [Chars, setChars] = useState([])
+
+    useEffect(() => {
+      getData();
+    }, []);
+
+    const getData = async () => {
+      try {
+        const stringValue = await AsyncStorage.getItem('characters')
+        const jsonValue = JSON.parse(stringValue)
+        if (!jsonValue || typeof jsonValue !== 'object') return
+        setChars(jsonValue)
+        console.log("CHARS FROM GET DATA")
+        console.log(jsonValue)
+      
+      } catch(e) {
+        console.log("Error getting character data")
+        console.log(e)
+      }
+    }
+
+    const updateData = async (value) => {
+      try {
+        const jsonValue = JSON.stringify(value)
+        await AsyncStorage.setItem('characters', jsonValue)
+      } catch (e) {I
+        console.log("Error updating characters")
+        console.log(e)
+      }
+    }
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [addCharData, setAddCharData] = useState()
 
@@ -35,28 +65,25 @@ export default function YourCharactersPage({navigation, route}) {
       changeModalVisibility(true)
     }
 
-    function applyFromModal(data){
-      Object.assign(data, {id: MOCKCHAR.length})
+
+    const applyFromModal = async (data) => {
+      Object.assign(data, {ID: Chars.length})
 
 
-      // const fileSystem = require('../../../../../browserify-fs')
+      console.log("NEW CHAR")
+      console.log(data)
 
-      // const char = JSON.stringify(data)
-      // fileSystem.writeFile('../../../MOCK_CHAR_DATA.json', char, err => {
-      //   if (err) {
-      //     console.log("Error writing file", err)
-      //   } else {
-      //     console.log("Written successfully")
-      //   }
-      // })
+      const newChars = [...Chars,data]
+      setChars(newChars)
+      updateData(newChars)
 
-
-      // const FileSystem = require("fs");
-
-      // FileSystem.writeFile('../../../MOCK_CHAR_DATA.json', JSON.stringify(data), (error) => {
-      //     if (error) throw error;
-      // });
-
+      if(data.notes==="clear"){
+        try {
+          await AsyncStorage.setItem('characters', "")
+        } catch (error) {
+          console.log(error)
+        }
+      }
     }
 
     
@@ -79,8 +106,8 @@ export default function YourCharactersPage({navigation, route}) {
                       color={"#fff"}
                       style={styles.icon}></FontAwesome>
                   </View>
-                  <Text style={styles.charTitle}>{item.name}</Text>
-                  <Text style={styles.schoolTXT}>{item.class}</Text>
+                  <Text adjustsFontSizeToFit={true} numberOfLines={3} style={styles.charTitle}>{item.name}</Text>
+                  <Text style={styles.schoolTXT}>{item.classes.join(", ")}</Text>
                 </Pressable>
               )}
             />
@@ -148,8 +175,9 @@ const styles = StyleSheet.create({
       margin: 8,
       backgroundColor: "#373C48",
       borderRadius: 12,
+      marginHorizontal: 30,
       height: 150,
-      width: "90%",
+      width: "85%",
       paddingBottom: 10,
       marginBottom: 15
     },

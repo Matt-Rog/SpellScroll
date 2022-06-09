@@ -243,7 +243,8 @@ export default function SearchPage({navigation, route}) {
             onResultPress={onResultPress}
             spellIDs = {getSpellIDs(resultSpells)}
             navigation={navigation}
-            prevScreen="Search Spells">
+            prevScreen="Search Spells"
+            scrollEnabled={true}>
           </SpellList>
         </SafeAreaView>
     );

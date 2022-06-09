@@ -70,6 +70,7 @@ const SpellList = (props) => {
 
     return (
             <FlatList
+              scrollEnabled={props.scrollEnabled}
               data={spells}
               renderItem={({item}) => (
                 <Pressable 
