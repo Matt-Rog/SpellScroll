@@ -18,9 +18,9 @@ export default StyleSheet.create({
         width: "100%"
     },
     Container: {
-        width: "85%",
+        width: "90%",
         alignSelf: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     },
     Modal: {
         backgroundColor: back,
@@ -29,21 +29,26 @@ export default StyleSheet.create({
     },
     Header1: {
         color: primary_content,
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: "bold"
     },
     Header2: {
         color: primary_content,
-        fontSize: 21,
+        fontSize: 30,
         fontWeight: "bold"
     },
     Header3: {
+        color: primary_content,
+        fontSize: 21,
+        fontWeight: "bold"
+    },
+    Header4: {
         color: primary_content,
         fontSize: 18,
         fontWeight: "bold"
     },
     ContentBody: {
-        fontSize: 15,
+        fontSize: 18,
         color: secondary_content
     },
     PrimaryButton: {
@@ -69,9 +74,10 @@ export default StyleSheet.create({
     Tags: {
         backgroundColor: back_light,
         color: secondary_content,
-        borderRadius: 8,
+        borderRadius: 5,
         paddingHorizontal: 9,
-        paddingVertical: 3
+        paddingVertical: 3,
+        alignSelf: "baseline"
     },
     Input: {
         borderWidth: 1,
@@ -92,6 +98,7 @@ export default StyleSheet.create({
         paddingVertical: 3,
         marginHorizontal: 5, 
         marginVertical: 3,
+        alignSelf: "baseline"
     }
 
 

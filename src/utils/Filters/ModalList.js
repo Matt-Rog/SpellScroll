@@ -42,7 +42,7 @@ const ModalList = (props) => {
         >
             <View style={[AppStyles.Modal, {width: WIDTH - 20, height: HEIGHT/1.7}]}>
                 <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", margin: 5}}>
-                    <Text style={AppStyles.Header1}>{props.name}</Text>
+                    <Text style={AppStyles.Header2}>{props.name}</Text>
                     <View style={{flexDirection: "row"}}>
                         <Pressable
                             onPress={() => (selected.length>0 ? setSelected([]) : setSelected(options))}
@@ -53,7 +53,7 @@ const ModalList = (props) => {
                                 size={30}
                                 color={((selected.length>0) ? "#CCD2E3" : "#4CBBE9")}
                             />
-                            <Text style={[AppStyles.Header2, {marginLeft: 10}]}>
+                            <Text style={[AppStyles.Header3, {marginLeft: 10}]}>
                                 All Items
                             </Text>
                         </Pressable>
@@ -73,7 +73,7 @@ const ModalList = (props) => {
                                 size={25}
                                 color={(selected.includes(item) ? "#4CBBE9" : "#CCD2E3")}
                                 />
-                                <Text style={[AppStyles.Header2, {color: selected.includes(item) ? "#FFF" :"#CCD2E3"}, {marginLeft: 16}]}>{item}</Text>
+                                <Text style={[AppStyles.Header3, {color: selected.includes(item) ? "#FFF" :"#CCD2E3"}, {marginLeft: 16}]}>{item}</Text>
                             </Pressable>
                         )
                     }}>
@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     },
     allTXT: {
         fontSize: 15,
-        marginLeft: 5,
         fontWeight: "bold",
         textAlign: "center"
     },
@@ -169,12 +168,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center"
-    },
-    text: {
-        color: "#000",
-        fontSize: 20,
-        marginLeft: 13,
-        marginRight: 13,
     },
     
 })

@@ -1,4 +1,4 @@
-const images = {
+const Images = {
     school: {
         abjuration: require('../../assets/abjuration.png'),
         conjuration: require('../../assets/conjuration.png'),
@@ -16,7 +16,12 @@ const images = {
         elf1: require('../../assets/elf1.png'),
         gnome: require('../../assets/gnome.png'),
         faun: require('../../assets/faun.png')
+    }, 
+    splash: {
+        default: require('../../assets/default-splash.png'),
+        red: require('../../assets/red-dragon.png'),
+        blue: require('../../assets/blue-wizard.png'),
     }
 };
 
-export default images;
+export default Images;

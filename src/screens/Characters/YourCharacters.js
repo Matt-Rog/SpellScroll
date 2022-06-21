@@ -15,14 +15,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import AppStyles from '../../utils/AppStyles';
+import Images from '../../utils/Images';
 
+import Splash from '../../utils/Splash';
 import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 import ModalChar from "../../utils/ModalChar"
+import App from '../../utils/App';
 
 
 export default function YourCharactersPage({navigation, route}) {
 
     const [Chars, setChars] = useState([])
+    const [hideSplash, setHideSplash] = useState(false)
 
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
@@ -37,6 +41,11 @@ export default function YourCharactersPage({navigation, route}) {
         const jsonValue = JSON.parse(stringValue)
         if (!jsonValue || typeof jsonValue !== 'object') return
         setChars(jsonValue)
+        if(jsonValue.length>0){
+          setHideSplash(true)
+        } else {
+          setHideSplash(false)
+        }
         console.log("CHARS FROM GET DATA")
         console.log(jsonValue)
       
@@ -69,6 +78,8 @@ export default function YourCharactersPage({navigation, route}) {
 
     const clearAsyncStorage = async() => {
       AsyncStorage.clear();
+      setChars([])
+      setHideSplash(false)
     }
 
 
@@ -82,63 +93,68 @@ export default function YourCharactersPage({navigation, route}) {
       const newChars = [...Chars,data]
       setChars(newChars)
       updateData(newChars)
-
-      if(data.notes==="clear"){
-        try {
-          await AsyncStorage.setItem('characters', "")
-        } catch (error) {
-          console.log(error)
-        }
-      }
     }
 
     
       
     return (
-        <SafeAreaView style={styles.base}> 
+        <SafeAreaView style={[AppStyles.Background]}>
+          <View style={AppStyles.Container}>
           <Text style={styles.title}>Your Characters</Text>
           <Pressable
             onPress={()=>clearAsyncStorage()}>
             <Text style={AppStyles.Header3}>CLEAR ALL</Text>
           </Pressable>
+          <Splash
+            hide={hideSplash}
+            image={"red"}
+            title={"No characters found"}
+            component={
+              <Pressable
+                onPress={() => navigation.navigate("Add Character", {edit: false})}
+                style={AppStyles.PrimaryButton}>
+                <Text style={AppStyles.Header4}>Add Character</Text> 
+              </Pressable>
+            }>
+
+          </Splash>
           <FlatList
               data={Chars}
+              showsVerticalScrollIndicator={false}
               renderItem={({item}) => (
                 <Pressable 
                   onPress={() => navigation.navigate("Character", {charID: item.ID})}
-                  style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
+                  style={({pressed}) => [{backgroundColor: pressed? '#545A67' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
                   
                   <View style={[styles.bar, {backgroundColor: item.color}]}>
-                      <FontAwesome
-                      name={"user"}
-                      size={50}
-                      color={"#fff"}
-                      style={styles.icon}></FontAwesome>
+                    <Image
+                      style={styles.icon}
+                      source={Images.icon[item.icon.toLowerCase()]}
+                      resizeMode="stretch">
+                    </Image>
                   </View>
-                  <Text adjustsFontSizeToFit={true} numberOfLines={3} style={AppStyles.Header1}>{item.name}</Text>
-                  <Text style={AppStyles.Tags}>{item.classes.join(", ")}</Text>
+                  <View style={{flexDirection: "column"}}>
+                    <Text adjustsFontSizeToFit={true} numberOfLines={3} style={[AppStyles.Header3,{maxWidth: "110%"}]}>{item.name}</Text>
+                    <FlatList
+                      data={item.classes}
+                      numColumns={3}
+                      scrollEnabled={false}
+                      renderItem={({item}) => {
+                        return (
+                          <View style={[AppStyles.Tags, {marginTop: 10, marginRight: 8}]}>
+                            <Text style={{color: "#CCD2E3"}}>{item.toUpperCase()}</Text>
+                          </View>
+                        )
+                    }}></FlatList>
+                  </View>
                 </Pressable>
               )}
             />
-            <Modal
-                transparent={true}
-                animationType='fade'
-                visible={isModalVisible}
-                nRequestClose={() => changeModalVisibility(false)}
-              >
-              <ModalChar
-                name={"Add a character"}
-                changeModalVisibility={changeModalVisibility}
-                applyFromModal={(data) => applyFromModal(data)}
-                selected={[]}
-              >
-                
-              </ModalChar>
-            </Modal>
+            </View>
             <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 20, right: 0}}>
               <Pressable
-                  onPress={() => navigation.navigate("Add Character")}
+                  onPress={() => navigation.navigate("Add Character", {edit: false})}
                   style={styles.applyBTN}    
               >
                   <FontAwesome
@@ -159,10 +175,12 @@ const styles = StyleSheet.create({
       width: "100%"
     },
     bar: {
-      width: "100%",
-      "height": 60,
-      "borderTopRightRadius": 12,
+      "borderBottomLeftRadius": 12,
       "borderTopLeftRadius": 12,
+      borderRadius: 15,
+      padding: 10,
+      marginRight: 15,
+      justifyContent: "center"
     },
     title: {
       color: "#FFFFFF",
@@ -180,15 +198,13 @@ const styles = StyleSheet.create({
     resultContainer: {
     },
     resultBox: {
+      flexDirection: "row",
       alignSelf: "center",
-      margin: 8,
-      backgroundColor: "#373C48",
       borderRadius: 12,
       marginHorizontal: 30,
-      height: 150,
-      width: "85%",
-      paddingBottom: 10,
-      marginBottom: 15
+      marginBottom: 15,
+      padding: 10,
+      width: "100%"
     },
     spellTXT: {
       color: "#FFFFFF",
@@ -210,8 +226,8 @@ const styles = StyleSheet.create({
       padding: 5
     },
     icon: {
-      alignSelf: "center",
-      marginVertical: 10
+      width: 50,
+      height: 50,
     },
     plus: {
       alignSelf: "center",
