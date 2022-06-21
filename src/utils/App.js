@@ -15,6 +15,7 @@ import SpellPage from '../screens/Spells/Spell';
 import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
+import AddCharacterPage from '../screens/Characters/AddCharacter';
 
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
 
@@ -127,6 +128,10 @@ function Characters() {
       <Stack.Screen
         name="Your Characters"
         component={YourCharactersPage}>        
+      </Stack.Screen>
+      <Stack.Screen
+        name="Add Character"
+        component={AddCharacterPage}>        
       </Stack.Screen>
       <Stack.Screen
         name="Character"

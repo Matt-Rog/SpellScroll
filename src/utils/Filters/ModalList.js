@@ -11,6 +11,8 @@ import {
 } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+import AppStyles from '../AppStyles';
+
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
@@ -38,9 +40,9 @@ const ModalList = (props) => {
         <Pressable
             style={styles.container}
         >
-            <View style={[styles.modal, {width: WIDTH - 20, height: HEIGHT/2}]}>
-                <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                    <Text style={styles.name}>{props.name}</Text>
+            <View style={[AppStyles.Modal, {width: WIDTH - 20, height: HEIGHT/1.7}]}>
+                <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", margin: 5}}>
+                    <Text style={AppStyles.Header1}>{props.name}</Text>
                     <View style={{flexDirection: "row"}}>
                         <Pressable
                             onPress={() => (selected.length>0 ? setSelected([]) : setSelected(options))}
@@ -51,7 +53,7 @@ const ModalList = (props) => {
                                 size={30}
                                 color={((selected.length>0) ? "#CCD2E3" : "#4CBBE9")}
                             />
-                            <Text style={styles.allTXT}>
+                            <Text style={[AppStyles.Header2, {marginLeft: 10}]}>
                                 All Items
                             </Text>
                         </Pressable>
@@ -59,7 +61,7 @@ const ModalList = (props) => {
                 </View>
                 <FlatList
                     data={options}
-                    showsVerticalScrollIndicator={true}
+                    showsVerticalScrollIndicator={false}
                     renderItem={({item}) => {
                         return (
                             <Pressable
@@ -71,22 +73,22 @@ const ModalList = (props) => {
                                 size={25}
                                 color={(selected.includes(item) ? "#4CBBE9" : "#CCD2E3")}
                                 />
-                                <Text style={styles.text}>{item}</Text>
+                                <Text style={[AppStyles.Header2, {color: selected.includes(item) ? "#FFF" :"#CCD2E3"}, {marginLeft: 16}]}>{item}</Text>
                             </Pressable>
                         )
                     }}>
 
                 </FlatList>
-                <View style={{flexDirection: "row-reverse", alignItems: "center"}}>
+                <View style={{flexDirection: "row-reverse", justifyContent: "center", marginTop: 15}}>
                     <Pressable
                         onPress={() => onApplyPress()}
-                        style={styles.applyBTN}    
+                        style={AppStyles.PrimaryButton}    
                     >
                         <Text style={styles.applyTXT}>Apply</Text>
                     </Pressable>
                     <Pressable
                         onPress={() => props.changeModalVisibility(false)}
-                        style={styles.cancelBTN}    
+                        style={AppStyles.TertiaryButton}    
                     >
                         <Text style={styles.cancelTXT}>Cancel</Text>
                     </Pressable>
@@ -105,15 +107,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
     modal: {
-        backgroundColor: "#fff",
-        borderRadius: 12,
-        padding: 10
+        backgroundColor: "#373C48",
+        borderRadius: 15,
+        padding: 20
     },
     option:{
         width:"100%",
         flexDirection: "row",
-        margin: 5,
-        padding: 8,
+        padding: 20,
+        marginVertical: 5,
+        backgroundColor: "#545A67",
+        borderRadius: 15,
         alignItems: "center"
     },
     name: {
@@ -122,6 +126,9 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginTop: 10,
         marginBottom: 10
+    },
+    optionTXT: {
+        marginLeft: 15
     },
     allTXT: {
         fontSize: 15,

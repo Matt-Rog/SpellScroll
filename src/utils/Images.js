@@ -9,6 +9,14 @@ const images = {
         necromancy: require('../../assets/necromancy.png'),
         transmutation: require('../../assets/transmutation.png'),
     },
+    icon: {
+        hat: require('../../assets/hat.png'),
+        wizard: require('../../assets/wizard.png'),
+        orc: require('../../assets/orc.png'),
+        elf1: require('../../assets/elf1.png'),
+        gnome: require('../../assets/gnome.png'),
+        faun: require('../../assets/faun.png')
+    }
 };
 
 export default images;

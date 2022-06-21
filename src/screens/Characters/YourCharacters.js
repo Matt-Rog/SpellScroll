@@ -13,6 +13,9 @@ import {
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+import AppStyles from '../../utils/AppStyles';
+
 import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 import ModalChar from "../../utils/ModalChar"
 
@@ -22,8 +25,11 @@ export default function YourCharactersPage({navigation, route}) {
     const [Chars, setChars] = useState([])
 
     useEffect(() => {
-      getData();
-    }, []);
+      const loadData = navigation.addListener('focus', () => {
+        getData()
+      })
+      return loadData;
+    }, [navigation]);
 
     const getData = async () => {
       try {
@@ -61,8 +67,8 @@ export default function YourCharactersPage({navigation, route}) {
       navigation.navigate("Character", {item})
     }
 
-    function addCharacter(){
-      changeModalVisibility(true)
+    const clearAsyncStorage = async() => {
+      AsyncStorage.clear();
     }
 
 
@@ -91,6 +97,10 @@ export default function YourCharactersPage({navigation, route}) {
     return (
         <SafeAreaView style={styles.base}> 
           <Text style={styles.title}>Your Characters</Text>
+          <Pressable
+            onPress={()=>clearAsyncStorage()}>
+            <Text style={AppStyles.Header3}>CLEAR ALL</Text>
+          </Pressable>
           <FlatList
               data={Chars}
               renderItem={({item}) => (
@@ -99,15 +109,15 @@ export default function YourCharactersPage({navigation, route}) {
                   style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
                   
-                  <View style={styles.bar}>
+                  <View style={[styles.bar, {backgroundColor: item.color}]}>
                       <FontAwesome
                       name={"user"}
                       size={50}
                       color={"#fff"}
                       style={styles.icon}></FontAwesome>
                   </View>
-                  <Text adjustsFontSizeToFit={true} numberOfLines={3} style={styles.charTitle}>{item.name}</Text>
-                  <Text style={styles.schoolTXT}>{item.classes.join(", ")}</Text>
+                  <Text adjustsFontSizeToFit={true} numberOfLines={3} style={AppStyles.Header1}>{item.name}</Text>
+                  <Text style={AppStyles.Tags}>{item.classes.join(", ")}</Text>
                 </Pressable>
               )}
             />
@@ -128,7 +138,7 @@ export default function YourCharactersPage({navigation, route}) {
             </Modal>
             <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 20, right: 0}}>
               <Pressable
-                  onPress={() => addCharacter()}
+                  onPress={() => navigation.navigate("Add Character")}
                   style={styles.applyBTN}    
               >
                   <FontAwesome
@@ -151,7 +161,6 @@ const styles = StyleSheet.create({
     bar: {
       width: "100%",
       "height": 60,
-      "backgroundColor": "#4CBBE9",
       "borderTopRightRadius": 12,
       "borderTopLeftRadius": 12,
     },

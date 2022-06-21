@@ -73,13 +73,11 @@ const ModalChar = (props) => {
     }
 
     function onXPress(item){
-        console.log("X PRESS")
         if(classes.includes(item)){
-          console.log("X PRESS INCLUDES")
           var removed = classes.filter(i => i !== item)
           setClasses(removed)
         }
-      }
+    }
 
     
     return (
@@ -127,7 +125,7 @@ const ModalChar = (props) => {
                                     <FlatList
                                     scrollEnabled={false}
                                     data={classes}
-                                    numColumns={10}
+                                    numColumns={3}
                                     renderItem={({item}) => {
                                         return (
                                         <View style={[{borderColor: (classes.includes(item))? '#4CBBE9' : '#CCD2E3'}, styles.button]}>

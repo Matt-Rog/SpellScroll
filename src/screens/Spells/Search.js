@@ -14,6 +14,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+import AppStyles from '../../utils/AppStyles';
 import ModalSearch from '../../utils/ModalSearch'
 import SpellList from '../../utils/SpellList';
 import EmptySplash from '../../utils/EmptySplash';
@@ -164,7 +165,7 @@ export default function SearchPage({navigation, route}) {
     ]
 
     return (
-        <SafeAreaView style={styles.base}> 
+        <SafeAreaView style={AppStyles.Background}> 
           <Text style={styles.title}>Search Spells</Text>
           <View style={styles.searchBox}>
             <View style={styles.searchBar}>
