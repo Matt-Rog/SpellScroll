@@ -20,7 +20,6 @@ import Images from '../../utils/Images';
 import Splash from '../../utils/Splash';
 import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 import ModalChar from "../../utils/ModalChar"
-import App from '../../utils/App';
 
 
 export default function YourCharactersPage({navigation, route}) {

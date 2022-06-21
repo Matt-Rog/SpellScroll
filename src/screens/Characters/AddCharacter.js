@@ -28,8 +28,6 @@ import Splash from '../../utils/Splash';
 import TopMenu from '../../utils/TopMenu';
 
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
-import App from '../../utils/App';
-import { Title } from 'react-native-paper';
 
 export default function AddCharacterPage({navigation, route}){
 
@@ -144,6 +142,7 @@ export default function AddCharacterPage({navigation, route}){
             updateData(newChars)
         }
         setIsAddModalVisible(true)
+        navigation.navigate("Character", {charID: localID})
 
         
     }
@@ -353,8 +352,7 @@ export default function AddCharacterPage({navigation, route}){
                                 <Pressable
                                 onPress={() => {
                                     setIsAddModalVisible(false)
-                                    navigation.navigate("Character", {charID: ID}
-                                )}}
+                                }}
                                 style={[AppStyles.PrimaryButton, {marginTop: 20}]}>
                                     <Text style={AppStyles.Header4}>Continue</Text>
                                 </Pressable>

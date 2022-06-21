@@ -33,7 +33,7 @@ const ModalBase = (props) => {
             onPress={() => onXPress()}>
             <FontAwesome
                 name={"times-circle"}
-                size={25}
+                size={30}
                 color={"#CCD2E3"}
                 />
         </Pressable>

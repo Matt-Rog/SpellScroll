@@ -1,19 +1,11 @@
 import { StyleSheet } from "react-native";
 
-
-var back_dark = "#181D23"
-var back = "#373C48"
-var back_light = "#545A67"
-
-var primary_content = "#FFFFFF"
-var secondary_content = "#CCD2E3"
-
-var primary_accent = "#4CBBE9"
+import {COLORS} from './Colors.js'
 
 
 export default StyleSheet.create({
     Background: {
-        backgroundColor: back_dark,
+        backgroundColor: COLORS.back_dark,
         height: '100%',
         width: "100%"
     },
@@ -23,57 +15,57 @@ export default StyleSheet.create({
         justifyContent: "center",
     },
     Modal: {
-        backgroundColor: back,
+        backgroundColor: COLORS.back,
         borderRadius: 15,
         padding: 20
     },
     Header1: {
-        color: primary_content,
+        color: COLORS.primary_content,
         fontSize: 40,
         fontWeight: "bold"
     },
     Header2: {
-        color: primary_content,
+        color: COLORS.primary_content,
         fontSize: 30,
         fontWeight: "bold"
     },
     Header3: {
-        color: primary_content,
+        color: COLORS.primary_content,
         fontSize: 21,
         fontWeight: "bold"
     },
     Header4: {
-        color: primary_content,
+        color: COLORS.primary_content,
         fontSize: 18,
         fontWeight: "bold"
     },
     ContentBody: {
         fontSize: 18,
-        color: secondary_content
+        color: COLORS.secondary_content
     },
     PrimaryButton: {
-        color: primary_content,
+        color: COLORS.primary_content,
         borderRadius: 15, 
         paddingHorizontal: 30,
         paddingVertical: 15,
-        backgroundColor: primary_accent
+        backgroundColor: COLORS.primary_accent
     },
     SecondaryButton: {
-        color: primary_content,
-        borderColor: primary_content,
+        color: COLORS.primary_content,
+        borderColor: COLORS.primary_content,
         borderWidth: 3,
         borderRadius: 15, 
         paddingHorizontal: 30,
         paddingVertical: 15,
     },
     TertiaryButton: {
-        color: primary_content,
+        color: COLORS.primary_content,
         paddingHorizontal: 30,
         paddingVertical: 15,
     },
     Tags: {
-        backgroundColor: back_light,
-        color: secondary_content,
+        backgroundColor: COLORS.back_light,
+        color: COLORS.secondary_content,
         borderRadius: 5,
         paddingHorizontal: 9,
         paddingVertical: 3,
@@ -81,9 +73,9 @@ export default StyleSheet.create({
     },
     Input: {
         borderWidth: 1,
-        backgroundColor: back,
-        borderColor: back,
-        color: secondary_content,
+        backgroundColor: COLORS.back,
+        borderColor: COLORS.back,
+        color: COLORS.secondary_content,
         borderRadius: 12,
         fontSize: 15,
         paddingLeft: 17,
@@ -92,7 +84,7 @@ export default StyleSheet.create({
     },
     Removable: {
         borderWidth: 3,
-        borderColor: primary_accent,
+        borderColor: COLORS.primary_accent,
         borderRadius: 8,
         paddingHorizontal: 12,
         paddingVertical: 3,
