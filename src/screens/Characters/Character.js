@@ -8,7 +8,11 @@ import {
     View,
     Image,
     Modal,
-    ScrollView
+    ScrollView,
+    Dimensions,
+    Animated,
+    TouchableNativeFeedbackBase,
+    ViewComponent
     
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -16,7 +20,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import SpellList from '../../utils/SpellList';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 
 import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
@@ -24,7 +27,10 @@ import Images from '../../utils/Images';
 import TopMenu from '../../utils/TopMenu';
 import { ModalBase } from '../../utils/ModalBase';
 import Splash from '../../utils/Splash';
+import CharacterSettings from './CharacterSettings';
+import SlidingTab from './SlidingTab';
 
+const {width, height} = Dimensions.get('screen')
 
 
 export default function CharacterPage({navigation, route}) {
@@ -33,10 +39,12 @@ export default function CharacterPage({navigation, route}) {
       ID: 0,
       classes: [],
       icon: "hat",
-      notes: ""
+      notes: "",
+      spells: []
     })
     const [Chars, setChars] = useState([])
-    const[spellIDs, setSpellIDs] = useState([])
+    const[spells, setSpells] = useState([])
+    const[data, setData] = useState([])
     const {charID} = route.params;
 
     useEffect(() => {
@@ -57,7 +65,10 @@ export default function CharacterPage({navigation, route}) {
         console.log(tempChar)
         setChar(tempChar)
         setChars(jsonValue)
-        setSpellIDs(tempChar.spells)
+        setSpells(tempChar.spells)
+
+
+
       
       } catch(e) {
         console.log("Error getting character data")
@@ -80,12 +91,7 @@ export default function CharacterPage({navigation, route}) {
     }
 
     const onSettingsPress = () => {
-      changeModalVisibility(true)
-    }
-
-
-    const onResultPress = () => {
-      navigation.navigate("CharSpell")
+      changeSettingsModalVisibility(true)
     }
 
     function onEditCharacter(){
@@ -93,26 +99,109 @@ export default function CharacterPage({navigation, route}) {
       navigation.navigate("Add Character", {edit: true, charID: charID})
     }
 
-    function onDeleteCharacter(){
-      changeModalVisibility(false)
-      changeDeleteModalVisibility(true)
-    }
 
-    function deleteCharacter(){
-      Chars.splice(charID, 1)
+    function deleteCharacter(charID){
+      var index = Chars.indexOf(Chars.find(char => char.ID === charID))
+      Chars.splice(index, 1)
       updateData(Chars)
-      navigation.navigate("Your Characters")
+    }
+    const onResultPress = () => {
+      navigation.navigate("CharSpell")
     }
 
     const [isModalVisible, setIsModalVisible] = useState(false)
-    const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
-    const [addCharData, setAddCharData] = useState()
+    const [isSettingsModalVisible, setIsSettingsModalVisible] = useState(false)
 
     const changeModalVisibility = (bool) => {
       setIsModalVisible(bool)
     }
-    const changeDeleteModalVisibility = (bool) => {
-      setIsDeleteModalVisible(bool)
+    const changeSettingsModalVisibility = (bool) => {
+      setIsSettingsModalVisible(bool)
+    }
+
+
+    // Class spell tabs
+    const scrollX = React.useRef(new Animated.Value(0)).current
+    const ref = React.useRef()
+    const onItemPress = React.useCallback(itemIndex => {
+      ref?.current?.scrollToOffset({
+        offset: itemIndex * width
+      })
+    })
+    const data = Object.keys(spells).map((i) => ({
+      key: i,
+      class: i,
+      spellIDs: spells[i],
+      ref: React.createRef()
+    }))
+
+    const Tab = React.forwardRef(({item, onItemPress}, ref) => {
+      return (
+        <Pressable
+          onPress={onItemPress}>
+        <View style={{paddingVertical: 10, maxWidth: 150}}ref={ref}>
+          <Text adjustsFontSizeToFit={true} numberOfLines={1}style={[AppStyles.Header4, (data.length>5 ? {fontSize: 100/data.length} : {})]}>{item.class}</Text>
+        </View>
+        </Pressable>
+      )
+    })
+
+    const Indicator = ({measures, scrollX}) => {
+      const inputRange = data.map((_, i) => i * width)
+      const indicatorWidth = scrollX.interpolate({
+        inputRange,
+        outputRange: measures.map(measure => measure.width)
+      })
+      const translateX = scrollX.interpolate({
+        inputRange,
+        outputRange: measures.map(measure => measure.x)
+      })
+      return (
+        <Animated.View 
+          style={{
+            height: 4, 
+            width: indicatorWidth, 
+            backgroundColor: char.color, 
+            position: "absolute", 
+            left: 0,
+            bottom: 0, 
+            transform: [{
+              translateX
+            }]}}>
+        </Animated.View>
+      )
+    }
+
+    const Tabs = ({data, scrollX, onItemPress}) => {
+      const [measures, setMeasures] = React.useState([])
+      const containerRef = React.useRef()
+      React.useEffect(() => {
+        const m = []
+        data.forEach(item => {
+          item.ref.current.measureLayout(containerRef.current, (x,y,width,height) => {
+            m.push({
+              x,y,width,height
+            })
+
+            if(m.length === data.length){
+              setMeasures(m)
+            }
+          })
+        })
+      })
+      return (
+        <View>
+          <View  ref={containerRef} style={{flexDirection: "row", justifyContent: "space-evenly"}}>
+            {data.map((item,index) => {
+              return <Tab key={item.key}  item={item} ref={item.ref} onItemPress={() => onItemPress(index)}/>
+           })}
+          </View>
+          {measures.length>0 && (
+            <Indicator measures={measures} scrollX={scrollX}/>
+          )}
+        </View>
+
+      )
     }
     
 
@@ -128,86 +217,23 @@ export default function CharacterPage({navigation, route}) {
           
         </TopMenu>
 
-        {/* Settings */}
+        {/* Character Settings Modal */}
         <Modal
             transparent={true}
             animationType='fade'
-            visible={isModalVisible}
+            visible={isSettingsModalVisible}
             style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
-            nRequestClose={() => changeModalVisibility(false)}>
-                <ModalBase
-                  changeModalVisibility={changeModalVisibility}
-                  header={true}
-                  title={"Settings"}
-                  component={
-                    <View style={{marginVertical: 10}}>
-                      <Pressable
-                        onPress={() => onEditCharacter()}
-                        style={[AppStyles.PrimaryButton, {backgroundColor: "#545A67",flexDirection: "row"}]}>
-                        <FontAwesome
-                            name={"pencil"}
-                            size={25}
-                            color={"#fff"}
-                            />
-                        <Text style={[{marginLeft: 15},AppStyles.Header3]}>Edit Character</Text>
-                      </Pressable>
-                      <Pressable
-                        onPress={() => onDeleteCharacter()}
-                        style={[AppStyles.SecondaryButton, {borderColor: "#E94C4C",flexDirection: "row", marginTop: 15}]}>
-                        <FontAwesome
-                            name={"trash"}
-                            size={25}
-                            color={"#fff"}
-                            />
-                        <Text style={[{marginLeft: 15},AppStyles.Header3]}>Delete Character</Text>
-                      </Pressable>
-                    </View>
-                  }
-                >
-            </ModalBase>
-        </Modal>
+            nRequestClose={() => changeSettingsModalVisibility(false)}>
 
-        {/* Delete */}
-        <Modal
-            transparent={true}
-            animationType='fade'
-            visible={isDeleteModalVisible}
-            style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
-            nRequestClose={() => changeDeleteModalVisibility(false)}>
-                <ModalBase
-                  changeModalVisibility={changeDeleteModalVisibility}
-                  header={false}
-                  title={"Settings"}
-                  component={
-                    <View>
-                      <Splash
-                        hide={false}
-                        image={"red"}
-                        title={"Are you sure?"}
-                        body={"Your character will be permanently deleted"}
-                        component={
-                          <View style={{flexDirection: "row", marginTop: 20}}>
-                            <Pressable 
-                              onPress={() => changeDeleteModalVisibility(false)}
-                              style={AppStyles.TertiaryButton}>
-                              <Text style={AppStyles.Header4}>Cancel</Text>
-                            </Pressable>
-                            <Pressable
-                              onPress={() => deleteCharacter()}
-                              style={[AppStyles.SecondaryButton, {borderColor: "#E94C4C"}]}>
-                              <Text style={AppStyles.Header4}>Delete</Text>
-                            </Pressable>
-                          </View>
-                        }></Splash>
-                    </View>
-                  }
-                >
-            </ModalBase>
-        </Modal>
+              <CharacterSettings
+                navigation={navigation}
+                charID={charID}
+                changeModalVisibility={changeSettingsModalVisibility}
+                deleteCharacter={(charID) => deleteCharacter(charID)}
+              ></CharacterSettings>
+          </Modal>
 
-
-
-        <View style={[styles.contentTab]}>
+        <View style={[styles.contentTab, {marginTop: 20}]}>
           <View style={{flexDirection: "row", marginBottom: 0, alignItems: "center"}}>
             <Image
               style={styles.icon}
@@ -231,6 +257,47 @@ export default function CharacterPage({navigation, route}) {
             </View>
           </View>
           
+        </View>
+        <SlidingTab
+          data={spells}
+          color={char.color}
+          onResultPress={()=>onResultPress()}
+          navigation={navigation}
+          component={
+            <View>
+            <Text style={AppStyles.Header2}>HELLO</Text>
+            </View>
+          }>
+
+        </SlidingTab>
+        <View style={{width: width, marginTop: 15}}>
+          <Tabs scrollX={scrollX} data={data} onItemPress={onItemPress}/>
+          <Animated.FlatList
+            ref={ref}
+            data={data}
+            keyExtractor={item => item.key}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+            bounces={true}
+            onScroll={Animated.event(
+              [{nativeEvent: {contentOffset: {x: scrollX}}}],
+              {useNativeDriver: false}
+            )}
+            renderItem={({item})=> {
+              return(
+                <View style={{width: width}}>
+                  <SpellList
+                      onResultPress={onResultPress}
+                      spellIDs={item.spellIDs}
+                      navigation={navigation}
+                      prevScreen="Character"
+                      scrollEnabled={true}>
+                  </SpellList>
+                </View>
+              )
+            }}
+          />
         </View>
         {/*<SpellList
             onResultPress={onResultPress}

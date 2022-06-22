@@ -18,8 +18,8 @@ import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
 
 import Splash from '../../utils/Splash';
-import MOCKCHAR from "../../../MOCK_CHAR_DATA.json"
 import ModalChar from "../../utils/ModalChar"
+import CharacterSettings from './CharacterSettings';
 
 
 export default function YourCharactersPage({navigation, route}) {
@@ -57,22 +57,38 @@ export default function YourCharactersPage({navigation, route}) {
     const updateData = async (value) => {
       try {
         const jsonValue = JSON.stringify(value)
+        if(value.length==0){
+          setHideSplash(false)
+        } else {
+          setHideSplash(true)
+        }
         await AsyncStorage.setItem('characters', jsonValue)
       } catch (e) {I
         console.log("Error updating characters")
         console.log(e)
       }
     }
-    const [isModalVisible, setIsModalVisible] = useState(false)
-    const [addCharData, setAddCharData] = useState()
+    const [isSettingsModalVisible, setIsSettingsModalVisible] = useState(false)
+    const [tempCharID, setTempCharID] = useState(0)
 
-    const changeModalVisibility = (bool) => {
-      setIsModalVisible(bool)
+    const changeSettingsModalVisibility = (bool) => {
+      setIsSettingsModalVisible(bool)
     }
 
 
     const onResultPress = () => {
       navigation.navigate("Character", {item})
+    }
+
+    const onLongPress = (item) => {
+      setTempCharID(item.ID)
+      changeSettingsModalVisibility(true)
+    }
+
+    function deleteCharacter(charID){
+      var index = Chars.indexOf(Chars.find(char => char.ID === charID))
+      Chars.splice(index, 1)
+      updateData(Chars)
     }
 
     const clearAsyncStorage = async() => {
@@ -123,6 +139,7 @@ export default function YourCharactersPage({navigation, route}) {
               renderItem={({item}) => (
                 <Pressable 
                   onPress={() => navigation.navigate("Character", {charID: item.ID})}
+                  onLongPress={() => onLongPress(item)}
                   style={({pressed}) => [{backgroundColor: pressed? '#545A67' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
                   
@@ -163,6 +180,22 @@ export default function YourCharactersPage({navigation, route}) {
                     style={styles.plus}></FontAwesome>
               </Pressable>
           </View>
+
+          {/* Character Settings Modal */}
+          <Modal
+            transparent={true}
+            animationType='fade'
+            visible={isSettingsModalVisible}
+            style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+            nRequestClose={() => changeModalVisibility(false)}>
+
+              <CharacterSettings
+                navigation={navigation}
+                charID={tempCharID}
+                changeModalVisibility={changeSettingsModalVisibility}
+                deleteCharacter={(charID) => deleteCharacter(charID)}
+              ></CharacterSettings>
+          </Modal>
         </SafeAreaView>
     );
 }

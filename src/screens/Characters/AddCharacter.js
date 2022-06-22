@@ -111,13 +111,19 @@ export default function AddCharacterPage({navigation, route}){
 
     function onApplyPress(){
         if (classes.length>0 && name.length>0){
+            var spells = {}
+            for(var i=0; i < classes.length; i++){
+                spells[classes[i]] = [i]
+            }
+            console.log(spells)
+
             applyFromModal({
                 name: name,
                 classes: classes,
                 notes: notes,
                 icon: icon,
                 color: color,
-                spells: [0,1,2,3]
+                spells: spells
             })
         }
         
@@ -143,6 +149,7 @@ export default function AddCharacterPage({navigation, route}){
         }
         setIsAddModalVisible(true)
         navigation.navigate("Character", {charID: localID})
+        setIsAddModalVisible(true)
 
         
     }
