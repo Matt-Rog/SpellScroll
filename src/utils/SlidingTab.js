@@ -17,8 +17,8 @@ import React, {useEffect, useState} from 'react';
 
 const {width, height} = Dimensions.get('screen')
 
-import SpellList from '../../utils/SpellList';
-import AppStyles from '../../utils/AppStyles';
+import SpellList from './SpellList';
+import AppStyles from './AppStyles';
 
 const SlidingTab = (props) => {
 

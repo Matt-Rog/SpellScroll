@@ -28,7 +28,7 @@ import TopMenu from '../../utils/TopMenu';
 import { ModalBase } from '../../utils/ModalBase';
 import Splash from '../../utils/Splash';
 import CharacterSettings from './CharacterSettings';
-import SlidingTab from './SlidingTab';
+import SlidingTab from '../../utils/SlidingTab';
 
 const {width, height} = Dimensions.get('screen')
 
@@ -68,8 +68,6 @@ export default function CharacterPage({navigation, route}) {
         setChar(tempChar)
         setChars(jsonValue)
         setSpells(tempChar.spells)
-
-        let count = Object.keys(tempChar.spells).length
 
         var localComponent = <Text style={AppStyles.Header1}>HI</Text>
 
@@ -145,13 +143,11 @@ export default function CharacterPage({navigation, route}) {
       <SafeAreaView style={AppStyles.Background}>
         <View style={[styles.colorTab, {backgroundColor: char.color}]}></View>
         <TopMenu
-          onLeftPress={() => onBackPress()}
-          onRightPress={() => onSettingsPress()}
           bubble={true}
           settings={true}
-          >
-          
-        </TopMenu>
+          onLeftPress={() => onBackPress()}
+          onRightPress={() => onSettingsPress()}
+          ></TopMenu>
 
         {/* Character Settings Modal */}
         <Modal

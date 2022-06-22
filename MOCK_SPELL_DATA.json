@@ -1,7 +1,7 @@
 [
     {
         "ID": 0,
-        "attack": "NULL",
+        "attack": "None",
         "class": ["Bard","Sorcerer","Wizard","Artificer"],
         "components": ["Verbal", "Somatic", "Material"],
         "description": "You create up to four torch-sized lights within range, making them appear as torches, lanterns, or glowing orbs that hover in the air for the duration. You can also combine the four lights into one glowing vaguely humanoid form of Medium size. Whichever form you choose, each light sheds dim light in a 10-foot radius.\n\nAs a bonus action on your turn, you can move the lights up to 60 feet to a new spot within range. A light must be within 20 feet of another light created by this spell, and a light winks out if it exceeds the spell's range.",
@@ -12,11 +12,12 @@
         "name": "Dancing Lights",
         "range": "120 ft",
         "school": "Evocation",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["UTILITY"]
     },
     {
         "ID": 1,
-        "attack": "NULL",
+        "attack": "None",
         "class": ["Druid","Ranger","Sorcerer","Wizard","Artificer"],
         "components": ["Verbal", "Somatic", "Material"],
         "description": "You touch a willing creature to grant it the ability to see in the dark. For the duration, that creature has darkvision out to a range of 60 feet.",
@@ -27,12 +28,13 @@
         "name": "Darkvision",
         "range": "Touch",
         "school": "Transmutation",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["BUFF"]
     },
     {
         "ID": 2,
-        "attack": "NULL",
-        "class": ["Bard"],
+        "attack": "None",
+        "class": ["BARD","CLERIC","DRUID","PALADIN","RANGER","SORCERER","WIZARD","ARTIFICER","ARCANA DOMAIN","OATH OF THE WATCHERS"],
         "components": ["Verbal", "Somatic", "Material"],
         "description": "For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.\n\nThe spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.",
         "duration": "10 Minutes",
@@ -42,12 +44,13 @@
         "name": "Detect Magic",
         "range": "30 feet",
         "school": "Divination",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["DETECTION"]
     },
     {
         "ID": 3,
-        "attack": "NULL",
-        "class": ["Sorcerer"],
+        "attack": "None",
+        "class": ["BARD","SORCERER","WIZARD","ARTIFICER","TRICKERY DOMAIN"],
         "components": [],
         "description": "You make yourself--including your clothing, armor, weapons, and other belongings on your person--look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. You can't change your body type, so you must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.\r\n\r\nThe changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair.\r\n\r\nTo discern that you are disguised, a creature can use its action to inspect your appearance and must succeed on an Intelligence (Investigation) check against your spell save DC.",
         "duration": "1 Hour",
@@ -57,12 +60,13 @@
         "name": "Disguise Self",
         "range": "Self",
         "school": "Illusion",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["SHAPECHANGING"]
     },
     {
         "ID": 4,
-        "attack": "NULL",
-        "class": ["Paladin"],
+        "attack": "None",
+        "class": ["BARD","CLERIC","DRUID","PALADIN","SORCERER","WARLOCK","WIZARD","ARTIFICER","TRICKERY DOMAIN","ARCANA DOMAIN","OATH OF DEVOTION"],
         "components": ["Verbal", "Somatic"],
         "description": "Choose one creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher on the target, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, the spell ends.\n\nAt Higher Levels. When you cast this spell using a spell slot of 4th level or higher, you automatically end the effects of a spell on the target if the spell's level is equal to or less than the level of the spell slot you used.",
         "duration": "Instantaneous",
@@ -72,7 +76,8 @@
         "name": "Dispel Magic",
         "range": "120 ft",
         "school": "Abjuration",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["CONTROL"]
     },
     {
         "ID": 5,
@@ -87,11 +92,12 @@
         "name": "Abi-Dalzim’s Horrid Wilting ",
         "range": "150 ft",
         "school": "Necromancy",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["DAMAGE"]
     },
     {
         "ID": 6,
-        "attack": "NULL",
+        "attack": "None",
         "class": ["Druid","Ranger","Sorcerer","Wizard","Artificer"],
         "components": ["Verbal", "Somatic", "Material"],
         "description": "The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.\r\n\r\nAt Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.\r\n\r\n* - which you take when you take acid, cold, fire, lightning, or thunder damage",
@@ -102,7 +108,8 @@
         "name": "Absorb Elements",
         "range": "Self",
         "school": "Abjuration",
-        "time": "1 Reaction *"
+        "time": "1 Reaction *",
+        "tags": ["DAMAGE","WARDING"]
     },
     {
         "ID": 7,
@@ -132,7 +139,8 @@
         "name": "Acid Splash",
         "range": "60 ft",
         "school": "Conjuration",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["DAMAGE"]
     },
     {
         "ID": 9,
@@ -147,6 +155,7 @@
         "name": "Aganazzar’s Scorcher",
         "range": "30 ft",
         "school": "Evocation",
-        "time": "1 Action"
+        "time": "1 Action",
+        "tags": ["DAMAGE"]
     }
 ]

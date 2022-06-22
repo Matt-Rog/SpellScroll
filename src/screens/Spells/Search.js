@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import AppStyles from '../../utils/AppStyles';
 import ModalSearch from '../../utils/ModalSearch'
@@ -26,6 +27,8 @@ import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 
 import { useIsFocused,useFocusEffect  } from '@react-navigation/native';
 
+
+import {COLORS} from '../../utils/Colors'
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -191,10 +194,10 @@ export default function SearchPage({navigation, route}) {
             <Pressable
             onPress={onFilterPress}
             style={styles.filterIcon}>
-              <FontAwesome
-              name={"sliders"}
-              size={35}
-              color={"#fff"}
+              <FontAwesome5
+              name={"sliders-h"}
+              size={20}
+              color={(filter.length==0 ? COLORS.secondary_content : COLORS.primary_accent)}
               />
             </Pressable>
           </View>
@@ -318,6 +321,11 @@ const styles = StyleSheet.create({
     },
     searchIcon: {
       marginRight: 15
+    },
+    filterIcon: {
+      backgroundColor: COLORS.back,
+      padding: 10,
+      borderRadius: 12
     },
     option: {
       fontSize: 15,

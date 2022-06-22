@@ -9,4 +9,24 @@ export const COLORS = {
 
     primary_accent: "#4CBBE9",
     secondary_accnet: "#E94C4C",
+
+    // School
+    school: {
+        evocation: "#ef5c3e",
+        abjuration: "#88b9ed",
+        enchantment: "#E94CE0",
+        conjuration: "#e88636",
+        necromancy: "#b0f389",
+        transmutation: "#f2a261",
+        divination: "#91acbd",
+        illusion: "#b98cfc"
+    },
+    evocation: "#ef5c3e",
+    abjuration: "#88b9ed",
+    enchantment: "#E94CE0",
+    conjuration: "#e88636",
+    necromancy: "#b0f389",
+    transmuation: "#f2a261",
+    divination: "#91acbd",
+    illusion: "#b98cfc"
 }
