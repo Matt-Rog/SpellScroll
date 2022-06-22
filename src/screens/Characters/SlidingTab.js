@@ -91,7 +91,7 @@ const SlidingTab = (props) => {
         })
       })
       return (
-        <View>
+        <View style={{marginVertical: 15}}>
           <View  ref={containerRef} style={{flexDirection: "row", justifyContent: "space-evenly"}}>
             {data.map((item,index) => {
               return <Tab key={item.key}  item={item} ref={item.ref} onItemPress={() => onItemPress(index)}/>
@@ -123,14 +123,7 @@ const SlidingTab = (props) => {
             renderItem={({item})=> {
               return(
                 <View style={{width: width}}>
-                    {props.component}
-                  <SpellList
-                      onResultPress={props.onResultPress}
-                      spellIDs={item.content}
-                      navigation={props.navigation}
-                      prevScreen="Character"
-                      scrollEnabled={true}>
-                  </SpellList>
+                    {item.content}
                 </View>
               )
             }}

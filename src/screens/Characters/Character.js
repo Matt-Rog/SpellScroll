@@ -40,12 +40,14 @@ export default function CharacterPage({navigation, route}) {
       classes: [],
       icon: "hat",
       notes: "",
-      spells: []
+      spells: [0]
     })
     const [Chars, setChars] = useState([])
-    const[spells, setSpells] = useState([])
+    const[spells, setSpells] = useState([0])
     const[data, setData] = useState([])
     const {charID} = route.params;
+    const [firstClass, setFirstClass] = useState(char.classes[0])
+
 
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
@@ -67,7 +69,24 @@ export default function CharacterPage({navigation, route}) {
         setChars(jsonValue)
         setSpells(tempChar.spells)
 
+        let count = Object.keys(tempChar.spells).length
 
+        var localComponent = <Text style={AppStyles.Header1}>HI</Text>
+
+        var newData = {}
+        for (const [key, value] of Object.entries(tempChar.spells)) {
+          console.log("gerro")
+          console.log(value)
+          newData[key] = 
+            <SpellList
+              onResultPress={onResultPress}
+              spellIDs={value}
+              navigation={navigation}
+              prevScreen="Character"
+              scrollEnabled={true}>
+            </SpellList>
+        };
+        setData(newData)
 
       
       } catch(e) {
@@ -120,90 +139,7 @@ export default function CharacterPage({navigation, route}) {
     }
 
 
-    // Class spell tabs
-    const scrollX = React.useRef(new Animated.Value(0)).current
-    const ref = React.useRef()
-    const onItemPress = React.useCallback(itemIndex => {
-      ref?.current?.scrollToOffset({
-        offset: itemIndex * width
-      })
-    })
-    const data = Object.keys(spells).map((i) => ({
-      key: i,
-      class: i,
-      spellIDs: spells[i],
-      ref: React.createRef()
-    }))
-
-    const Tab = React.forwardRef(({item, onItemPress}, ref) => {
-      return (
-        <Pressable
-          onPress={onItemPress}>
-        <View style={{paddingVertical: 10, maxWidth: 150}}ref={ref}>
-          <Text adjustsFontSizeToFit={true} numberOfLines={1}style={[AppStyles.Header4, (data.length>5 ? {fontSize: 100/data.length} : {})]}>{item.class}</Text>
-        </View>
-        </Pressable>
-      )
-    })
-
-    const Indicator = ({measures, scrollX}) => {
-      const inputRange = data.map((_, i) => i * width)
-      const indicatorWidth = scrollX.interpolate({
-        inputRange,
-        outputRange: measures.map(measure => measure.width)
-      })
-      const translateX = scrollX.interpolate({
-        inputRange,
-        outputRange: measures.map(measure => measure.x)
-      })
-      return (
-        <Animated.View 
-          style={{
-            height: 4, 
-            width: indicatorWidth, 
-            backgroundColor: char.color, 
-            position: "absolute", 
-            left: 0,
-            bottom: 0, 
-            transform: [{
-              translateX
-            }]}}>
-        </Animated.View>
-      )
-    }
-
-    const Tabs = ({data, scrollX, onItemPress}) => {
-      const [measures, setMeasures] = React.useState([])
-      const containerRef = React.useRef()
-      React.useEffect(() => {
-        const m = []
-        data.forEach(item => {
-          item.ref.current.measureLayout(containerRef.current, (x,y,width,height) => {
-            m.push({
-              x,y,width,height
-            })
-
-            if(m.length === data.length){
-              setMeasures(m)
-            }
-          })
-        })
-      })
-      return (
-        <View>
-          <View  ref={containerRef} style={{flexDirection: "row", justifyContent: "space-evenly"}}>
-            {data.map((item,index) => {
-              return <Tab key={item.key}  item={item} ref={item.ref} onItemPress={() => onItemPress(index)}/>
-           })}
-          </View>
-          {measures.length>0 && (
-            <Indicator measures={measures} scrollX={scrollX}/>
-          )}
-        </View>
-
-      )
-    }
-    
+   
 
     return (
       <SafeAreaView style={AppStyles.Background}>
@@ -258,55 +194,24 @@ export default function CharacterPage({navigation, route}) {
           </View>
           
         </View>
+        {Object.keys(data).length > 1 ? 
         <SlidingTab
-          data={spells}
-          color={char.color}
-          onResultPress={()=>onResultPress()}
-          navigation={navigation}
-          component={
-            <View>
-            <Text style={AppStyles.Header2}>HELLO</Text>
-            </View>
-          }>
-
-        </SlidingTab>
-        <View style={{width: width, marginTop: 15}}>
-          <Tabs scrollX={scrollX} data={data} onItemPress={onItemPress}/>
-          <Animated.FlatList
-            ref={ref}
-            data={data}
-            keyExtractor={item => item.key}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            pagingEnabled
-            bounces={true}
-            onScroll={Animated.event(
-              [{nativeEvent: {contentOffset: {x: scrollX}}}],
-              {useNativeDriver: false}
-            )}
-            renderItem={({item})=> {
-              return(
-                <View style={{width: width}}>
-                  <SpellList
-                      onResultPress={onResultPress}
-                      spellIDs={item.spellIDs}
-                      navigation={navigation}
-                      prevScreen="Character"
-                      scrollEnabled={true}>
-                  </SpellList>
-                </View>
-              )
-            }}
-          />
-        </View>
-        {/*<SpellList
-            onResultPress={onResultPress}
-            spellIDs={spellIDs}
-            navigation={navigation}
-            prevScreen="Character"
-            scrollEnabled={true}>
-
-        </SpellList>*/}
+        data={data}
+        color={char.color}></SlidingTab> 
+        : 
+        <View>
+          <View style={{alignSelf: "center"}}>
+            <Text style={[AppStyles.Header4, {paddingVertical: 10,}]}>{char.classes[0]}</Text>
+            <View style={{height: 4, width: "auto",backgroundColor: char.color}}></View>
+          </View>
+          <SpellList
+              onResultPress={onResultPress}
+              spellIDs={Object.values(spells)[0]}
+              navigation={navigation}
+              prevScreen="Character"
+              scrollEnabled={true}>
+          </SpellList>
+        </View>}
       </SafeAreaView>
     );
 }

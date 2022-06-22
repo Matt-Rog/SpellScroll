@@ -130,16 +130,16 @@ function Characters() {
         component={YourCharactersPage}>        
       </Stack.Screen>
       <Stack.Screen
-        name="Add Character"
-        component={AddCharacterPage}>        
-      </Stack.Screen>
-      <Stack.Screen
         name="Character"
         component={CharacterPage}>
       </Stack.Screen>
       <Stack.Screen
         name="CharSpell"
         component={SpellPage}>
+      </Stack.Screen>
+      <Stack.Screen
+        name="Add Character"
+        component={AddCharacterPage}>        
       </Stack.Screen>
     </Stack.Navigator>
   )
