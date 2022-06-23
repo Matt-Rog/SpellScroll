@@ -21,7 +21,7 @@ import SpellList from '../../utils/SpellList';
 import EmptySplash from '../../utils/EmptySplash';
 
 import FilterList from '../../utils/Filters/FilterList';
-import FilterRange from '../../utils/Filters/FilterRange';
+
 
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 
@@ -156,14 +156,14 @@ export default function SearchPage({navigation, route}) {
         name: "Level",
         options: [1,2,3,4,5,6,7,8,9],
         component: 
-          <FilterRange
+          <FilterList
             name="Level"
             optionName="Level Range"
             options={[0,1,2,3,4,5,6,7,8,9]}
             setFilterProp={(params) => setFilterProp(params)}
             removeFilterProp={(params) => removeFilterProp(params)}
             selected={filter.Level}
-          ></FilterRange>
+          ></FilterList>
       }
     ]
 

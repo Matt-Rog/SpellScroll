@@ -14,10 +14,9 @@ import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FilterList from '../../utils/Filters/FilterList'
 import FilterButton from '../../utils/Filters/FilterButton'
-import FilterSlider from '../../utils/Filters/FilterSlider';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 import PROPERTIES from "../../../PROPERTIES.json"
-import FilterRange from '../../utils/Filters/FilterRange';
+
 
 
 export default function FilterPage({navigation, route}) {
@@ -112,14 +111,14 @@ export default function FilterPage({navigation, route}) {
             ></FilterList>
 
             {/* Level */}
-            <FilterRange
+            <FilterList
                 name="Level"
                 optionName="Level Range"
                 options={[0,1,2,3,4,5,6,7,8,9]}
                 setFilterProp={(params) => setFilterProp(params)}
                 removeFilterProp={(params) => removeFilterProp(params)}
                 selected={filter.Level}
-            ></FilterRange>
+            ></FilterList>
 
             {/* Components */}
             <FilterButton
@@ -130,12 +129,6 @@ export default function FilterPage({navigation, route}) {
               setFilterProp={(params) => setFilterProp(params)}
               removeFilterProp={(params) => removeFilterProp(params)}
             ></FilterButton>
-
-            {/* TEMP */}
-            <FilterSlider
-              name="Level (old)"
-              options={[0,9]}
-            ></FilterSlider>
 
             
           </ScrollView>
