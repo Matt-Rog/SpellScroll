@@ -21,12 +21,4 @@ export const COLORS = {
         divination: "#91acbd",
         illusion: "#b98cfc"
     },
-    evocation: "#ef5c3e",
-    abjuration: "#88b9ed",
-    enchantment: "#E94CE0",
-    conjuration: "#e88636",
-    necromancy: "#b0f389",
-    transmuation: "#f2a261",
-    divination: "#91acbd",
-    illusion: "#b98cfc"
 }

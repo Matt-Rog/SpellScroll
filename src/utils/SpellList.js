@@ -9,16 +9,11 @@ import {
     Image,
     
 } from 'react-native';
-import {
-    ListItem,
-    Thumbnail,
-    Left,
-    Right,
-    Body,
-    Content
-} from 'native-base';
+
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
+
 import Images from '../utils/Images';
+import {COLORS} from './Colors'
 
 
 
@@ -45,29 +40,6 @@ const SpellList = (props) => {
     // Conditionally decides which sub-stack is visiting Spell.js
     var next = (props.prevScreen==="Search Spells") ? "Spell" : "CharSpell";
 
-    function schoolHexCode({item}) {
-      var school = item.school.toLowerCase()
-      if(school==="evocation"){
-        return "#ef5c3e"
-      } else if(school==="abjuration"){
-        return "#88b9ed"
-      } else if(school==="enchantment"){
-      return "#E94CE0"
-      } else if(school==="conjuration"){
-        return "#e88636"
-      } else if(school==="necromancy"){
-        return "#b0f389"
-      } else if(school==="transmutation"){
-        return "#f2a261"
-      } else if(school==="divination"){
-        return "#91acbd"
-      } else if(school==="illusion"){
-        return "#b98cfc"
-      }
-      
-      return "#373C48"
-    }
-
 
     function levelLogic({item}){
       if(item.level == 0){
@@ -86,7 +58,7 @@ const SpellList = (props) => {
                   style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
               
-                  <View style={[{backgroundColor: schoolHexCode({item})},styles.schoolBar]}>
+                  <View style={[{backgroundColor: COLORS.school[item.school.toLowerCase()]},styles.schoolBar]}>
                     <Image 
                     style={styles.icon}
                     source={Images.school[item.school.toLowerCase()]}
