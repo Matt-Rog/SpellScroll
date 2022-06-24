@@ -51,8 +51,8 @@ export default StyleSheet.create({
         backgroundColor: COLORS.primary_accent
     },
     SecondaryButton: {
-        color: COLORS.primary_content,
-        borderColor: COLORS.primary_content,
+        color: COLORS.secondary_content,
+        borderColor: COLORS.secondary_content,
         borderWidth: 3,
         borderRadius: 15, 
         paddingHorizontal: 30,

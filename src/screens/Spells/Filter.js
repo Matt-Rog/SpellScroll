@@ -12,6 +12,11 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+import AppStyles from '../../utils/AppStyles';
+import {COLORS} from '../../utils/Colors'
+import TopMenu from '../../utils/TopMenu';
+
 import FilterList from '../../utils/Filters/FilterList'
 import FilterButton from '../../utils/Filters/FilterButton'
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
@@ -22,7 +27,7 @@ import PROPERTIES from "../../../PROPERTIES.json"
 export default function FilterPage({navigation, route}) {
 
     const onBackPress = () => {
-        navigation.navigate("Search Spells")
+        navigation.goBack()
     }
 
     const [allSpells, setAllSpells] = useState(MOCKDATA)
@@ -97,55 +102,62 @@ export default function FilterPage({navigation, route}) {
     }
 
     return (
-        <SafeAreaView style={styles.base}> 
-          <Text style={styles.title}>Filter Spells</Text>
-          <ScrollView>
-            {/* Class */}
-            <FilterList
-                name="Class"
-                optionName="Classes"
-                options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
+        <SafeAreaView style={AppStyles.Background}>
+          <View style={AppStyles.Container}> 
+            <TopMenu
+              bubble={false}
+              onLeftPress={()=>onBackPress()}></TopMenu>
+            <Text style={styles.title}>Filter Spells</Text>
+            <ScrollView>
+              {/* Class */}
+              <FilterList
+                  name="Class"
+                  optionName="Classes"
+                  options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
+                  setFilterProp={(params) => setFilterProp(params)}
+                  removeFilterProp={(params) => removeFilterProp(params)}
+                  selected={filter.Class}
+              ></FilterList>
+
+              {/* Level */}
+              <FilterList
+                  name="Level"
+                  optionName="Level Range"
+                  options={[0,1,2,3,4,5,6,7,8,9]}
+                  setFilterProp={(params) => setFilterProp(params)}
+                  removeFilterProp={(params) => removeFilterProp(params)}
+                  selected={filter.Level}
+              ></FilterList>
+
+              {/* Components */}
+              <FilterButton
+                name="Components"
+                options={["Material", "Somatic", "Verbal"]}
+                optionName="Components"
+                selected={filter.Components}
                 setFilterProp={(params) => setFilterProp(params)}
                 removeFilterProp={(params) => removeFilterProp(params)}
-                selected={filter.Class}
-            ></FilterList>
+              ></FilterButton>
 
-            {/* Level */}
-            <FilterList
-                name="Level"
-                optionName="Level Range"
-                options={[0,1,2,3,4,5,6,7,8,9]}
-                setFilterProp={(params) => setFilterProp(params)}
-                removeFilterProp={(params) => removeFilterProp(params)}
-                selected={filter.Level}
-            ></FilterList>
-
-            {/* Components */}
-            <FilterButton
-              name="Components"
-              options={["Material", "Somatic", "Verbal"]}
-              optionName="Components"
-              selected={filter.Components}
-              setFilterProp={(params) => setFilterProp(params)}
-              removeFilterProp={(params) => removeFilterProp(params)}
-            ></FilterButton>
-
-            
-          </ScrollView>
-          <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 20, left: 0, right: 0}}>
+              
+            </ScrollView>
+          </View>
+          {/* Apply / Reset buttons */}
+          <View style={{flexDirection: "row-reverse", alignItems: "center", justifyContent: "space-evenly", position: "absolute", bottom: 20, left: 0, right: 0}}>
               <Pressable
                   onPress={() => onFilterApply()}
-                  style={styles.applyBTN}    
+                  style={AppStyles.PrimaryButton}    
               >
-                  <Text style={styles.applyTXT}>Apply</Text>
+                  <Text style={AppStyles.Header3}>Apply</Text>
               </Pressable>
               <Pressable
                   onPress={() => onFilterReset()}
-                  style={styles.cancelBTN}    
+                  style={AppStyles.SecondaryButton}    
               >
-                  <Text style={styles.cancelTXT}>Reset</Text>
+                  <Text style={[AppStyles.Header3, {color: COLORS.secondary_content}]}>Clear</Text>
               </Pressable>
           </View>
+          
         </SafeAreaView>
     );
 }
@@ -180,35 +192,5 @@ const styles = StyleSheet.create({
       justifyContent: "space-between",
       alignItems: "center",
       margin: 9
-    },
-    applyBTN: {
-        borderRadius: 12,
-        backgroundColor: "#4CBBE9",
-        padding: 8,
-        marginTop: 10,
-        marginLeft: 30,
-        width: "40%",
-        justifyContent: "center",
-    },
-    cancelBTN: {
-        borderRadius: 12,
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        padding: 8,
-        marginTop: 10,
-        width: "40%",
-        justifyContent: "center",
-        marginRight: 30,
-    },
-    applyTXT: {
-        color: "#fff",
-        fontSize: 20,
-        fontWeight: "bold",
-        textAlign: "center"
-    },
-    cancelTXT: {
-        color: "#CCD2E3",
-        fontSize: 20,
-        fontWeight: "bold",
-        textAlign: "center"
     },
   });

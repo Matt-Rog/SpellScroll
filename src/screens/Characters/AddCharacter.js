@@ -10,7 +10,6 @@ import {
     Image,
     Modal,
     ScrollView,
-    KeyboardAvoidingView,
     Platform
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -26,6 +25,7 @@ import { ModalList } from '../../utils/Filters/ModalList';
 import { ModalBase } from '../../utils/ModalBase';
 import Splash from '../../utils/Splash';
 import TopMenu from '../../utils/TopMenu';
+import RemovableList from '../../utils/RemovableList';
 
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 
@@ -213,27 +213,10 @@ export default function AddCharacterPage({navigation, route}){
                     <Text style={[AppStyles.Header3]}>Class</Text>
                     <View style={styles.input}>
                         <View style={[AppStyles.Input, {height: "auto", flexDirection: "row"}]}>
-                            <FlatList
-                                data={classes}
-                                horizontal={true}
-                                showsHorizontalScrollIndicator={false}
-                                renderItem={({item}) => {
-                                    return (
-                                    <View style={[AppStyles.Removable, {borderColor: "#4CBBE9", flexDirection: "row"}]}>
-                                        <Pressable
-                                            onPress={() => onXPress(item)}>
-                                                <FontAwesome
-                                                name={"times"}
-                                                size={17}
-                                                color={"#fff"}
-                                                style={{color: "#4CBBE9", marginRight: 7}}
-                                                />
-                                        </Pressable>
-                                        <Text style={{color: "#4CBBE9", fontSize: 15, fontWeight: "bold"}}>{item}</Text>
-                                    </View>
-                                    )
-                                }}>
-                            </FlatList>
+                            <RemovableList
+                                selected={classes}
+                                onXPress={(item) => onXPress(item)}>
+                            </RemovableList>
                             <Pressable
                                 onPress={() => changeModalVisibility(true)}>
                                 <FontAwesome
