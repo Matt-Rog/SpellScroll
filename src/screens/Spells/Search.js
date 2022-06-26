@@ -43,7 +43,7 @@ export default function SearchPage({navigation, route}) {
 
     const [allSpells, setAllSpells] = useState(MOCKDATA)
     const [filterSpells, setFilterSpells] = useState(MOCKDATA)
-    const [filter, setFilter] = useState([])
+    const [filter, setFilter] = useState({})
     const [resultSpells, setResultSpells] = useState(MOCKDATA)
     const [search, setSearch] = useState("")
     const [isHidden, setIsHidden] = useState(true)
@@ -77,7 +77,7 @@ export default function SearchPage({navigation, route}) {
           setFilter(route.params.FILTER)
         } else {
           if(route.params?.RESET && route.params.RESET==true){
-            setFilter([])
+            setFilter({})
             console.log("RESET2")
           } else {
             setFilter(route.params.FILTER)
@@ -193,7 +193,7 @@ export default function SearchPage({navigation, route}) {
               <FontAwesome5
               name={"sliders-h"}
               size={20}
-              color={(filter.length==0 ? COLORS.secondary_content : COLORS.primary_accent)}
+              color={(Object.keys(filter).length === 0 ? COLORS.secondary_content : COLORS.primary_accent)}
               />
             </Pressable>
           </View>

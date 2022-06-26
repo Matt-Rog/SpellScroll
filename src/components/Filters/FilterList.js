@@ -88,7 +88,6 @@ const FilterList = (props) => {
                     changeModalVisibility={changeModalVisibility}
                     options={options}
                     selected={selected}
-                    setFilterProp={(params) => props.setFilterProp(params)}
                     applySelection={(selected) => applySelection(selected)}
                   >
                   </ModalList>

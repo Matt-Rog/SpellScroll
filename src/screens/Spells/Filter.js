@@ -63,7 +63,6 @@ export default function FilterPage({navigation, route}) {
           const filterArr = filter[key]   // Specified property options
           const spellArr = item[key.toLowerCase()]    // Spell properties
 
-          console.log(spellArr)
 
           if(spellArr === undefined){
             return false;
