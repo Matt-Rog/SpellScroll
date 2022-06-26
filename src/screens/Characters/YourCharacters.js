@@ -21,6 +21,7 @@ import Splash from '../../components/Splash';
 import ModalChar from "../../components/ModalChar"
 import CharacterSettings from './CharacterSettings';
 import Tags from '../../components/Tags'
+import { COLORS } from '../../utils/Colors';
 
 
 export default function YourCharactersPage({navigation, route}) {
@@ -154,6 +155,7 @@ export default function YourCharactersPage({navigation, route}) {
                   <View style={{flexDirection: "column"}}>
                     <Text adjustsFontSizeToFit={true} numberOfLines={3} style={[AppStyles.Header3,{maxWidth: "110%"}]}>{item.name}</Text>
                     <Tags
+                      background={COLORS.back_light}
                       tags={item.classes}>
                     </Tags>
                   </View>
