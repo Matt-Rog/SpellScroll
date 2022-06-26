@@ -22,6 +22,7 @@ import { ModalBase } from '../../components/ModalBase';
 import Splash from '../../components/Splash';
 import SlidingTab from '../../components/SlidingTab';
 import SpellList from '../../components/SpellList';
+import Tags from '../../components/Tags'
 
 
 export default function SpellPage({navigation, route}) {
@@ -114,17 +115,10 @@ export default function SpellPage({navigation, route}) {
           
           <View style={{alignSelf: "center"}}>
             <Text style={AppStyles.Header3}>Classes</Text>
-            <FlatList
-                data={spell.class}
-                numColumns={4}
-                scrollEnabled={false}
-                renderItem={({item}) => {
-                  return (
-                    <View style={[AppStyles.Tags, {marginTop: 10, marginRight: 8, backgroundColor: COLORS.back}]}>
-                      <Text style={{color: "#CCD2E3"}}>{item.toUpperCase()}</Text>
-                    </View>
-                  )
-              }}></FlatList>
+            <Tags
+              tags={spell.class}
+              background={COLORS.back}>
+            </Tags>
           </View>
         </View>
 

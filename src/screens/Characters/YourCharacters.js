@@ -20,6 +20,7 @@ import Images from '../../utils/Images';
 import Splash from '../../components/Splash';
 import ModalChar from "../../components/ModalChar"
 import CharacterSettings from './CharacterSettings';
+import Tags from '../../components/Tags'
 
 
 export default function YourCharactersPage({navigation, route}) {
@@ -152,17 +153,9 @@ export default function YourCharactersPage({navigation, route}) {
                   </View>
                   <View style={{flexDirection: "column"}}>
                     <Text adjustsFontSizeToFit={true} numberOfLines={3} style={[AppStyles.Header3,{maxWidth: "110%"}]}>{item.name}</Text>
-                    <FlatList
-                      data={item.classes}
-                      numColumns={3}
-                      scrollEnabled={false}
-                      renderItem={({item}) => {
-                        return (
-                          <View style={[AppStyles.Tags, {marginTop: 10, marginRight: 8}]}>
-                            <Text style={{color: "#CCD2E3"}}>{item.toUpperCase()}</Text>
-                          </View>
-                        )
-                    }}></FlatList>
+                    <Tags
+                      tags={item.classes}>
+                    </Tags>
                   </View>
                 </Pressable>
               )}
