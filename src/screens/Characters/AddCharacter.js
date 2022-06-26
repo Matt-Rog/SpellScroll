@@ -127,6 +127,12 @@ export default function AddCharacterPage({navigation, route}){
         
     }
 
+    const continueToChar = () => {
+        navigation.navigate("Character", {charID: ID})
+        setIsAddModalVisible(false)
+
+    }
+
     const applyFromModal = async (data) => {
         
         if(!route.params.edit){
@@ -145,8 +151,6 @@ export default function AddCharacterPage({navigation, route}){
             setChars(newChars)
             updateData(newChars)
         }
-        setIsAddModalVisible(true)
-        navigation.navigate("Character", {charID: localID})
         setIsAddModalVisible(true)
 
         
@@ -339,7 +343,7 @@ export default function AddCharacterPage({navigation, route}){
                             component={
                                 <Pressable
                                 onPress={() => {
-                                    setIsAddModalVisible(false)
+                                    continueToChar()
                                 }}
                                 style={[AppStyles.PrimaryButton, {marginTop: 20}]}>
                                     <Text style={AppStyles.Header4}>Continue</Text>
