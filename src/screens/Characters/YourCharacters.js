@@ -13,12 +13,12 @@ import {
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
+// Utility
 import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
-
-import Splash from '../../utils/Splash';
-import ModalChar from "../../utils/ModalChar"
+// Components
+import Splash from '../../components/Splash';
+import ModalChar from "../../components/ModalChar"
 import CharacterSettings from './CharacterSettings';
 
 

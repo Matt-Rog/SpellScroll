@@ -12,17 +12,16 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
-
+// Utility
 import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
 import {COLORS} from '../../utils/Colors'
-
-import TopMenu from '../../utils/TopMenu';
-import { ModalBase } from '../../utils/ModalBase';
-import Splash from '../../utils/Splash';
-import SlidingTab from '../../utils/SlidingTab';
-import { setStatusBarBackgroundColor } from 'expo-status-bar';
-import SpellList from '../../utils/SpellList';
+// Components
+import TopMenu from '../../components/TopMenu';
+import { ModalBase } from '../../components/ModalBase';
+import Splash from '../../components/Splash';
+import SlidingTab from '../../components/SlidingTab';
+import SpellList from '../../components/SpellList';
 
 
 export default function SpellPage({navigation, route}) {

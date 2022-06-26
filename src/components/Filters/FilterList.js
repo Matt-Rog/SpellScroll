@@ -12,10 +12,12 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import {ModalList} from './ModalList'
+// Utility
+import { COLORS } from '../../utils/Colors';
+import AppStyles from '../../utils/AppStyles';
+// Components
+import {ModalList} from '../ModalList'
 import RemovableList from '../RemovableList';
-import { COLORS } from '../Colors';
-import AppStyles from '../AppStyles';
 
 
 const FilterList = (props) => {
@@ -67,7 +69,7 @@ const FilterList = (props) => {
             <Pressable 
               onPress={() => onPlusPress()}
               style={styles.heading}>
-              <Text style={AppStyles.Header3}>{props.name}</Text>
+              <Text style={AppStyles.Header4}>{props.name}</Text>
               <View style={{flexDirection:"row", alignItems: "center"}}>
                     <FontAwesome
                     name={"plus-square"}

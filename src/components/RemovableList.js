@@ -5,11 +5,10 @@ import {
     Pressable
 } from 'react-native'
 import {useState} from 'react'
-
-import AppStyles from './AppStyles'
-import {COLORS} from './Colors'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
+// Utility
+import AppStyles from '../utils/AppStyles'
+import {COLORS} from '../utils/Colors'
 
 const RemovableList = (props) => {
 

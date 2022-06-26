@@ -14,18 +14,14 @@ import {
 import React, {useEffect, useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-
-import AppStyles from '../../utils/AppStyles';
-import ModalSearch from '../../utils/ModalSearch'
-import SpellList from '../../utils/SpellList';
-import EmptySplash from '../../utils/EmptySplash';
-
-import FilterList from '../../utils/Filters/FilterList';
-
-
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
-
-import { useIsFocused,useFocusEffect  } from '@react-navigation/native';
+// Utility
+import AppStyles from '../../utils/AppStyles';
+// Components
+import FilterList from '../../components/Filters/FilterList';
+import ModalSearch from '../../components/ModalSearch'
+import SpellList from '../../components/SpellList';
+import EmptySplash from '../../components/EmptySplash';
 
 
 import {COLORS} from '../../utils/Colors'

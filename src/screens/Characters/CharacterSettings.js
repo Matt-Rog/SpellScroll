@@ -12,12 +12,12 @@ import {
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
+// Utility
 import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
-
-import { ModalBase } from '../../utils/ModalBase';
-import Splash from '../../utils/Splash';
+// Components
+import { ModalBase } from '../../components/ModalBase';
+import Splash from '../../components/Splash';
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height

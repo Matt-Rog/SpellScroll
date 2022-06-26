@@ -11,17 +11,12 @@ import {
 } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-import AppStyles from './AppStyles';
-import Images from './Images';
-
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
-const Splash = (props) => {
+const EmptySplash = (props) => {
 
     const hide = props.hide
-
-    const [image, setImage] = useState(props.image!=undefined ? props.image : "default")
 
     if(hide){
         return null
@@ -30,12 +25,11 @@ const Splash = (props) => {
         <View style={styles.splash}>
             <Image
                 style={styles.splashIMG}
-                source={Images.splash[image]}
+                source={require('../../assets/no-result-splash2.png')}
                 resizeMode="contain">
             </Image>
-            <Text style={AppStyles.Header2}>{props.title}</Text>
-            <Text style={[AppStyles.ContentBody, {marginTop: 5, maxWidth: "70%", textAlign: "center"}]}>{props.body}</Text>
-            {props.component}
+            <Text style={styles.oopsTXT}>No results found</Text>
+            <Text style={styles.tryTXT}>Try expanding your search :)</Text>
         </View>
     )
 
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
     splash: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 0//HEIGHT/20
+        marginTop: HEIGHT/20
     },
     oopsTXT: {
       fontSize: 30,
@@ -53,14 +47,14 @@ const styles = StyleSheet.create({
       color: "#CCD2E3"
     },
     tryTXT: {
-    fontSize: 15,
+        fontSize: 15,
       color: "#CCD2E3",
       marginTop: 10
     },
     splashIMG: {
-        height: 200,
+        height: 250,
         margin: 15
     }
 })
 
-export default Splash
+export default EmptySplash

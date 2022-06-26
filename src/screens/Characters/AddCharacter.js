@@ -14,18 +14,16 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
-
+// Utility
 import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
-
-import { ModalList } from '../../utils/Filters/ModalList';
-import { ModalBase } from '../../utils/ModalBase';
-import Splash from '../../utils/Splash';
-import TopMenu from '../../utils/TopMenu';
-import RemovableList from '../../utils/RemovableList';
+// Components
+import { ModalList } from '../../components/ModalList';
+import { ModalBase } from '../../components/ModalBase';
+import Splash from '../../components/Splash';
+import TopMenu from '../../components/TopMenu';
+import RemovableList from '../../components/RemovableList';
 
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 

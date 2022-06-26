@@ -9,11 +9,10 @@ import {
     Image,
     
 } from 'react-native';
-
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
-
+// Utility
 import Images from '../utils/Images';
-import {COLORS} from './Colors'
+import {COLORS} from '../utils/Colors'
 
 
 

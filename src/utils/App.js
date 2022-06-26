@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { 
   Text,
   StyleSheet,
@@ -8,17 +7,15 @@ import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
-
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import MOCKDATA from "../../MOCK_SPELL_DATA.json"
+// Screens
 import SearchPage from '../screens/Spells/Search';
 import SpellPage from '../screens/Spells/Spell';
 import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 import AddCharacterPage from '../screens/Characters/AddCharacter';
-
-import MOCKDATA from "../../MOCK_SPELL_DATA.json"
-
 
 function LocalSearch({navigation}){
 

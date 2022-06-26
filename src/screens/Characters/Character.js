@@ -17,18 +17,17 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import SpellList from '../../utils/SpellList';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
+// Utility
 import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
+// Components
+import TopMenu from '../../components/TopMenu';
+import Splash from '../../components/Splash';
+import SlidingTab from '../../components/SlidingTab';
+import SpellList from '../../components/SpellList';
 
-import TopMenu from '../../utils/TopMenu';
-import { ModalBase } from '../../utils/ModalBase';
-import Splash from '../../utils/Splash';
 import CharacterSettings from './CharacterSettings';
-import SlidingTab from '../../utils/SlidingTab';
 
 const {width, height} = Dimensions.get('screen')
 

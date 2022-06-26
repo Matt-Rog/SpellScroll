@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+// Utility
 import {COLORS} from './Colors.js'
 
 

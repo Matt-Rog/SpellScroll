@@ -12,8 +12,8 @@ import {
     ScrollView
 } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
-import { ModalList } from './Filters/ModalList';
+// Components
+import { ModalList } from './ModalList';
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height

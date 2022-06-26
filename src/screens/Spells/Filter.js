@@ -12,15 +12,14 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
+import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
+// Utility
 import AppStyles from '../../utils/AppStyles';
 import {COLORS} from '../../utils/Colors'
-import TopMenu from '../../utils/TopMenu';
-
-import FilterList from '../../utils/Filters/FilterList'
-import FilterButton from '../../utils/Filters/FilterButton'
-import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
-import PROPERTIES from "../../../PROPERTIES.json"
+// Components
+import TopMenu from '../../components/TopMenu';
+import FilterList from '../../components/Filters/FilterList'
+import FilterButton from '../../components/Filters/FilterButton'
 
 
 

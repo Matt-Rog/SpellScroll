@@ -14,11 +14,10 @@ import {
     
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+// Components
+import AppStyles from '../utils/AppStyles';
 
 const {width, height} = Dimensions.get('screen')
-
-import SpellList from './SpellList';
-import AppStyles from './AppStyles';
 
 const SlidingTab = (props) => {
 
