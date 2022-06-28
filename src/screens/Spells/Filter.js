@@ -10,12 +10,15 @@ import {
     ScrollView
     
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 // Utility
 import AppStyles from '../../utils/AppStyles';
 import {COLORS} from '../../utils/Colors'
+import * as FILTER from '../../utils/FilterHelper'
+import FilterComponents from '../../utils/FilterComponents';
 // Components
 import TopMenu from '../../components/TopMenu';
 import FilterList from '../../components/Filters/FilterList'
@@ -25,78 +28,92 @@ import FilterButton from '../../components/Filters/FilterButton'
 
 export default function FilterPage({navigation, route}) {
 
-    const onBackPress = () => {
-        navigation.goBack()
+
+  const [filter, setFilter] = useState({})
+  const [allSpells, setAllSpells] = useState(MOCKDATA)
+  const [filterSpells, setFilterSpells] = useState()
+
+  const onBackPress = () => {
+        navigation.navigate("Search Spells")
     }
 
-    const [allSpells, setAllSpells] = useState(MOCKDATA)
-    const [filterSpells, setFilterSpells] = useState()
-    const [filter, setFilter] = useState(route.params.FILTER)
 
+    useEffect(() => {
+      const loadData = navigation.addListener('focus', () => {
+        getFilter()
+      })
+      return loadData;
+    }, [navigation]);
+
+    useEffect(() => {
+      getFilter()
+    }, [navigation])
+
+    const getFilter = async () => {
+      try {
+        const stringValue = await AsyncStorage.getItem('filter')
+        const jsonValue = JSON.parse(stringValue)
+        if (!jsonValue || typeof jsonValue !== 'object') return
+        setFilter(jsonValue)
+        console.log("FILTER FROM FILTER.JS GET DATA")
+        console.log(typeof jsonValue)
+        console.log(jsonValue.Class)
+        console.log(jsonValue)
+      
+      } catch(e) {
+        console.log("Error getting filter data")
+        console.log(e)
+      }
+    }
+
+    const updateFilter = async (value) => {
+      try {
+        const jsonValue = JSON.stringify(value)
+        await AsyncStorage.setItem('filter', jsonValue)
+        console.log(">>>>>> UPDATED FILTER")
+        console.log(value)
+        setFilter(value)
+      } catch (e) {
+        console.log("Error updating filters")
+        console.log(e)
+      }
+    }
 
     function setFilterProp(params){
-      console.log("SET FILTER")
-      console.log(params.name)
-      console.log(params.selected)
-      setFilter((filter) => ({ 
-        ...filter,
-        [params.name]: params.selected
-      }))
+      var newFilter = FILTER.setProperty(filter, params)
+      updateFilter(newFilter)
+      setFilter(newFilter)
+      // console.log("SET FILTER")
+      // console.log(params.name)
+      // console.log(params.selected)
+      // setFilter((filter) => ({ 
+      //   ...filter,
+      //   [params.name]: params.selected
+      // }))
     }
 
-    function removeFilterProp(params){
-      let removed = {...filter}
-      delete removed[params.name]
-      setFilter(removed)
-    }
+    // function removeFilterProp(params){
+    //   FILTER.removeProperty(filter, params.name)
+    //   // let removed = {...filter}
+    //   // delete removed[params.name]
+    //   // setFilter(removed)
+    // }
 
-
-    // Filter is apply implicitly 
     function onFilterApply(){
-      console.log("APPLY FILTER VVV")
-      console.log(filter)
-
-      var newData = allSpells.filter(function(item) {
-        for (const [key, value] of Object.entries(filter)) {
-          // key: the name of the filter property
-
-          const filterArr = filter[key]   // Specified property options
-          const spellArr = item[key.toLowerCase()]    // Spell properties
-
-
-          if(spellArr === undefined){
-            return false;
-          }
-
-          // Spell properties need to include at least one filter property
-          const intersect = false
-          if(Array.isArray(spellArr)){
-            intersect = filterArr.some(function (option) {
-              return spellArr.indexOf(option) >= 0;
-            });
-          } else {
-            if(filterArr.includes(spellArr)){
-              intersect=true
-            }
-          }
-          if (intersect) {
-            return true
-          }
-          return false;
-        };
-        // If property not specified by filter, include in result.
-        return true;
-      })
-      console.log("Filter.js results: " + newData.length)
-      setFilterSpells(newData)
-      navigation.navigate("Search Spells", {INITDATA: newData, FILTER: filter, RESET: false})
+      FILTER.filterSpells().then(
+        newSpells => {
+          setFilterSpells(newSpells)
+          navigation.navigate("Search Spells", {INITDATA: newSpells})
+        }
+      )
     }
 
     // Reset filter and send user to search page
     function onFilterReset(){
       setFilterSpells([])
-      setFilter([])
-      navigation.navigate("Search Spells", {INITDATA: [], FILTER: [], RESET: true})
+      setFilter({})
+      updateFilter({})
+      navigation.navigate("Search Spells", {INITDATA: [], RESET: true})
     }
 
     return (
@@ -106,39 +123,18 @@ export default function FilterPage({navigation, route}) {
               bubble={false}
               onLeftPress={()=>onBackPress()}></TopMenu>
             <Text style={styles.title}>Filter Spells</Text>
-            <ScrollView>
-              {/* Class */}
-              <FilterList
-                  name="Class"
-                  optionName="Classes"
-                  options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
-                  setFilterProp={(params) => setFilterProp(params)}
-                  removeFilterProp={(params) => removeFilterProp(params)}
-                  selected={filter.Class}
-              ></FilterList>
-
-              {/* Level */}
-              <FilterList
-                  name="Level"
-                  optionName="Level Range"
-                  options={[0,1,2,3,4,5,6,7,8,9]}
-                  setFilterProp={(params) => setFilterProp(params)}
-                  removeFilterProp={(params) => removeFilterProp(params)}
-                  selected={filter.Level}
-              ></FilterList>
-
-              {/* Components */}
-              <FilterButton
-                name="Components"
-                options={["Material", "Somatic", "Verbal"]}
-                optionName="Components"
-                selected={filter.Components}
-                setFilterProp={(params) => setFilterProp(params)}
-                removeFilterProp={(params) => removeFilterProp(params)}
-              ></FilterButton>
-
-              
-            </ScrollView>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              data={FilterComponents({filter: filter, setFilterProp: (params) => setFilterProp(params)})}
+              renderItem={({item}) => {
+                return (
+                  <View>
+                    {item.component}
+                  </View>
+                )
+              }}
+              >
+              </FlatList>
           </View>
           {/* Apply / Reset buttons */}
           <View style={{flexDirection: "row-reverse", alignItems: "center", justifyContent: "space-evenly", position: "absolute", bottom: 20, left: 0, right: 0}}>

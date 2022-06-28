@@ -10,7 +10,7 @@ import {
     ScrollView
     
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
 import { COLORS } from '../../utils/Colors';
@@ -19,7 +19,6 @@ import AppStyles from '../../utils/AppStyles';
 import {ModalList} from '../ModalList'
 import RemovableList from '../RemovableList';
 
-
 const FilterList = (props) => {
 
     const options = props.options
@@ -27,14 +26,22 @@ const FilterList = (props) => {
     const [selected, setSelected] = useState(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected)) 
     const [isModalVisible, setIsModalVisible] = useState(false)
 
+    useEffect(() => {
+      console.log("FILTER LIST USE EFFECT TRIGGERED <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+      setSelected(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected))
+      console.log(props.selected)
+    }, [props.selected])
 
     const changeModalVisibility = (bool) => {
       setIsModalVisible(bool)
     }
 
     function onPlusPress(){
+      console.log(props.filter)
+      console.log(">>>>>>>>>>>>>>>>>>>>>> SELECTED")
+      console.log(selected)
+      console.log(props.selected)
       changeModalVisibility(true)
-
     }
 
     function onXPress(item){
@@ -56,11 +63,7 @@ const FilterList = (props) => {
     }
 
     function setFilterProp(selection){
-      if(selection.length>0){
-        props.setFilterProp({name: props.name, selected: selection})
-      } else {
-        props.removeFilterProp({name: props.name})
-      }
+      props.setFilterProp({name: props.name, selection: selection})
     }
 
     return (
@@ -96,7 +99,7 @@ const FilterList = (props) => {
             <View style={[styles.content]}>
               <RemovableList
                 selected={selected}
-                setSelected={() => setSelected(selection)}
+                setSelected={(selection) => setSelected(selection)}
                 onXPress={(item) => onXPress(item)}>
 
               </RemovableList>

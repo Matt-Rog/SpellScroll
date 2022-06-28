@@ -12,11 +12,14 @@ import {
     ScrollView
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 // Utility
 import AppStyles from '../../utils/AppStyles';
+import * as FILTER from '../../utils/FilterHelper'
+import FilterComponents from '../../utils/FilterComponents';
 // Components
 import FilterList from '../../components/Filters/FilterList';
 import ModalSearch from '../../components/ModalSearch'
@@ -36,7 +39,7 @@ export default function SearchPage({navigation, route}) {
     }
 
     const onFilterPress = () => {
-      navigation.navigate("Filter Spells", {FILTER: filter})
+      navigation.navigate("Filter Spells")
     }
 
 
@@ -44,6 +47,7 @@ export default function SearchPage({navigation, route}) {
     const [allSpells, setAllSpells] = useState(MOCKDATA)
     const [filterSpells, setFilterSpells] = useState(MOCKDATA)
     const [filter, setFilter] = useState({})
+    const [isInitial, setIsInitial] = useState(true)
     const [resultSpells, setResultSpells] = useState(MOCKDATA)
     const [search, setSearch] = useState("")
     const [isHidden, setIsHidden] = useState(true)
@@ -51,9 +55,11 @@ export default function SearchPage({navigation, route}) {
     useEffect(() => {
       // write your code here, it's like componentWillMount
       console.log("Search loaded")
-      console.log("OG FILTER")
-      console.log(filter)
-      setIsHidden(true)
+      if(isInitial){
+        setFilter({})
+        updateFilter({})
+        setIsInitial(false)
+      }
       if(route.params?.INITDATA){
         console.log("PASSED")
         if(route.params.INITDATA.length>0){
@@ -70,22 +76,94 @@ export default function SearchPage({navigation, route}) {
           }
         }
       }
-
-      if(route.params?.FILTER){
-        console.log("FILTER")
-        if(route.params.FILTER.length>0){
-          setFilter(route.params.FILTER)
-        } else {
-          if(route.params?.RESET && route.params.RESET==true){
-            setFilter({})
-            console.log("RESET2")
-          } else {
-            setFilter(route.params.FILTER)
-          }
-        }
-      }
+      setIsHidden(true)
+      // if(route.params?.FILTER){
+      //   console.log("FILTER")
+      //   if(route.params.FILTER.length>0){
+      //     setFilter(route.params.FILTER)
+      //   } else {
+      //     if(route.params?.RESET && route.params.RESET==true){
+      //       setFilter({})
+      //       console.log("RESET2")
+      //     } else {
+      //       setFilter(route.params.FILTER)
+      //     }
+      //   }
+      // }
     }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
 
+
+    // useEffect(() => {
+    //   const filterData = navigation.addListener('focus', () => {
+    //     let data = FILTER.getFilter()
+    //     setFilter(data)
+    //   })
+    //   return filterData;
+    // }, [navigation]);
+
+    // // const getFilter = async () => {
+    // //   try {
+    // //     const stringValue = await AsyncStorage.getItem('filter')
+    // //     const jsonValue = JSON.parse(stringValue)
+    // //     if (!jsonValue || typeof jsonValue !== 'object') {
+    // //       return
+    // //     }
+    // //     console.log(">>>>>>> FILTER FROM PULL DATA")
+    // //     console.log(jsonValue)
+    // //     setFilter(jsonValue)
+        
+      
+    // //   } catch(e) {
+    // //     console.log("Error getting filter data")
+    // //     console.log(e)
+    // //   }
+    // // }
+
+    // // const updateData = async (value) => {
+    // //   try {
+    // //     const jsonValue = JSON.stringify(value)
+    // //     await AsyncStorage.setItem('filter', jsonValue)
+    // //     console.log("Filter Updated")
+    // //     setFilter(value)
+    // //   } catch (e) {I
+    // //     console.log("Error updating characters")
+    // //     console.log(e)
+    // //   }
+    // // }
+
+    useEffect(() => {
+      const loadData = navigation.addListener('focus', () => {
+        getFilter()
+      })
+      return loadData;
+    }, [navigation]);
+
+    const getFilter = async () => {
+      try {
+        const stringValue = await AsyncStorage.getItem('filter')
+        const jsonValue = JSON.parse(stringValue)
+        if (!jsonValue || typeof jsonValue !== 'object') return
+        setFilter(jsonValue)
+        console.log("FILTER FROM GET DATA")
+        console.log(jsonValue)
+      
+      } catch(e) {
+        console.log("Error getting filter data")
+        console.log(e)
+      }
+    }
+
+    const updateFilter = async (value) => {
+      try {
+        const jsonValue = JSON.stringify(value)
+        await AsyncStorage.setItem('filter', jsonValue)
+        console.log()
+        setFilter(value)
+      } catch (e) {I
+        console.log("Error updating filters")
+        console.log(e)
+      }
+    }
 
     const getSpellIDs = (spellList) => {
       var spellIDs = []
@@ -134,34 +212,18 @@ export default function SearchPage({navigation, route}) {
       changeModalVisibility(true)
     }
 
-    const filterModals=[
-      {
-        name: "Class",
-        options: ["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
-        component:
-          <FilterList
-            name="Class"
-            optionName="Classes"
-            options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
-            setFilterProp={(params) => setFilterProp(params)}
-            removeFilterProp={(params) => removeFilterProp(params)}
-            selected={filter.Class}
-          ></FilterList>
-      },
-      {
-        name: "Level",
-        options: [1,2,3,4,5,6,7,8,9],
-        component: 
-          <FilterList
-            name="Level"
-            optionName="Level Range"
-            options={[0,1,2,3,4,5,6,7,8,9]}
-            setFilterProp={(params) => setFilterProp(params)}
-            removeFilterProp={(params) => removeFilterProp(params)}
-            selected={filter.Level}
-          ></FilterList>
-      }
-    ]
+    function setFilterProp(params){
+      var newFilter = FILTER.setProperty(filter, params)
+      updateFilter(newFilter)
+      setFilter(newFilter)
+      // console.log("SET FILTER")
+      // console.log(params.name)
+      // console.log(params.selected)
+      // setFilter((filter) => ({ 
+      //   ...filter,
+      //   [params.name]: params.selected
+      // }))
+    }
 
     return (
         <SafeAreaView style={AppStyles.Background}> 
@@ -193,7 +255,7 @@ export default function SearchPage({navigation, route}) {
               <FontAwesome5
               name={"sliders-h"}
               size={20}
-              color={(Object.keys(filter).length === 0 ? COLORS.secondary_content : COLORS.primary_accent)}
+              color={Object.keys(filter).length === 0 ? COLORS.secondary_content : COLORS.primary_accent}
               />
             </Pressable>
           </View>
@@ -204,14 +266,14 @@ export default function SearchPage({navigation, route}) {
             <FlatList
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              data={filterModals}
+              data={FilterComponents({filter: filter, setFilterProp: (params) => setFilterProp(params)})}
               renderItem={({item}) => {
                 return (
                   <Pressable
                     onPress={() => onModalPress(item)}
-                    style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.button]}
+                    style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, (filter[item.name] ? styles.activeButton : styles.button)]}
                 >
-                  <Text style={styles.option}>{item.name}</Text>
+                  <Text style={[styles.option, {color: (filter[item.name] ? COLORS.primary_content : COLORS.secondary_content)}]}>{item.name}</Text>
                 </Pressable>
                 )
               }}
@@ -328,9 +390,16 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       marginLeft: 13,
       marginRight: 13,
-      color: "#CCD2E3"
     },
     button: {
+      borderRadius: 50,
+      padding: 7,
+      marginRight: 8,
+      marginBottom: 3,
+      marginTop: 3
+    },
+    activeButton: {
+      backgroundColor: COLORS.primary_accent,
       borderRadius: 50,
       padding: 7,
       marginRight: 8,

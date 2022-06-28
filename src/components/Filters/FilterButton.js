@@ -28,16 +28,12 @@ const FilterButton = (props) => {
         var joined = selected.concat(item);
         setSelected(joined)
         if(joined.length>0){
-          props.setFilterProp({name: props.name, selected: joined})
+          props.setFilterProp({name: props.name, selection: joined})
         }}
       else {
         var removed = selected.filter(i => i !== item)
         setSelected(removed)
-        if(removed.length>0){
-          props.setFilterProp({name: props.name, selected: removed})
-        } else {
-          props.removeFilterProp({name: props.name})
-        }
+        props.setFilterProp({name: props.name, selection: removed})
       } 
     }
 

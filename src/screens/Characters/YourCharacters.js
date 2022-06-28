@@ -94,7 +94,7 @@ export default function YourCharactersPage({navigation, route}) {
     }
 
     const clearAsyncStorage = async() => {
-      AsyncStorage.clear();
+      AsyncStorage.removeItem('characters');
       setChars([])
       setHideSplash(false)
     }
