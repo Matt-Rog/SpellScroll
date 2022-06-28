@@ -20,8 +20,6 @@ const SpellList = (props) => {
 
     // Spell ID -> Spell Data
     const spellIDs = props.spellIDs
-    console.log("IN SPELL LISTS")
-    console.log(spellIDs)
     var spells = []
     for(const item of MOCKDATA){
         if(Array.isArray(spellIDs)){

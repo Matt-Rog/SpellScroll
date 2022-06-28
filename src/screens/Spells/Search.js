@@ -11,7 +11,7 @@ import {
     Modal,
     ScrollView
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -43,6 +43,7 @@ export default function SearchPage({navigation, route}) {
     }
 
 
+    const filterListRef = useRef()
 
     const [allSpells, setAllSpells] = useState(MOCKDATA)
     const [filterSpells, setFilterSpells] = useState(MOCKDATA)
@@ -77,7 +78,8 @@ export default function SearchPage({navigation, route}) {
         }
       }
       setIsHidden(true)
-      
+      filterListRef.current.scrollToIndex({index: 0})
+
     }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
 
     useEffect(() => {
@@ -114,6 +116,46 @@ export default function SearchPage({navigation, route}) {
       }
     }
 
+    // function filterSpells(){
+    //   FILTER.filterSpells().then(
+    //     newSpells => {
+    //       setFilterSpells(newSpells)
+    //       navigation.navigate("Search Spells", {INITDATA: newSpells})
+    //     }
+    //   )
+    // }
+
+    function onApplyPress(){
+      FILTER.filterSpells().then(
+        newSpells => {
+          setFilterSpells(newSpells)
+          searchSpells("")
+          navigation.navigate("Search Spells", {INITDATA: newSpells})
+        }
+      )
+    }
+
+    function setFilterProp(params){
+      var newFilter = FILTER.setProperty(filter, params)
+      updateFilter(newFilter)
+      setFilter(newFilter)
+    }
+
+    function onFilterReset(){
+      setFilterSpells([])
+      setFilter({})
+      updateFilter({})
+      navigation.navigate("Search Spells", {INITDATA: [], RESET: true})
+    }
+
+    function getOrderedFilters(){
+      let standard = FilterComponents({filter: filter, setFilterProp: (params) => setFilterProp(params)})
+      var ordered = standard
+      ordered.sort(function(x,y){return filter.hasOwnProperty(x.name) ? -1 : filter.hasOwnProperty(y.name) ? 1 : 0})
+      return ordered
+    }
+
+
     const getSpellIDs = (spellList) => {
       var spellIDs = []
       for(const spell of spellList){
@@ -142,13 +184,6 @@ export default function SearchPage({navigation, route}) {
       }
     }
 
-    function onBarIconPress(){
-      if(search != ""){
-        searchSpells("")
-      }
-    }
-
-
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [modalComponent, setModalComponent] = useState()
 
@@ -159,21 +194,6 @@ export default function SearchPage({navigation, route}) {
     function onModalPress(item){
       setModalComponent(item)
       changeModalVisibility(true)
-    }
-
-    function onApplyPress(){
-      FILTER.filterSpells().then(
-        newSpells => {
-          setFilterSpells(newSpells)
-          navigation.navigate("Search Spells", {INITDATA: newSpells})
-        }
-      )
-    }
-
-    function setFilterProp(params){
-      var newFilter = FILTER.setProperty(filter, params)
-      updateFilter(newFilter)
-      setFilter(newFilter)
     }
 
     return (
@@ -191,7 +211,11 @@ export default function SearchPage({navigation, route}) {
               >
               </TextInput>
               <Pressable
-                onPress={() => onBarIconPress()}
+                onPress={() => {
+                  if(search != ""){
+                    searchSpells("")
+                  }
+                }}
                 style={styles.searchIcon}>
                   <FontAwesome
                   name={((search==="") ? "search" : "times")}
@@ -214,17 +238,38 @@ export default function SearchPage({navigation, route}) {
 
           {/* Filter Horizontal Row */}
           <View style={styles.filterBox}>
+            {
+              Object.keys(filter).length === 0 ? null :
+              
+              <Pressable
+                style={{flexDirection: "row", alignItems: "center", marginRight: 7}}
+                onPress={() => onFilterReset()}
+                >
+                <FontAwesome
+                  name={"times-circle"}
+                  size={33}
+                  color={COLORS.primary_accent}
+                />
+                {/* <Text style={[styles.option, {color: COLORS.primary_accent}]}>Clear</Text> */}
+                
+                
+              </Pressable>
+            }    
+
             <FlatList
               horizontal={true}
+              ref={filterListRef}
               showsHorizontalScrollIndicator={false}
-              data={FilterComponents({filter: filter, setFilterProp: (params) => setFilterProp(params)})}
+              data={getOrderedFilters()}
               renderItem={({item}) => {
                 return (
                   <Pressable
                     onPress={() => onModalPress(item)}
                     style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, (filter[item.name] ? styles.activeButton : styles.button)]}
                 >
-                  <Text style={[styles.option, {color: (filter[item.name] ? COLORS.primary_content : COLORS.secondary_content)}]}>{item.name}</Text>
+                  <Text style={[styles.option, {color: (filter[item.name] ? COLORS.primary_content : COLORS.secondary_content)}]}> {item.name.length < 15
+                ? `${item.name}`
+                : `${item.name.substring(0, 15)}...`}</Text>
                 </Pressable>
                 )
               }}

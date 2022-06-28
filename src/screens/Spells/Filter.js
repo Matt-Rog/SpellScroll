@@ -34,7 +34,7 @@ export default function FilterPage({navigation, route}) {
   const [filterSpells, setFilterSpells] = useState()
 
   const onBackPress = () => {
-        navigation.navigate("Search Spells")
+        navigation.goBack()
     }
 
 
