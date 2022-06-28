@@ -24,6 +24,7 @@ import FilterComponents from '../../utils/FilterComponents';
 import FilterList from '../../components/Filters/FilterList';
 import ModalSearch from '../../components/ModalSearch'
 import SpellList from '../../components/SpellList';
+import Splash from '../../components/Splash'
 import EmptySplash from '../../components/EmptySplash';
 
 
@@ -295,9 +296,13 @@ export default function SearchPage({navigation, route}) {
           <View style={styles.searchBox}>
               <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
           </View>
-          <EmptySplash
-            hide={isHidden}>
-          </EmptySplash>
+          <Splash
+            hide={isHidden}
+            image={"spell-scroll"}
+            title={"No spells found"}
+            body={"Try expanding your search :)"}>
+
+          </Splash>
           <SpellList
             onResultPress={onResultPress}
             spellIDs = {getSpellIDs(resultSpells)}
