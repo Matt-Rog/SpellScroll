@@ -46,12 +46,14 @@ export default function SearchPage({navigation, route}) {
 
     const filterListRef = useRef()
 
+
+    const [isInitial, setIsInitial] = useState(true)
     const [allSpells, setAllSpells] = useState(MOCKDATA)
     const [filterSpells, setFilterSpells] = useState(MOCKDATA)
     const [filter, setFilter] = useState({})
-    const [isInitial, setIsInitial] = useState(true)
     const [resultSpells, setResultSpells] = useState(MOCKDATA)
     const [search, setSearch] = useState("")
+    const [sort, setSort] = useState({abc: true, chron: true})
     const [isHidden, setIsHidden] = useState(true)
 
     useEffect(() => {
@@ -78,10 +80,15 @@ export default function SearchPage({navigation, route}) {
           }
         }
       }
+      changeSortMode(sort)
       setIsHidden(true)
-      filterListRef.current.scrollToIndex({index: 0})
 
     }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
+
+    useEffect(() => {
+      filterListRef.current.scrollToIndex({index: 0})
+      changeSortMode(sort)
+    }, [filterSpells])
 
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
@@ -117,21 +124,13 @@ export default function SearchPage({navigation, route}) {
       }
     }
 
-    // function filterSpells(){
-    //   FILTER.filterSpells().then(
-    //     newSpells => {
-    //       setFilterSpells(newSpells)
-    //       navigation.navigate("Search Spells", {INITDATA: newSpells})
-    //     }
-    //   )
-    // }
-
     function onApplyPress(){
       FILTER.filterSpells().then(
         newSpells => {
           setFilterSpells(newSpells)
           searchSpells("")
-          navigation.navigate("Search Spells", {INITDATA: newSpells})
+          setResultSpells(newSpells)
+          changeSortMode(sort)        
         }
       )
     }
@@ -183,6 +182,31 @@ export default function SearchPage({navigation, route}) {
         setSearch(text);
         setIsHidden(true)
       }
+    }
+
+    function changeSortMode(params){
+      console.log(">>>>>>>>>>>>>>>> CHANGE SORT TRIGGERED <<<<<<<<<<<<<<<")
+      console.log(params)
+      console.log(getSpellIDs(resultSpells))
+      if(params.abc){
+        if(params.chron){
+          resultSpells.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+          filterSpells.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+        } else {
+          resultSpells.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
+          filterSpells.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
+        }
+      } else {
+        if(params.chron){
+          resultSpells.sort((a,b) => a.level - b.level)
+          filterSpells.sort((a,b) => a.level - b.level)
+        } else {
+          resultSpells.sort((a,b) => b.level - a.level)
+          filterSpells.sort((a,b) => b.level - a.level)
+        }
+      }
+      console.log(getSpellIDs(resultSpells))
+      setSort(params)
     }
 
     const [isModalVisible, setIsModalVisible] = useState(false)
@@ -253,7 +277,6 @@ export default function SearchPage({navigation, route}) {
                     size={33}
                     color={COLORS.primary_accent}
                   />
-                  {/* <Text style={[styles.option, {color: COLORS.primary_accent}]}>Clear</Text> */}
                   
                   
                 </Pressable>
@@ -294,9 +317,30 @@ export default function SearchPage({navigation, route}) {
                 </ModalSearch>
             </Modal>
 
-
+            {/* Sorting */}
             <View style={styles.searchBox}>
                 <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
+                <View style={{flexDirection: "row"}}>
+                  <Pressable
+                    onPress={() => changeSortMode({abc: true, chron: sort.chron})}
+                    style={[styles.sort, {backgroundColor: (sort.abc? COLORS.primary_accent : COLORS.back)}]}>
+                    <Text style={styles.spellTXT}>A-Z</Text>
+                  </Pressable>
+                  <Pressable
+                    onPress={() => changeSortMode({abc: false, chron: sort.chron})}
+                    style={[styles.sort, {backgroundColor: (sort.abc? COLORS.back : COLORS.primary_accent)}]}>
+                    <Text style={styles.spellTXT}>1-9</Text>
+                  </Pressable>
+                  <Pressable
+                    onPress={() => changeSortMode({abc: sort.abc, chron: !sort.chron})}
+                    style={{padding: 3}}>
+                      <FontAwesome5
+                      name={(sort.chron? "long-arrow-alt-down" : "long-arrow-alt-up")}
+                      size={20}
+                      color={COLORS.secondary_content}
+                      />
+                  </Pressable>
+                </View>
             </View>
             <Splash
               hide={isHidden}
@@ -348,8 +392,13 @@ const styles = StyleSheet.create({
     },
     spellTXT: {
       color: "#FFFFFF",
-      fontSize: 13,
+      fontSize: 15,
       fontWeight: "bold"
+    },
+    sort: {
+      padding: 5,
+      borderRadius: 8,
+      marginRight: 5
     },
     schoolTXT:{
       color: "#CCD2E3",
