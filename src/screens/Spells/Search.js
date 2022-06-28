@@ -198,118 +198,121 @@ export default function SearchPage({navigation, route}) {
     }
 
     return (
-        <SafeAreaView style={AppStyles.Background}> 
-          <Text style={styles.title}>Search Spells</Text>
-          <View style={styles.searchBox}>
-            <View style={styles.searchBar}>
-              <TextInput 
-                style={styles.input}
-                placeholder="Search"
-                value={search}
-                selectionColor="#CCD2E3"
-                placeholderTextColor="#CCD2E3"
-                onChangeText={(text)=> searchSpells(text)}
-              >
-              </TextInput>
+        <SafeAreaView style={AppStyles.Background}>
+          <View style={AppStyles.Container}>
+            
+            <Text style={styles.title}>Search Spells</Text>
+            <View style={styles.searchBox}>
+              <View style={styles.searchBar}>
+                <TextInput 
+                  style={styles.input}
+                  placeholder="Search"
+                  value={search}
+                  selectionColor="#CCD2E3"
+                  placeholderTextColor="#CCD2E3"
+                  onChangeText={(text)=> searchSpells(text)}
+                >
+                </TextInput>
+                <Pressable
+                  onPress={() => {
+                    if(search != ""){
+                      searchSpells("")
+                    }
+                  }}
+                  style={styles.searchIcon}>
+                    <FontAwesome
+                    name={((search==="") ? "search" : "times")}
+                    size={20}
+                    color={"#CCD2E3"}
+                    />
+                </Pressable>
+              </View>
               <Pressable
-                onPress={() => {
-                  if(search != ""){
-                    searchSpells("")
-                  }
-                }}
-                style={styles.searchIcon}>
-                  <FontAwesome
-                  name={((search==="") ? "search" : "times")}
-                  size={20}
-                  color={"#CCD2E3"}
-                  />
+              onPress={onFilterPress}
+              style={styles.filterIcon}>
+                <FontAwesome5
+                name={"sliders-h"}
+                size={20}
+                color={Object.keys(filter).length === 0 ? COLORS.secondary_content : COLORS.primary_accent}
+                />
               </Pressable>
             </View>
-            <Pressable
-            onPress={onFilterPress}
-            style={styles.filterIcon}>
-              <FontAwesome5
-              name={"sliders-h"}
-              size={20}
-              color={Object.keys(filter).length === 0 ? COLORS.secondary_content : COLORS.primary_accent}
-              />
-            </Pressable>
-          </View>
 
 
-          {/* Filter Horizontal Row */}
-          <View style={styles.filterBox}>
-            {
-              Object.keys(filter).length === 0 ? null :
-              
-              <Pressable
-                style={{flexDirection: "row", alignItems: "center", marginRight: 7}}
-                onPress={() => onFilterReset()}
-                >
-                <FontAwesome
-                  name={"times-circle"}
-                  size={33}
-                  color={COLORS.primary_accent}
-                />
-                {/* <Text style={[styles.option, {color: COLORS.primary_accent}]}>Clear</Text> */}
+            {/* Filter Horizontal Row */}
+            <View style={styles.filterBox}>
+              {
+                Object.keys(filter).length === 0 ? null :
                 
-                
-              </Pressable>
-            }    
-
-            <FlatList
-              horizontal={true}
-              ref={filterListRef}
-              showsHorizontalScrollIndicator={false}
-              data={getOrderedFilters()}
-              renderItem={({item}) => {
-                return (
-                  <Pressable
-                    onPress={() => onModalPress(item)}
-                    style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, (filter[item.name] ? styles.activeButton : styles.button)]}
-                >
-                  <Text style={[styles.option, {color: (filter[item.name] ? COLORS.primary_content : COLORS.secondary_content)}]}> {item.name.length < 15
-                ? `${item.name}`
-                : `${item.name.substring(0, 15)}...`}</Text>
+                <Pressable
+                  style={{flexDirection: "row", alignItems: "center", marginRight: 7}}
+                  onPress={() => onFilterReset()}
+                  >
+                  <FontAwesome
+                    name={"times-circle"}
+                    size={33}
+                    color={COLORS.primary_accent}
+                  />
+                  {/* <Text style={[styles.option, {color: COLORS.primary_accent}]}>Clear</Text> */}
+                  
+                  
                 </Pressable>
-                )
-              }}
-              >
-              </FlatList>
+              }    
+
+              <FlatList
+                horizontal={true}
+                ref={filterListRef}
+                showsHorizontalScrollIndicator={false}
+                data={getOrderedFilters()}
+                renderItem={({item}) => {
+                  return (
+                    <Pressable
+                      onPress={() => onModalPress(item)}
+                      style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, (filter[item.name] ? styles.activeButton : styles.button)]}
+                  >
+                    <Text style={[styles.option, {color: (filter[item.name] ? COLORS.primary_content : COLORS.secondary_content)}]}> {item.name.length < 15
+                  ? `${item.name}`
+                  : `${item.name.substring(0, 15)}...`}</Text>
+                  </Pressable>
+                  )
+                }}
+                >
+                </FlatList>
+            </View>
+
+            <Modal
+              transparent={true}
+              animationType='fade'
+              visible={isModalVisible}
+              style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+              nRequestClose={() => changeModalVisibility(false)}>
+                <ModalSearch
+                  onApplyPress={() => onApplyPress()}
+                  changeModalVisibility={changeModalVisibility}
+                  childComponent={modalComponent}
+                >
+                </ModalSearch>
+            </Modal>
+
+
+            <View style={styles.searchBox}>
+                <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
+            </View>
+            <Splash
+              hide={isHidden}
+              image={"spell_scroll"}
+              title={"No spells found"}
+              body={"Try expanding your search :)"}>
+
+            </Splash>
+            <SpellList
+              onResultPress={onResultPress}
+              spellIDs = {getSpellIDs(resultSpells)}
+              navigation={navigation}
+              prevScreen="Search Spells"
+              scrollEnabled={true}>
+            </SpellList>
           </View>
-
-          <Modal
-            transparent={true}
-            animationType='fade'
-            visible={isModalVisible}
-            style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
-            nRequestClose={() => changeModalVisibility(false)}>
-              <ModalSearch
-                onApplyPress={() => onApplyPress()}
-                changeModalVisibility={changeModalVisibility}
-                childComponent={modalComponent}
-              >
-              </ModalSearch>
-          </Modal>
-
-
-          <View style={styles.searchBox}>
-              <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
-          </View>
-          <Splash
-            hide={isHidden}
-            image={"spell_scroll"}
-            title={"No spells found"}
-            body={"Try expanding your search :)"}>
-
-          </Splash>
-          <SpellList
-            onResultPress={onResultPress}
-            spellIDs = {getSpellIDs(resultSpells)}
-            navigation={navigation}
-            prevScreen="Search Spells"
-            scrollEnabled={true}>
-          </SpellList>
         </SafeAreaView>
     );
 }
@@ -332,16 +335,12 @@ const styles = StyleSheet.create({
     searchBox: {
       marginBottom: 8,
       marginTop: 8,
-      marginLeft: 30,
-      marginRight: 30,
       borderRadius: 12,
       flexDirection:'row',
       justifyContent: 'space-between',
       alignItems: "center",
     },
     filterBox: {
-      marginLeft: 30,
-      marginRight: 30,
       borderRadius: 12,
       flexDirection:'row',
       justifyContent: 'space-between',

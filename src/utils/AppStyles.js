@@ -10,7 +10,7 @@ export default StyleSheet.create({
         width: "100%"
     },
     Container: {
-        width: "90%",
+        width: "88%",
         alignSelf: "center",
         justifyContent: "center",
     },

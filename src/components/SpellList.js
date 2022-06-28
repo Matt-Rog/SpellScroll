@@ -48,6 +48,7 @@ const SpellList = (props) => {
     return (
             <FlatList
               scrollEnabled={props.scrollEnabled}
+              showsVerticalScrollIndicator={false}
               data={spells}
               renderItem={({item}) => (
                 <Pressable 
@@ -85,8 +86,6 @@ const styles = StyleSheet.create({
     resultBox: {
       marginBottom: 8,
       marginTop: 8,
-      marginLeft: 30,
-      marginRight: 30,
       borderRadius: 12,
       flexDirection:'row'
     },
