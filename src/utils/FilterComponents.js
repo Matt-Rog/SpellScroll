@@ -44,6 +44,58 @@ export default function FilterComponents(props) {
             filter={props.filter}
             selected={props.filter?.Components}
             ></FilterButton>
-        }
+        },
+        {
+        name: "School",
+        options: ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"],
+        component: 
+            <FilterList
+            name="School"
+            optionName="School"
+            options={["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"]}
+            setFilterProp={(params) => props.setFilterProp(params)}
+            filter={props.filter}
+            selected={props.filter?.School}
+            ></FilterList>
+        },
+        {
+        name: "Casting Time",
+        options: ["1 Reaction", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "12 Hours", "24 Hours"],
+        component: 
+            <FilterList
+            name="Casting Time"
+            optionName="Casting Time"
+            options={["1 Reaction", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "12 Hours", "24 Hours"]}
+            setFilterProp={(params) => props.setFilterProp(params)}
+            filter={props.filter}
+            selected={props.filter?.CastingTime}
+            ></FilterList>
+        },
+        {
+        name: "Level",
+        options: [1,2,3,4,5,6,7,8,9],
+        component: 
+            <FilterList
+            name="Level"
+            optionName="Level Range"
+            options={[0,1,2,3,4,5,6,7,8,9]}
+            setFilterProp={(params) => props.setFilterProp(params)}
+            filter={props.filter}
+            selected={props.filter?.Level}
+            ></FilterList>
+        },
+        {
+        name: "Level",
+        options: [1,2,3,4,5,6,7,8,9],
+        component: 
+            <FilterList
+            name="Level"
+            optionName="Level Range"
+            options={[0,1,2,3,4,5,6,7,8,9]}
+            setFilterProp={(params) => props.setFilterProp(params)}
+            filter={props.filter}
+            selected={props.filter?.Level}
+            ></FilterList>
+        },
     ]
 }

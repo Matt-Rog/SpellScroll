@@ -10,7 +10,7 @@ import {
     ScrollView
     
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
@@ -19,6 +19,11 @@ const FilterButton = (props) => {
 
     const options = props.options
     const [selected, setSelected] = useState(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected)) 
+
+    useEffect(() => {
+      setSelected(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected))
+      console.log(props.selected)
+    }, [props.selected])
 
     function onButtonPress(item){
       console.log(" ")

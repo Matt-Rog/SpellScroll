@@ -18,6 +18,7 @@ const ModalSearch = (props) => {
 
 
     function onApplyPress(){
+        props.onApplyPress()
         props.changeModalVisibility(false)
     }
     

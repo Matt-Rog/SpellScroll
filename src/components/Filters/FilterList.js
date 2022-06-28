@@ -27,7 +27,6 @@ const FilterList = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     useEffect(() => {
-      console.log("FILTER LIST USE EFFECT TRIGGERED <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
       setSelected(((props.selected==undefined || props.selected.length==options.length) ? [] : props.selected))
       console.log(props.selected)
     }, [props.selected])

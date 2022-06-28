@@ -38,26 +38,6 @@ const SPELLDATA = MOCKDATA
     updateFilter({})
   }
 
-  export async function getFilter2(){
-    // pullFilter()
-    // return filter
-    const result_1 = await fetchFilter();
-    if (result_1) {
-      console.log(">>>>>>>>>>>>>>>> FILTER FROM GET DATA");
-      console.log(result_1);
-      return result_1;
-    }
-    return {};
-  }
-
-  export function getSelection(name){
-    // let filter = getFilter()
-    // if(filter.hasOwnProperty(name)){
-    //   return (filter[name])
-    // }
-
-  }
-
   export function setProperty(filter, params){
     if(params.selection == undefined || params.selection.length==0){
       return removeProperty(filter, params)

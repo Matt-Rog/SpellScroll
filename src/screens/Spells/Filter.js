@@ -83,21 +83,7 @@ export default function FilterPage({navigation, route}) {
       var newFilter = FILTER.setProperty(filter, params)
       updateFilter(newFilter)
       setFilter(newFilter)
-      // console.log("SET FILTER")
-      // console.log(params.name)
-      // console.log(params.selected)
-      // setFilter((filter) => ({ 
-      //   ...filter,
-      //   [params.name]: params.selected
-      // }))
     }
-
-    // function removeFilterProp(params){
-    //   FILTER.removeProperty(filter, params.name)
-    //   // let removed = {...filter}
-    //   // delete removed[params.name]
-    //   // setFilter(removed)
-    // }
 
     function onFilterApply(){
       FILTER.filterSpells().then(

@@ -77,59 +77,8 @@ export default function SearchPage({navigation, route}) {
         }
       }
       setIsHidden(true)
-      // if(route.params?.FILTER){
-      //   console.log("FILTER")
-      //   if(route.params.FILTER.length>0){
-      //     setFilter(route.params.FILTER)
-      //   } else {
-      //     if(route.params?.RESET && route.params.RESET==true){
-      //       setFilter({})
-      //       console.log("RESET2")
-      //     } else {
-      //       setFilter(route.params.FILTER)
-      //     }
-      //   }
-      // }
-    }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
-
-
-    // useEffect(() => {
-    //   const filterData = navigation.addListener('focus', () => {
-    //     let data = FILTER.getFilter()
-    //     setFilter(data)
-    //   })
-    //   return filterData;
-    // }, [navigation]);
-
-    // // const getFilter = async () => {
-    // //   try {
-    // //     const stringValue = await AsyncStorage.getItem('filter')
-    // //     const jsonValue = JSON.parse(stringValue)
-    // //     if (!jsonValue || typeof jsonValue !== 'object') {
-    // //       return
-    // //     }
-    // //     console.log(">>>>>>> FILTER FROM PULL DATA")
-    // //     console.log(jsonValue)
-    // //     setFilter(jsonValue)
-        
       
-    // //   } catch(e) {
-    // //     console.log("Error getting filter data")
-    // //     console.log(e)
-    // //   }
-    // // }
-
-    // // const updateData = async (value) => {
-    // //   try {
-    // //     const jsonValue = JSON.stringify(value)
-    // //     await AsyncStorage.setItem('filter', jsonValue)
-    // //     console.log("Filter Updated")
-    // //     setFilter(value)
-    // //   } catch (e) {I
-    // //     console.log("Error updating characters")
-    // //     console.log(e)
-    // //   }
-    // // }
+    }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
 
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
@@ -212,17 +161,19 @@ export default function SearchPage({navigation, route}) {
       changeModalVisibility(true)
     }
 
+    function onApplyPress(){
+      FILTER.filterSpells().then(
+        newSpells => {
+          setFilterSpells(newSpells)
+          navigation.navigate("Search Spells", {INITDATA: newSpells})
+        }
+      )
+    }
+
     function setFilterProp(params){
       var newFilter = FILTER.setProperty(filter, params)
       updateFilter(newFilter)
       setFilter(newFilter)
-      // console.log("SET FILTER")
-      // console.log(params.name)
-      // console.log(params.selected)
-      // setFilter((filter) => ({ 
-      //   ...filter,
-      //   [params.name]: params.selected
-      // }))
     }
 
     return (
@@ -288,6 +239,7 @@ export default function SearchPage({navigation, route}) {
             style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
             nRequestClose={() => changeModalVisibility(false)}>
               <ModalSearch
+                onApplyPress={() => onApplyPress()}
                 changeModalVisibility={changeModalVisibility}
                 childComponent={modalComponent}
               >
