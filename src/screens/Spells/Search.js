@@ -298,7 +298,7 @@ export default function SearchPage({navigation, route}) {
           </View>
           <Splash
             hide={isHidden}
-            image={"spell-scroll"}
+            image={"spell_scroll"}
             title={"No spells found"}
             body={"Try expanding your search :)"}>
 

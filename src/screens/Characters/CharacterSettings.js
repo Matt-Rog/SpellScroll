@@ -105,7 +105,7 @@ const CharacterSettings = (props) => {
                         <View>
                         <Splash
                             hide={false}
-                            image={"red"}
+                            image={"red_dragon"}
                             title={"Are you sure?"}
                             body={"Your character will be permanently deleted"}
                             component={

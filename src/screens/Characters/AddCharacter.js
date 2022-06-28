@@ -337,7 +337,7 @@ export default function AddCharacterPage({navigation, route}){
                         <View>
                         <Splash
                             hide={false}
-                            image={"blue"}
+                            image={"blue_wizard"}
                             title={"Huzzah!"}
                             body={"Your character has been successfully " + (route.params.edit? "saved." : "created.")}
                             component={

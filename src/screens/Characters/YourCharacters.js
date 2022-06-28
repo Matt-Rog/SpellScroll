@@ -124,7 +124,7 @@ export default function YourCharactersPage({navigation, route}) {
           </Pressable>
           <Splash
             hide={hideSplash}
-            image={"red"}
+            image={"red_dragon"}
             title={"No characters found"}
             component={
               <Pressable
