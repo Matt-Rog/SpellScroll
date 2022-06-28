@@ -80,15 +80,19 @@ export default function SearchPage({navigation, route}) {
           }
         }
       }
-      changeSortMode(sort)
       setIsHidden(true)
 
     }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
 
     useEffect(() => {
       filterListRef.current.scrollToIndex({index: 0})
-      changeSortMode(sort)
+      // changeSortMode(sort)
     }, [filterSpells])
+
+    useEffect(() => {
+      console.log("Sort Changed")
+      setResultSpells(getSortedSpells(resultSpells))
+    }, [sort])
 
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
@@ -128,9 +132,9 @@ export default function SearchPage({navigation, route}) {
       FILTER.filterSpells().then(
         newSpells => {
           setFilterSpells(newSpells)
-          searchSpells("")
+          setSearch("")
+          // searchSpells("")
           setResultSpells(newSpells)
-          changeSortMode(sort)        
         }
       )
     }
@@ -142,7 +146,7 @@ export default function SearchPage({navigation, route}) {
     }
 
     function onFilterReset(){
-      setFilterSpells([])
+      setFilterSpells(MOCKDATA)
       setFilter({})
       updateFilter({})
       navigation.navigate("Search Spells", {INITDATA: [], RESET: true})
@@ -175,39 +179,35 @@ export default function SearchPage({navigation, route}) {
         } else {
           setIsHidden(true)
         }
-        setResultSpells(newData)
+        setResultSpells(getSortedSpells(newData))
         setSearch(text)
-      } else {
+      } 
+      else {
         setResultSpells(filterSpells)
         setSearch(text);
         setIsHidden(true)
       }
     }
 
-    function changeSortMode(params){
-      console.log(">>>>>>>>>>>>>>>> CHANGE SORT TRIGGERED <<<<<<<<<<<<<<<")
-      console.log(params)
-      console.log(getSpellIDs(resultSpells))
-      if(params.abc){
-        if(params.chron){
-          resultSpells.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-          filterSpells.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    function getSortedSpells(spells){
+      
+      if(sort.abc){
+        if(sort.chron){
+          spells.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
         } else {
-          resultSpells.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
-          filterSpells.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
+          spells.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
         }
       } else {
-        if(params.chron){
-          resultSpells.sort((a,b) => a.level - b.level)
-          filterSpells.sort((a,b) => a.level - b.level)
+        if(sort.chron){
+          spells.sort((a,b) => a.level - b.level)
         } else {
-          resultSpells.sort((a,b) => b.level - a.level)
-          filterSpells.sort((a,b) => b.level - a.level)
+          spells.sort((a,b) => b.level - a.level)
         }
       }
-      console.log(getSpellIDs(resultSpells))
-      setSort(params)
+      return spells
     }
+
+    
 
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [modalComponent, setModalComponent] = useState()
@@ -225,7 +225,7 @@ export default function SearchPage({navigation, route}) {
         <SafeAreaView style={AppStyles.Background}>
           <View style={AppStyles.Container}>
             
-            <Text style={styles.title}>Search Spells</Text>
+            <Text style={AppStyles.Header1}>Search Spells</Text>
             <View style={styles.searchBox}>
               <View style={styles.searchBar}>
                 <TextInput 
@@ -277,12 +277,11 @@ export default function SearchPage({navigation, route}) {
                     size={33}
                     color={COLORS.primary_accent}
                   />
-                  
-                  
                 </Pressable>
               }    
 
               <FlatList
+                style={{borderRadius: 50}}
                 horizontal={true}
                 ref={filterListRef}
                 showsHorizontalScrollIndicator={false}
@@ -322,17 +321,17 @@ export default function SearchPage({navigation, route}) {
                 <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
                 <View style={{flexDirection: "row"}}>
                   <Pressable
-                    onPress={() => changeSortMode({abc: true, chron: sort.chron})}
+                    onPress={() => setSort({abc: true, chron: sort.chron})}
                     style={[styles.sort, {backgroundColor: (sort.abc? COLORS.primary_accent : COLORS.back)}]}>
                     <Text style={styles.spellTXT}>A-Z</Text>
                   </Pressable>
                   <Pressable
-                    onPress={() => changeSortMode({abc: false, chron: sort.chron})}
+                    onPress={() => setSort({abc: false, chron: sort.chron})}
                     style={[styles.sort, {backgroundColor: (sort.abc? COLORS.back : COLORS.primary_accent)}]}>
                     <Text style={styles.spellTXT}>1-9</Text>
                   </Pressable>
                   <Pressable
-                    onPress={() => changeSortMode({abc: sort.abc, chron: !sort.chron})}
+                    onPress={() => setSort({abc: sort.abc, chron: !sort.chron})}
                     style={{padding: 3}}>
                       <FontAwesome5
                       name={(sort.chron? "long-arrow-alt-down" : "long-arrow-alt-up")}
@@ -347,11 +346,10 @@ export default function SearchPage({navigation, route}) {
               image={"spell_scroll"}
               title={"No spells found"}
               body={"Try expanding your search :)"}>
-
             </Splash>
             <SpellList
               onResultPress={onResultPress}
-              spellIDs = {getSpellIDs(resultSpells)}
+              spellIDs={getSpellIDs(getSortedSpells(resultSpells))}
               navigation={navigation}
               prevScreen="Search Spells"
               scrollEnabled={true}>
@@ -362,11 +360,6 @@ export default function SearchPage({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-    base: {
-      backgroundColor: "#181D23",
-      height: '100%',
-      width: "100%"
-    },
     title: {
       color: "#FFFFFF",
       fontSize: 30,

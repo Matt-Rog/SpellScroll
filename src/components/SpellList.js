@@ -47,6 +47,7 @@ const SpellList = (props) => {
 
     return (
             <FlatList
+              style={{borderRadius: 12}}
               scrollEnabled={props.scrollEnabled}
               showsVerticalScrollIndicator={false}
               data={spells}
