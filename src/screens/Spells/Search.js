@@ -57,7 +57,6 @@ export default function SearchPage({navigation, route}) {
     const [isHidden, setIsHidden] = useState(true)
 
     useEffect(() => {
-      // write your code here, it's like componentWillMount
       console.log("Search loaded")
       if(isInitial){
         setFilter({})
@@ -76,18 +75,19 @@ export default function SearchPage({navigation, route}) {
           } else {
             setResultSpells(route.params.INITDATA)
             setFilterSpells(route.params.INITDATA)
-            setIsHidden(false)
           }
         }
       }
-      setIsHidden(true)
 
     }, [route.params?.INITDATA, route.params?.FILTER, route.params?.RESET])
 
     useEffect(() => {
       filterListRef.current.scrollToIndex({index: 0})
-      // changeSortMode(sort)
     }, [filterSpells])
+
+    useEffect(() => {
+      resultSpells.length==0 ? setIsHidden(false) : setIsHidden(true)
+    }, [resultSpells])
 
     useEffect(() => {
       console.log("Sort Changed")
@@ -136,7 +136,10 @@ export default function SearchPage({navigation, route}) {
           // searchSpells("")
           setResultSpells(newSpells)
         }
-      )
+      ).catch((error)=>{
+        console.log("Filter apply error");
+        console.log(error)
+     });
     }
 
     function setFilterProp(params){
@@ -174,18 +177,12 @@ export default function SearchPage({navigation, route}) {
         const newData = filterSpells.filter(function(item) {
           return (item.name.toUpperCase().startsWith(text.toUpperCase()))
         })
-        if(newData.length==0){
-          setIsHidden(false)
-        } else {
-          setIsHidden(true)
-        }
         setResultSpells(getSortedSpells(newData))
         setSearch(text)
       } 
       else {
         setResultSpells(filterSpells)
         setSearch(text);
-        setIsHidden(true)
       }
     }
 

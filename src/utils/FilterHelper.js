@@ -98,5 +98,8 @@ const SPELLDATA = MOCKDATA
         console.log("Filter.js results: " + newData.length)
         return newData
       }
-    )
+    ).catch((error)=>{
+      console.log("Filter apply error");
+      console.log(error)
+    });
   }
