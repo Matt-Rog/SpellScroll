@@ -117,7 +117,7 @@ export default function YourCharactersPage({navigation, route}) {
     return (
         <SafeAreaView style={[AppStyles.Background]}>
           <View style={AppStyles.Container}>
-          <Text style={styles.title}>Your Characters</Text>
+          <Text style={AppStyles.Header1}>Your Characters</Text>
           <Pressable
             onPress={()=>clearAsyncStorage()}>
             <Text style={AppStyles.Header3}>CLEAR ALL</Text>
