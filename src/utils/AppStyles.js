@@ -66,7 +66,7 @@ export default StyleSheet.create({
     Tags: {
         backgroundColor: COLORS.back_light,
         color: COLORS.secondary_content,
-        borderRadius: 5,
+        borderRadius: 8,
         paddingHorizontal: 9,
         paddingVertical: 3,
         alignSelf: "baseline"
