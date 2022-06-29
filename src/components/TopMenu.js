@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     back: {
         width: 50,
         height: 50,
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
         justifyContent: "center",
         borderRadius: 50,
         alignItems: "center",
