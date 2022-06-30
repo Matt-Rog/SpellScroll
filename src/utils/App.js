@@ -7,7 +7,6 @@ import {
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
-// import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
@@ -18,6 +17,7 @@ import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 import AddCharacterPage from '../screens/Characters/AddCharacter';
+import SettingsPage from '../screens/Settings/SettingsScreen';
 import { COLORS } from './Colors';
 
 const Stack = createStackNavigator();
@@ -84,6 +84,21 @@ function Characters() {
   )
 }
 
+function Settings(){
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        header: () => null,
+      }}>
+        <Stack.Screen
+          name="Settings"
+          component={SettingsPage}>
+
+        </Stack.Screen>
+    </Stack.Navigator>
+  )
+}
+
 
 
 export default function App() {
@@ -104,6 +119,7 @@ export default function App() {
             borderRadius: 25,
             overflow: 'hidden',
             marginTop: -40,
+            
           },
         }}
       >
@@ -129,6 +145,17 @@ export default function App() {
           )
         }}
           />
+        <MenuTab.Screen name="Settings" component={Settings} options={{
+          tabBarIcon: ({focused}) => (
+            <View style={focused ? styles.selectedTab : styles.unselectedTab}>
+              <FontAwesome
+                name={"cog"}
+                size={focused ? 35 : 30}
+                color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
+            </View>
+          )
+        }}
+          />
       </MenuTab.Navigator>
     </NavigationContainer>
 
@@ -140,7 +167,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   selectedTab: {
-    borderRadius: 50, 
+    borderRadius: 1000, 
     backgroundColor: COLORS.back_light, 
     width: 100, 
     height: 100, 

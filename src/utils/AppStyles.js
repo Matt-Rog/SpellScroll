@@ -14,7 +14,6 @@ export default StyleSheet.create({
         width: "88%",
         height: "98%",
         alignSelf: "center",
-        justifyContent: "center",
     },
     Modal: {
         backgroundColor: COLORS.back,
