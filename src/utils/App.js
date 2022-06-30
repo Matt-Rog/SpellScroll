@@ -1,12 +1,14 @@
 import { 
   Text,
   StyleSheet,
+  Dimensions,
   View
 } from 'react-native';
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
+// import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
 // Screens
@@ -16,16 +18,28 @@ import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 import AddCharacterPage from '../screens/Characters/AddCharacter';
+import { COLORS } from './Colors';
 
 const Stack = createStackNavigator();
-const MenuTab = createMaterialBottomTabNavigator()
+const MenuTab = createBottomTabNavigator()
+const WIDTH = Dimensions.get('window').width
+const Theme = {
+  dark: true,
+  colors: {
+    primary: 'rgb(28, 255, 30, 0)',
+    background: 'rgb(28, 255, 30, 0)',
+    card: 'rgb(28, 255, 30, 0)',
+    text: 'rgb(28, 255, 30, 0)',
+    border: 'rgb(28, 255, 30, 0)',
+    notification: 'rgb(255, 69, 58)',
+  },
+};
 
 function Spells() {
   return (
     <Stack.Navigator
       screenOptions={{
         header: () => null,
-        tabBarShowLabel: false
       }}>
       <Stack.Screen
         name="Search Spells"
@@ -75,46 +89,46 @@ function Characters() {
 export default function App() {
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={Theme}>
       <MenuTab.Navigator
-        screenOptions={({route})=> ({
+        style={{
+          overflow: 'hidden'
+        }}
+        screenOptions={{
+          headerShown: false,
+          footerShown: true,
           tabBarShowLabel: false,
-          showLabel: false,
-          tabBarLabel: "",
           tabBarStyle: {
-            borderRadius: 15,
-            padding: 15,
-            height: 200
+            backgroundColor: COLORS.back,
+            borderRadius: 25,
+            overflow: 'hidden',
+            marginTop: -40,
           },
-          tabBarIcon: ({focused, size, color}) => {
-            let iconName;
-            if(route.name=="Spells"){
-              iconName="search"
-              size = focused? 25 : 23;
-              color = focused? "#FFF" : "#CCD2E3"
-            }else if(route.name=="Characters"){
-              iconName="user"
-              size = focused? 25 : 23;
-              color = focused? "#FFF" : "#CCD2E3"
-            }
-            return(
+        }}
+      >
+        <MenuTab.Screen name="Spells" component={Spells} options={{
+          tabBarIcon: ({focused}) => (
+            <View style={focused ? styles.selectedTab : styles.unselectedTab}>
               <FontAwesome
-                name={iconName}
-                size={size}
-                color={color}
-                />
-            )
-          }
-        })}
-        barStyle={{backgroundColor: "#373C48"}}>
-        <MenuTab.Screen
-          name="Spells"
-          component={Spells}>
-        </MenuTab.Screen>
-        <MenuTab.Screen
-          name="Characters"
-          component={Characters}>
-        </MenuTab.Screen>
+                name={"search"}
+                size={focused ? 35 : 30}
+                color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
+            </View>
+          )
+        }}
+          />
+        <MenuTab.Screen name="Characters" component={Characters} options={{
+          tabBarIcon: ({focused}) => (
+            <View style={focused ? styles.selectedTab : styles.unselectedTab}>
+              <FontAwesome
+                name={"user"}
+                size={focused ? 35 : 30}
+                color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
+            </View>
+          )
+        }}
+          />
       </MenuTab.Navigator>
     </NavigationContainer>
 
@@ -125,4 +139,16 @@ export default function App() {
 
 
 const styles = StyleSheet.create({
+  selectedTab: {
+    borderRadius: 50, 
+    backgroundColor: COLORS.back_light, 
+    width: 100, 
+    height: 100, 
+    justifyContent: "center", 
+    alignItems: "center", 
+    top: 15
+  },
+  unselectedTab: {
+    top: 15
+  }
 });

@@ -87,11 +87,12 @@ export default function SearchPage({navigation, route}) {
 
     useEffect(() => {
       resultSpells.length==0 ? setIsHidden(false) : setIsHidden(true)
+      
     }, [resultSpells])
 
     useEffect(() => {
       console.log("Sort Changed")
-      setResultSpells(getSortedSpells(resultSpells))
+      // setResultSpells(getSortedSpells(resultSpells))
     }, [sort])
 
     useEffect(() => {
@@ -177,7 +178,7 @@ export default function SearchPage({navigation, route}) {
         const newData = filterSpells.filter(function(item) {
           return (item.name.toUpperCase().startsWith(text.toUpperCase()))
         })
-        setResultSpells(getSortedSpells(newData))
+        setResultSpells(newData)
         setSearch(text)
       } 
       else {
