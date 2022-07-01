@@ -293,9 +293,9 @@ export default function SearchPage({navigation, route}) {
                       onPress={() => onModalPress(item)}
                       style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, (filter[item.name] ? styles.activeButton : styles.button)]}
                   >
-                    <Text style={[styles.option, {color: (filter[item.name] ? COLORS.primary_content : COLORS.secondary_content)}]}> {item.name.length < 15
-                  ? `${item.name}`
-                  : `${item.name.substring(0, 15)}...`}</Text>
+                    <Text style={[styles.option, {color: (filter[item.title] ? COLORS.primary_content : COLORS.secondary_content)}]}> {item.title.length < 15
+                  ? `${item.title}`
+                  : `${item.title.substring(0, 15)}...`}</Text>
                   </Pressable>
                   )
                 }}

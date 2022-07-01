@@ -67,19 +67,6 @@ export default function FilterComponents(props) {
             ></FilterButton>
         },
         {
-        name: "Level",
-        options: [1,2,3,4,5,6,7,8,9],
-        component: 
-            <FilterList
-            name="Level"
-            optionName="Level Range"
-            options={[0,1,2,3,4,5,6,7,8,9]}
-            setFilterProp={(params) => props.setFilterProp(params)}
-            filter={props.filter}
-            selected={props.filter?.Level}
-            ></FilterList>
-        },
-        {
         title: "Time",
         name: "Time",
         prompt: "Select times",

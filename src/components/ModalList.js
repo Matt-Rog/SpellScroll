@@ -12,6 +12,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
 import AppStyles from '../utils/AppStyles';
+import { COLORS } from '../utils/Colors';
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -60,17 +61,18 @@ const ModalList = (props) => {
                     </View>
                 </View>
                 <FlatList
+                    style={{borderRadius: 15}}
                     data={options}
-                    showsVerticalScrollIndicator={false}
+                    showsVerticalScrollIndicator={true}
                     renderItem={({item}) => {
                         return (
                             <Pressable
-                                style={styles.option}
+                                style={[styles.option, {backgroundColor: selected.includes(item) ? COLORS.back_light : COLORS.back}]}
                                 onPress={() => onOptionPress(item)}
                             >
                                 <FontAwesome
                                 name={(selected.includes(item) ? "check-square" : "square")}
-                                size={25}
+                                size={20}
                                 color={(selected.includes(item) ? "#4CBBE9" : "#CCD2E3")}
                                 />
                                 <Text style={[AppStyles.Header3, {color: selected.includes(item) ? "#FFF" :"#CCD2E3"}, {marginLeft: 16}]}>{item}</Text>
@@ -114,10 +116,8 @@ const styles = StyleSheet.create({
     option:{
         width:"100%",
         flexDirection: "row",
-        padding: 20,
-        marginVertical: 5,
-        backgroundColor: "#545A67",
-        borderRadius: 15,
+        padding: 10,
+        borderRadius: 0,
         alignItems: "center"
     },
     name: {

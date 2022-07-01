@@ -110,7 +110,7 @@ export default function FilterPage({navigation, route}) {
               onLeftPress={()=>onBackPress()}></TopMenu>
             <Text style={styles.title}>Filter Spells</Text>
             <FlatList
-              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
               data={FilterComponents({filter: filter, setFilterProp: (params) => setFilterProp(params)})}
               renderItem={({item}) => {
                 return (
