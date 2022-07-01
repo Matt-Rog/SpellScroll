@@ -344,22 +344,21 @@ export default function SearchPage({navigation, route}) {
                 <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
                 <View style={{flexDirection: "row"}}>
                   <Pressable
-                    onPress={() => setSort({abc: true, chron: sort.chron})}
-                    style={[styles.sort, {backgroundColor: (sort.abc? COLORS.primary_accent : COLORS.back)}]}>
-                    <Text style={styles.spellTXT}>A-Z</Text>
+                    onPress={() => setSort({abc: true, chron: (sort.abc? !sort.chron : sort.chron)})}
+                    style={[styles.sort]}>
+                    <FontAwesome5
+                      name={(sort.chron? "sort-alpha-down" : "sort-alpha-up-alt")}
+                      size={23}
+                      color={(sort.abc? COLORS.primary_accent : COLORS.back_light)}
+                      />
                   </Pressable>
                   <Pressable
-                    onPress={() => setSort({abc: false, chron: sort.chron})}
-                    style={[styles.sort, {backgroundColor: (sort.abc? COLORS.back : COLORS.primary_accent)}]}>
-                    <Text style={styles.spellTXT}>1-9</Text>
-                  </Pressable>
-                  <Pressable
-                    onPress={() => setSort({abc: sort.abc, chron: !sort.chron})}
-                    style={{padding: 3}}>
-                      <FontAwesome5
-                      name={(sort.chron? "long-arrow-alt-down" : "long-arrow-alt-up")}
-                      size={20}
-                      color={COLORS.secondary_content}
+                    onPress={() => setSort({abc: false, chron: (sort.abc? sort.chron : !sort.chron)})}
+                    style={[styles.sort]}>
+                    <FontAwesome5
+                      name={(sort.chron? "sort-numeric-down" : "sort-numeric-up-alt")}
+                      size={23}
+                      color={(!sort.abc? COLORS.primary_accent : COLORS.back_light)}
                       />
                   </Pressable>
                 </View>
@@ -412,7 +411,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     sort: {
-      padding: 5,
+      paddingHorizontal: 10,
       borderRadius: 8,
       marginRight: 5
     },

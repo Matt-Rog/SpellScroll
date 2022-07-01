@@ -114,7 +114,7 @@ const SlidingTab = (props) => {
             horizontal
             showsHorizontalScrollIndicator={false}
             pagingEnabled
-            bounces={true}
+            bounces={false}
             onScroll={Animated.event(
               [{nativeEvent: {contentOffset: {x: scrollX}}}],
               {useNativeDriver: false}

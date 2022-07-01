@@ -118,8 +118,8 @@ export default function App() {
             backgroundColor: COLORS.back,
             borderRadius: 25,
             overflow: 'hidden',
-            marginTop: -80,
-            height: 80,
+            marginTop: -90,
+            height: 70,
             width: "100%",
             alignSelf: "center"
             
