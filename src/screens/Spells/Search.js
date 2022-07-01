@@ -411,7 +411,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     sort: {
-      paddingHorizontal: 10,
+      paddingHorizontal: 5,
       borderRadius: 8,
       marginRight: 5
     },
