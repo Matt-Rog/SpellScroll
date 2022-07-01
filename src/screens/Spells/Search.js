@@ -100,6 +100,7 @@ export default function SearchPage({navigation, route}) {
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
         getFilter()
+        onApplyPress()
       })
       return loadData;
     }, [navigation]);

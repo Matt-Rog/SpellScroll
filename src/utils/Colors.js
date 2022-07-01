@@ -8,7 +8,7 @@ export const COLORS = {
     secondary_content: "#CCD2E3",
 
     primary_accent: "#4CBBE9",
-    secondary_accnet: "#E94C4C",
+    secondary_accent: "#E94C4C",
 
     // School
     school: {

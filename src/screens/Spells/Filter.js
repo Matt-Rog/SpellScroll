@@ -34,6 +34,7 @@ export default function FilterPage({navigation, route}) {
   const [filterSpells, setFilterSpells] = useState()
 
   const onBackPress = () => {
+
         navigation.goBack()
     }
 
@@ -86,6 +87,7 @@ export default function FilterPage({navigation, route}) {
     }
 
     function onFilterApply(){
+      updateFilter(filter)
       FILTER.filterSpells().then(
         newSpells => {
           setFilterSpells(newSpells)
@@ -99,7 +101,6 @@ export default function FilterPage({navigation, route}) {
       setFilterSpells([])
       setFilter({})
       updateFilter({})
-      navigation.navigate("Search Spells", {INITDATA: [], RESET: true})
     }
 
     return (
@@ -107,9 +108,19 @@ export default function FilterPage({navigation, route}) {
           <View style={AppStyles.Container}> 
             <TopMenu
               bubble={false}
-              onLeftPress={()=>onBackPress()}></TopMenu>
+              onLeftPress={()=>onBackPress()}
+              settings={true}
+              rightIcon={ 
+                <FontAwesome
+                  name={"trash"}
+                  size={30}
+                  color={COLORS.secondary_accent}
+                  style
+                  />}
+              onRightPress={()=>onFilterReset()}></TopMenu>
             <Text style={styles.title}>Filter Spells</Text>
             <FlatList
+              style={{borderRadius: 12}}
               showsVerticalScrollIndicator={false}
               data={FilterComponents({filter: filter, setFilterProp: (params) => setFilterProp(params)})}
               renderItem={({item}) => {
@@ -121,23 +132,7 @@ export default function FilterPage({navigation, route}) {
               }}
               >
               </FlatList>
-          </View>
-          {/* Apply / Reset buttons */}
-          <View style={{flexDirection: "row-reverse", alignItems: "center", justifyContent: "space-evenly", position: "absolute", bottom: 100, left: 0, right: 0}}>
-              <Pressable
-                  onPress={() => onFilterApply()}
-                  style={AppStyles.PrimaryButton}    
-              >
-                  <Text style={AppStyles.Header3}>Apply</Text>
-              </Pressable>
-              <Pressable
-                  onPress={() => onFilterReset()}
-                  style={AppStyles.SecondaryButton}    
-              >
-                  <Text style={[AppStyles.Header3, {color: COLORS.secondary_content}]}>Clear</Text>
-              </Pressable>
-          </View>
-          
+          </View>          
         </SafeAreaView>
     );
 }

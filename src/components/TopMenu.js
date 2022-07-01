@@ -18,14 +18,17 @@ const TopMenu = (props) => {
 
     const settings =
     <Pressable 
-        style={styles.back}
+        style={props.bubble ? styles.back : styles.simple}
         onPress={props.onRightPress}>
-        <FontAwesome
+        {props.rightIcon ? props.rightIcon : 
+            <FontAwesome
             name={"cog"}
             size={30}
             color={"#fff"}
             style
             />
+        
+        }
     </Pressable>
 
     return (

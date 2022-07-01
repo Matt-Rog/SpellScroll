@@ -130,12 +130,12 @@ export default function FilterComponents(props) {
         title: "Tags",
         name: "Tags",
         prompt: "Filter by tags",
-        options: ["Banishment", "Buff", "Charmed", "Combat", "Communication", "Compulssion", "Control", "Creation", "Damage", "Debuff", "Deception", "Detection", "Dunamancy", "Environment", "Exploration", "Foreknowledge", "Healing", "Movement", "Negation", "Psionic", "Scrying", "Shapechanging", "Social", "Special", "Summoning", "Teleportation", "Utility", "Waring"],
+        options: ["Banishment", "Buff", "Charmed", "Combat", "Communication", "Compulssion", "Control", "Creation", "Damage", "Debuff", "Deception", "Detection", "Dunamancy", "Environment", "Exploration", "Foreknowledge", "Healing", "Movement", "Negation", "Psionic", "Scrying", "Shapechanging", "Social", "Special", "Summoning", "Teleportation", "Utility", "Warding"],
         component: 
             <FilterList
             name="Tags"
             optionName="Select tags"
-            options={["Banishment", "Buff", "Charmed", "Combat", "Communication", "Compulssion", "Control", "Creation", "Damage", "Debuff", "Deception", "Detection", "Dunamancy", "Environment", "Exploration", "Foreknowledge", "Healing", "Movement", "Negation", "Psionic", "Scrying", "Shapechanging", "Social", "Special", "Summoning", "Teleportation", "Utility", "Waring"]}
+            options={["Banishment", "Buff", "Charmed", "Combat", "Communication", "Compulssion", "Control", "Creation", "Damage", "Debuff", "Deception", "Detection", "Dunamancy", "Environment", "Exploration", "Foreknowledge", "Healing", "Movement", "Negation", "Psionic", "Scrying", "Shapechanging", "Social", "Special", "Summoning", "Teleportation", "Utility", "Warding"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
             selected={props.filter?.Tags}
