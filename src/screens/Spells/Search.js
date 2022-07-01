@@ -86,8 +86,7 @@ export default function SearchPage({navigation, route}) {
     }, [filterSpells])
 
     useEffect(() => {
-      resultSpells.length==0 ? setIsHidden(false) : setIsHidden(true)
-      
+      resultSpells.length==0 ? setIsHidden(false) : setIsHidden(true)      
     }, [resultSpells])
 
     useEffect(() => {
@@ -150,7 +149,7 @@ export default function SearchPage({navigation, route}) {
     }
 
     function onFilterReset(){
-      setFilterSpells(MOCKDATA)
+      setFilterSpells(allSpells)
       setFilter({})
       updateFilter({})
       navigation.navigate("Search Spells", {INITDATA: [], RESET: true})

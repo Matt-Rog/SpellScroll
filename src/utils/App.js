@@ -17,7 +17,7 @@ import FilterPage from '../screens/Spells/Filter';
 import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 import AddCharacterPage from '../screens/Characters/AddCharacter';
-import SettingsPage from '../screens/Settings/SettingsScreen';
+import SettingsPage from '../screens/Settings/Settings';
 import { COLORS } from './Colors';
 
 const Stack = createStackNavigator();
@@ -91,7 +91,7 @@ function Settings(){
         header: () => null,
       }}>
         <Stack.Screen
-          name="Settings"
+          name="SettingsScreen"
           component={SettingsPage}>
 
         </Stack.Screen>
@@ -118,7 +118,10 @@ export default function App() {
             backgroundColor: COLORS.back,
             borderRadius: 25,
             overflow: 'hidden',
-            marginTop: -40,
+            marginTop: -80,
+            height: 80,
+            width: "100%",
+            alignSelf: "center"
             
           },
         }}
@@ -169,8 +172,8 @@ const styles = StyleSheet.create({
   selectedTab: {
     borderRadius: 1000, 
     backgroundColor: COLORS.back_light, 
-    width: 100, 
-    height: 100, 
+    width: 150, 
+    height: 150, 
     justifyContent: "center", 
     alignItems: "center", 
     top: 15

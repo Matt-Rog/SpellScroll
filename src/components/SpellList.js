@@ -9,6 +9,7 @@ import {
     Image,
     
 } from 'react-native';
+import { useState, useEffect } from 'react';
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
 // Utility
 import Images from '../utils/Images';
@@ -21,20 +22,22 @@ import Tags from './Tags';
 
 const SpellList = (props) => {
 
+    const [spells, setSpells] = useState([])
+
+    useEffect(() => {
+      getSpells()
+    }, [props.spellIDs])
+
     // Spell ID -> Spell Data
-    const spellIDs = props.spellIDs
-    var spells = []
-    for(const item of MOCKDATA){
-        if(Array.isArray(spellIDs)){
-          if( spellIDs.includes(item.ID)){
-            spells.push(item)
-          }
-        } else {
-          if(spellIDs == (item.ID)){
-            spells.push(item)
-          }
-        }
+    function getSpells(){
+      var result = []
+      for(const ID of props.spellIDs){
+        var found = MOCKDATA.find(spell => spell.ID === ID)
+        result.push(found)
+      }
+      setSpells(result)
     }
+
     
 
     // Conditionally decides which sub-stack is visiting Spell.js
@@ -43,7 +46,7 @@ const SpellList = (props) => {
 
     function levelLogic({item}){
       let subtitle = ""
-      switch(item.level){
+      switch(item?.level){
         case 0:
           subtitle+="Cantrip"
           break
@@ -57,7 +60,7 @@ const SpellList = (props) => {
           subtitle+="3rd"
           break
         default:
-          subtitle+=(item.level + "th")
+          subtitle+=(item?.level + "th")
           break;        
       }
       return subtitle
@@ -75,22 +78,22 @@ const SpellList = (props) => {
                   style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
                   android_ripple={{color:'#4C515B'}}>
               
-                  <View style={[{backgroundColor: COLORS.school[item.school.toLowerCase()]},styles.schoolBar]}>
+                  <View style={[{backgroundColor: COLORS.school[item?.school.toLowerCase()]},styles.schoolBar]}>
                     <Image 
                     style={styles.icon}
-                    source={Images.school[item.school.toLowerCase()]}
+                    source={Images.school[item?.school.toLowerCase()]}
                     resizeMode="stretch">
                     </Image>
                   </View>
                   <View style={styles.text}>
                     <View style={styles.rowOne}>
-                      <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[AppStyles.Header4]}>{item.name}</Text>
+                      <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[AppStyles.Header4]}>{item?.name}</Text>
                       <Text style={styles.spellTXT}>{levelLogic({item})}</Text>
                     </View>
                     <View style={[styles.rowOne, {marginTop: 6}]}>
-                      <Text style={[AppStyles.Header4, {fontSize: 17, color: COLORS.secondary_content}]}>{item.school}</Text>
+                      <Text style={[AppStyles.Header4, {fontSize: 17, color: COLORS.secondary_content}]}>{item?.school}</Text>
                       <Tags
-                        tags={(item.tags!=undefined ? item.tags : (item.effect!=undefined ? [item.effect] : ["No Effect"]))}
+                        tags={(item?.tags!=undefined ? item?.tags : (item?.effect!=undefined ? [item?.effect] : ["No Effect"]))}
                         background={COLORS.back_light}
                         fontSize={13}
                         >
