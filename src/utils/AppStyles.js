@@ -7,12 +7,12 @@ export default StyleSheet.create({
     Background: {
         backgroundColor: COLORS.back_dark,
         height: '100%',
-        width: "100%"
+        width: "100%",
     },
     Container: {
         marginTop: 10,
+        marginBottom: 247,
         width: "88%",
-        height: "98%",
         alignSelf: "center",
     },
     Modal: {

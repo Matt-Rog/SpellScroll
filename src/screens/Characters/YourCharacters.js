@@ -163,7 +163,7 @@ export default function YourCharactersPage({navigation, route}) {
               )}
             />
             </View>
-            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 20, right: 0}}>
+            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 100, right: 0}}>
               <Pressable
                   onPress={() => navigation.navigate("Add Character", {edit: false})}
                   style={styles.applyBTN}    

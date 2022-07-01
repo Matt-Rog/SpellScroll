@@ -123,7 +123,7 @@ export default function FilterPage({navigation, route}) {
               </FlatList>
           </View>
           {/* Apply / Reset buttons */}
-          <View style={{flexDirection: "row-reverse", alignItems: "center", justifyContent: "space-evenly", position: "absolute", bottom: 20, left: 0, right: 0}}>
+          <View style={{flexDirection: "row-reverse", alignItems: "center", justifyContent: "space-evenly", position: "absolute", bottom: 100, left: 0, right: 0}}>
               <Pressable
                   onPress={() => onFilterApply()}
                   style={AppStyles.PrimaryButton}    
