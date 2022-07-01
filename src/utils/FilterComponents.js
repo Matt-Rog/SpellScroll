@@ -8,6 +8,7 @@ export default function FilterComponents(props) {
     return [
         {
         name: "Class",
+        prompt: "Select classes",
         options: ["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
         component:
             <FilterList
@@ -21,6 +22,7 @@ export default function FilterComponents(props) {
         },
         {
         name: "Level",
+        prompt: "Select levels",
         options: [1,2,3,4,5,6,7,8,9],
         component: 
             <FilterList
@@ -34,6 +36,7 @@ export default function FilterComponents(props) {
         },
         {
         name: "Components",
+        prompt: "Select components",
         options: ["Material", "Verbal", "Somatic"],
         component: 
             <FilterButton
@@ -47,6 +50,7 @@ export default function FilterComponents(props) {
         },
         {
         name: "School",
+        prompt: "Select schools",
         options: ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"],
         component: 
             <FilterList
@@ -60,6 +64,7 @@ export default function FilterComponents(props) {
         },
         {
         name: "Casting Time",
+        prompt: "Select times",
         options: ["1 Reaction", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "12 Hours", "24 Hours"],
         component: 
             <FilterList

@@ -9,6 +9,8 @@ import {
     FlatList
 } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+// Utility
+import AppStyles from '../utils/AppStyles';
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -31,18 +33,12 @@ const ModalSearch = (props) => {
                     {/* <Text style={styles.name}>{props.childComponent.name}</Text> */}
                 </View>
                 {props.childComponent.component}
-                <View style={{flexDirection: "row-reverse", alignItems: "center"}}>
+                <View style={{alignItems: "center"}}>
                     <Pressable
                         onPress={() => onApplyPress()}
-                        style={styles.applyBTN}    
+                        style={AppStyles.PrimaryButton}    
                     >
-                        <Text style={styles.applyTXT}>Apply</Text>
-                    </Pressable>
-                    <Pressable
-                        onPress={() => props.changeModalVisibility(false)}
-                        style={styles.cancelBTN}    
-                    >
-                        <Text style={styles.cancelTXT}>Cancel</Text>
+                        <Text style={styles.applyTXT}>Save</Text>
                     </Pressable>
                 </View>
             </View>       

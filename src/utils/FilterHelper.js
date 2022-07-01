@@ -83,7 +83,7 @@ const SPELLDATA = MOCKDATA
                   return spellArr.indexOf(option) >= 0;
                 });
               } else {
-                if(!filterArr.includes(spellArr)){
+                if(filterArr.includes(spellArr)){
                   intersect=true
                 }
               }

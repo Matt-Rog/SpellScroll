@@ -28,14 +28,18 @@ const ModalBase = (props) => {
     const header = 
     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
         <Text style={AppStyles.Header2}>{props.title}</Text>
-        <Pressable
+        {props.showX == undefined || props.showX == true ? 
+            <Pressable
             onPress={() => onXPress()}>
-            <FontAwesome
-                name={"times-circle"}
-                size={30}
-                color={"#CCD2E3"}
-                />
-        </Pressable>
+                <FontAwesome
+                    name={"times-circle"}
+                    size={30}
+                    color={"#CCD2E3"}
+                    />
+            </Pressable> 
+            : null  
+        }
+
     </View>
 
     return (

@@ -9,7 +9,9 @@ import {
     View,
     Image,
     Modal,
-    ScrollView
+    ScrollView,
+    TouchableWithoutFeedback,
+    TouchableOpacity
 } from 'react-native';
 import React, {useEffect, useState, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -29,6 +31,7 @@ import EmptySplash from '../../components/EmptySplash';
 
 
 import {COLORS} from '../../utils/Colors'
+import { ModalBase } from '../../components/ModalBase';
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -131,6 +134,7 @@ export default function SearchPage({navigation, route}) {
     function onApplyPress(){
       FILTER.filterSpells().then(
         newSpells => {
+          changeModalVisibility(false)
           setFilterSpells(newSpells)
           setSearch("")
           // searchSpells("")
@@ -207,7 +211,7 @@ export default function SearchPage({navigation, route}) {
     
 
     const [isModalVisible, setIsModalVisible] = useState(false)
-    const [modalComponent, setModalComponent] = useState()
+    const [modalComponent, setModalComponent] = useState(getOrderedFilters()[0])
 
     const changeModalVisibility = (bool) => {
       setIsModalVisible(bool)
@@ -303,14 +307,35 @@ export default function SearchPage({navigation, route}) {
               transparent={true}
               animationType='fade'
               visible={isModalVisible}
-              style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+              // style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
               nRequestClose={() => changeModalVisibility(false)}>
-                <ModalSearch
-                  onApplyPress={() => onApplyPress()}
-                  changeModalVisibility={changeModalVisibility}
-                  childComponent={modalComponent}
-                >
-                </ModalSearch>
+                <TouchableOpacity style={{width: "100%", height: "100%", justifyContent: "center", alignContent: "center", backgroundColor: 'rgba(0, 0, 0, 0.5)'}} activeOpacity={1} onPress={() => console.log("Back drop closing disabled")}>
+                    <TouchableOpacity onPress={() => console.log('Meep')} activeOpacity={1} >
+                      <ModalBase
+                        changeModalVisibility={changeModalVisibility}
+                        header={true}
+                        title={modalComponent?.prompt}
+                        showX={false}
+                        component={
+                        <View>
+                          {modalComponent?.component}
+                          <View style={{alignItems: "center"}}>
+                              <Pressable
+                                  onPress={() => onApplyPress()}
+                                  style={AppStyles.PrimaryButton}    
+                              >
+                                  <Text style={AppStyles.Header4}>Save</Text>
+                              </Pressable>
+                          </View>
+                        </View>
+                        
+                        }
+                      >
+                      </ModalBase>
+                    </TouchableOpacity>
+                </TouchableOpacity>                  
+              
+                
             </Modal>
 
             {/* Sorting */}
