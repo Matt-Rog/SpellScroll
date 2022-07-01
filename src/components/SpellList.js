@@ -31,9 +31,13 @@ const SpellList = (props) => {
     // Spell ID -> Spell Data
     function getSpells(){
       var result = []
-      for(const ID of props.spellIDs){
-        var found = MOCKDATA.find(spell => spell.ID === ID)
-        result.push(found)
+      if(Array.isArray(props.spellIDs)){
+        for(const ID of props.spellIDs){
+          var found = MOCKDATA.find(spell => spell.ID === ID)
+          result.push(found)
+        }
+      } else {
+        result = props.spellIDs
       }
       setSpells(result)
     }

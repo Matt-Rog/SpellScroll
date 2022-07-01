@@ -71,7 +71,7 @@ const SPELLDATA = MOCKDATA
               const filterArr = filter[key]   // Specified property options
               const spellArr = item[key.toLowerCase()]    // Spell properties
 
-
+              // If spells doesn't have the property, it is filtered out
               if(spellArr === undefined){
                 return false;
               }
@@ -83,14 +83,13 @@ const SPELLDATA = MOCKDATA
                   return spellArr.indexOf(option) >= 0;
                 });
               } else {
-                if(filterArr.includes(spellArr)){
+                if(!filterArr.includes(spellArr)){
                   intersect=true
                 }
               }
-              if (intersect) {
-                return true
+              if (!intersect) {
+                return false
               }
-              return false;
             };
             // If property not specified by filter, include in result.
             return true;
