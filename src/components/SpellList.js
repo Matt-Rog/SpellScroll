@@ -7,6 +7,7 @@ import {
     Pressable,
     View,
     Image,
+    Modal
     
 } from 'react-native';
 import { useState, useEffect } from 'react';
@@ -17,12 +18,19 @@ import {COLORS} from '../utils/Colors'
 import AppStyles from '../utils/AppStyles';
 // Components
 import Tags from './Tags';
+import SpellSettings from '../screens/Spells/SpellSettings';
 
 
 
 const SpellList = (props) => {
 
     const [spells, setSpells] = useState([])
+    const [spellID, setSpellID] = useState(0)
+    const [isModalVisible, setIsModalVisible] = useState(false)
+
+    const changeModalVisibility = (bool) => {
+      setIsModalVisible(bool)
+  }
 
     useEffect(() => {
       getSpells()
@@ -71,44 +79,64 @@ const SpellList = (props) => {
     }
 
     return (
-            <FlatList
-              style={{borderRadius: 12}}
-              scrollEnabled={props.scrollEnabled}
-              showsVerticalScrollIndicator={false}
-              data={spells}
-              renderItem={({item}) => (
-                <Pressable 
-                  onPress={() => props.navigation.navigate(next, {id: item.ID})}
-                  style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, styles.resultBox]}
-                  android_ripple={{color:'#4C515B'}}>
-              
-                  <View style={[{backgroundColor: COLORS.school[item?.school.toLowerCase()]},styles.schoolBar]}>
-                    <Image 
-                    style={styles.icon}
-                    source={Images.school[item?.school.toLowerCase()]}
-                    resizeMode="stretch">
-                    </Image>
-                  </View>
-                  <View style={styles.text}>
-                    <View style={styles.rowOne}>
-                      <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[AppStyles.Header4]}>{item?.name}</Text>
-                      <Text style={styles.spellTXT}>{levelLogic({item})}</Text>
-                    </View>
-                    <View style={[styles.rowOne, {marginTop: 6}]}>
-                      <Text style={[AppStyles.Header4, {fontSize: 17, color: COLORS.secondary_content}]}>{item?.school}</Text>
-                      <Tags
-                        tags={(item?.tags!=undefined ? item?.tags : (item?.effect!=undefined ? [item?.effect] : ["No Effect"]))}
-                        background={COLORS.back_light}
-                        fontSize={13}
-                        >
-                        
-                      </Tags>
-                    </View>
+            <View>
+              <Modal
+                transparent={true}
+                animationType='fade'
+                visible={isModalVisible}
+                style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+                nRequestClose={() => changeModalVisibility(false)}>
 
-                  </View>
-                </Pressable>
-              )}
-            />
+                  <SpellSettings
+                    navigation={props.navigation}
+                    spellID={spellID}
+                    changeModalVisibility={changeModalVisibility}
+                  ></SpellSettings>
+              </Modal>
+
+            
+              <FlatList
+                style={{borderRadius: 12}}
+                scrollEnabled={props.scrollEnabled}
+                showsVerticalScrollIndicator={false}
+                data={spells}
+                renderItem={({item}) => (
+                  <Pressable 
+                    onPress={() => props.navigation.navigate(next, {id: item.ID})}
+                    onLongPress={() => {
+                      setSpellID(item.ID) 
+                      changeModalVisibility(true)}}
+                    style={({pressed}) => [{backgroundColor: pressed? COLORS.back_light : COLORS.back}, styles.resultBox]}
+                    android_ripple={{color: COLORS.back_light}}>
+                
+                    <View style={[{backgroundColor: COLORS.school[item?.school.toLowerCase()]},styles.schoolBar]}>
+                      <Image 
+                      style={styles.icon}
+                      source={Images.school[item?.school.toLowerCase()]}
+                      resizeMode="stretch">
+                      </Image>
+                    </View>
+                    <View style={styles.text}>
+                      <View style={styles.rowOne}>
+                        <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[AppStyles.Header4]}>{item?.name}</Text>
+                        <Text style={styles.spellTXT}>{levelLogic({item})}</Text>
+                      </View>
+                      <View style={[styles.rowOne, {marginTop: 6}]}>
+                        <Text style={[AppStyles.Header4, {fontSize: 17, color: COLORS.secondary_content}]}>{item?.school}</Text>
+                        <Tags
+                          tags={(item?.tags!=undefined ? item?.tags : (item?.effect!=undefined ? [item?.effect] : ["No Effect"]))}
+                          background={COLORS.back_light}
+                          fontSize={13}
+                          >
+                          
+                        </Tags>
+                      </View>
+
+                    </View>
+                  </Pressable>
+                )}
+              />
+            </View>
     );
 }
 

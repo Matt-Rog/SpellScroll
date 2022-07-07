@@ -55,7 +55,7 @@ export default StyleSheet.create({
         color: COLORS.secondary_content,
         borderColor: COLORS.secondary_content,
         borderWidth: 3,
-        borderRadius: 25, 
+        borderRadius: 15, 
         paddingHorizontal: 30,
         paddingVertical: 15,
     },

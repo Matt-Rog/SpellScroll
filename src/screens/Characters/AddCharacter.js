@@ -111,7 +111,10 @@ export default function AddCharacterPage({navigation, route}){
         if (classes.length>0 && name.length>0){
             var spells = {}
             for(var i=0; i < classes.length; i++){
-                spells[classes[i]] = [i]
+                spells[classes[i]] = {
+                    known: [0],
+                    prepared: [0]
+                }
             }
             console.log(spells)
 

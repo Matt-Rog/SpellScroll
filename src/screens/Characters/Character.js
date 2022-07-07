@@ -10,9 +10,6 @@ import {
     Modal,
     ScrollView,
     Dimensions,
-    Animated,
-    TouchableNativeFeedbackBase,
-    ViewComponent
     
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -68,20 +65,29 @@ export default function CharacterPage({navigation, route}) {
         setChars(jsonValue)
         setSpells(tempChar.spells)
 
-        var localComponent = <Text style={AppStyles.Header1}>HI</Text>
-
         var newData = {}
         for (const [key, value] of Object.entries(tempChar.spells)) {
           console.log("gerro")
-          console.log(value)
-          newData[key] = 
+          var tempStats = <View style={AppStyles.Container}>
+            <Text style={AppStyles.Header4}>KNOWN</Text>
             <SpellList
-              onResultPress={onResultPress}
-              spellIDs={value}
-              navigation={navigation}
-              prevScreen="Character"
-              scrollEnabled={true}>
+                onResultPress={onResultPress}
+                spellIDs={value.known}
+                navigation={navigation}
+                prevScreen="Character"
+                scrollEnabled={true}>
             </SpellList>
+            <Text style={AppStyles.Header4}>PREPARED</Text>
+            <SpellList
+                onResultPress={onResultPress}
+                spellIDs={value.prepared}
+                navigation={navigation}
+                prevScreen="Character"
+                scrollEnabled={true}>
+            </SpellList>
+          </View>
+
+          newData[key] = tempStats
         };
         setData(newData)
 
@@ -199,13 +205,24 @@ export default function CharacterPage({navigation, route}) {
             <Text style={[AppStyles.Header4, {paddingVertical: 10,}]}>{char.classes[0]}</Text>
             <View style={{height: 4, width: "auto",backgroundColor: char.color}}></View>
           </View>
-          <SpellList
-              onResultPress={onResultPress}
-              spellIDs={Object.values(spells)[0]}
-              navigation={navigation}
-              prevScreen="Character"
-              scrollEnabled={true}>
-          </SpellList>
+          <View style={AppStyles.Container}>
+            <Text style={AppStyles.Header4}>KNOWN</Text>
+            <SpellList
+                onResultPress={onResultPress}
+                spellIDs={Object.values(Object.values(spells)[0])[0]}
+                navigation={navigation}
+                prevScreen="Character"
+                scrollEnabled={true}>
+            </SpellList>
+            <Text style={AppStyles.Header4}>PREPARED</Text>
+            <SpellList
+                onResultPress={onResultPress}
+                spellIDs={Object.values(Object.values(spells)[0])[1]}
+                navigation={navigation}
+                prevScreen="Character"
+                scrollEnabled={true}>
+            </SpellList>
+          </View>
         </View>}
       </SafeAreaView>
     );
