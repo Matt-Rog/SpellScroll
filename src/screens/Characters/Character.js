@@ -230,15 +230,19 @@ export default function CharacterPage({navigation, route}) {
             <View style={{height: 4, width: "auto",backgroundColor: char.color}}></View>
           </View>
           <View style={AppStyles.Container}>
-            <Text style={AppStyles.Header4}>KNOWN</Text>
-            <SpellList
-                onResultPress={onResultPress}
-                spellIDs={Object.values(Object.values(spells)[0])[0]}
-                navigation={navigation}
-                prevScreen="Character"
-                scrollEnabled={true}>
-            </SpellList>
+          <View style={{marginBottom: 20}}>
+              <Text style={AppStyles.Header4}>KNOWN</Text>
+              {(Object.values(Object.values(spells)[0])[0]) == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
+              <SpellList
+                  onResultPress={onResultPress}
+                  spellIDs={Object.values(Object.values(spells)[0])[0]}
+                  navigation={navigation}
+                  prevScreen="Character"
+                  scrollEnabled={true}>
+              </SpellList>
+            </View>
             <Text style={AppStyles.Header4}>PREPARED</Text>
+            {(Object.values(Object.values(spells)[0])[1]) == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
             <SpellList
                 onResultPress={onResultPress}
                 spellIDs={Object.values(Object.values(spells)[0])[1]}
@@ -246,6 +250,14 @@ export default function CharacterPage({navigation, route}) {
                 prevScreen="Character"
                 scrollEnabled={true}>
             </SpellList>
+            <Pressable
+              onPress={() => {
+                updateFilter({Class: [char.classes[0]]})
+                navigation.navigate('Spells', {screen: 'Search Spells'})
+              }}
+              style={[AppStyles.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
+              <Text style={AppStyles.Header4}>Add {char.classes[0]} spells</Text>
+            </Pressable>
           </View>
         </View>}
       </SafeAreaView>
