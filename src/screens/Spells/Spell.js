@@ -7,6 +7,7 @@ import {
     Pressable,
     View,
     Image,
+    Modal,
     ScrollView
     
 } from 'react-native';
@@ -22,6 +23,7 @@ import { ModalBase } from '../../components/ModalBase';
 import Splash from '../../components/Splash';
 import SlidingTab from '../../components/SlidingTab';
 import SpellList from '../../components/SpellList';
+import SpellSettings from './SpellSettings';
 import Tags from '../../components/Tags'
 
 
@@ -29,6 +31,11 @@ export default function SpellPage({navigation, route}) {
 
     const {id} = route.params;
     var Spell = MOCKDATA.find(item=>item.ID===id);
+    const [isModalVisible, setIsModalVisible] = useState(false)
+
+    const changeModalVisibility = (bool) => {
+      setIsModalVisible(bool)
+    }
 
     function getSubtitle(spell){
       let subtitle = ""
@@ -144,7 +151,7 @@ export default function SpellPage({navigation, route}) {
     }
 
     const onSettingsPress = () => {
-      console.log("SPELL SETTINGS")
+      changeModalVisibility(true)
     }
 
 
@@ -155,9 +162,22 @@ export default function SpellPage({navigation, route}) {
             bubble={true}
             settings={true}
             onLeftPress={() => onBackPress()}
-            onRightPress={() => onBackPress()}
+            onRightPress={() => onSettingsPress()}
             ></TopMenu>
           {/* Spell Settings Modal */}
+          <Modal
+            transparent={true}
+            animationType='fade'
+            visible={isModalVisible}
+            style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+            nRequestClose={() => changeModalVisibility(false)}>
+
+              <SpellSettings
+                navigation={navigation}
+                spellID={id}
+                changeModalVisibility={changeModalVisibility}
+              ></SpellSettings>
+          </Modal>
 
 
           <View style={[styles.contentTab, {marginTop: 20}]}>
