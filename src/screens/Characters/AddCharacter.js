@@ -53,6 +53,7 @@ export default function AddCharacterPage({navigation, route}){
             setNotes(char.notes)
             setIcon(char.icon)
             setColor(char.color)
+            setSpells(char.spells)
         }
         
         } catch(e) {
@@ -78,6 +79,7 @@ export default function AddCharacterPage({navigation, route}){
     const [icon, setIcon] = useState("hat")
     const [color, setColor] = useState("#FFF")
     const [notes, setNotes] = useState("")
+    const [spells, setSpells] = useState({})
     const [ID, setID] = useState(0)
 
     const [isModalVisible, setIsModalVisible] = useState(false)
@@ -109,14 +111,17 @@ export default function AddCharacterPage({navigation, route}){
 
     function onApplyPress(){
         if (classes.length>0 && name.length>0){
-            var spells = {}
-            for(var i=0; i < classes.length; i++){
-                spells[classes[i]] = {
-                    known: [0],
-                    prepared: [0]
+            var newSpells = spells
+            if(!route.params.edit){
+                newSpells = {}
+                for(var i=0; i < classes.length; i++){
+                    newSpells[classes[i]] = {
+                        known: [],
+                        prepared: []
+                    }
                 }
+
             }
-            console.log(spells)
 
             applyFromModal({
                 name: name,
@@ -124,7 +129,7 @@ export default function AddCharacterPage({navigation, route}){
                 notes: notes,
                 icon: icon,
                 color: color,
-                spells: spells
+                spells: newSpells
             })
         }
         

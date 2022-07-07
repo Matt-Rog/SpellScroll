@@ -45,11 +45,6 @@ export default function CharacterPage({navigation, route}) {
     const [firstClass, setFirstClass] = useState(char.classes[0])
 
     useEffect(() => {
-      console.log("SPELLS CHANGED")
-      navigation.navigate("Character", {charID: char.ID})
-    }, [spells])
-
-    useEffect(() => {
       const loadData = navigation.addListener('focus', () => {
         getData()
       })
@@ -72,16 +67,21 @@ export default function CharacterPage({navigation, route}) {
         var newData = {}
         for (const [key, value] of Object.entries(tempChar.spells)) {
           console.log("gerro")
+          console.log(value)
           var tempStats = <View style={AppStyles.Container}>
-            <Text style={AppStyles.Header4}>KNOWN</Text>
-            <SpellList
-                onResultPress={onResultPress}
-                spellIDs={value.known}
-                navigation={navigation}
-                prevScreen="Character"
-                scrollEnabled={true}>
-            </SpellList>
+            <View style={{marginBottom: 20}}>
+              <Text style={AppStyles.Header4}>KNOWN</Text>
+              {value.known.length == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
+              <SpellList
+                  onResultPress={onResultPress}
+                  spellIDs={value.known}
+                  navigation={navigation}
+                  prevScreen="Character"
+                  scrollEnabled={true}>
+              </SpellList>
+            </View>
             <Text style={AppStyles.Header4}>PREPARED</Text>
+            {value.prepared.length == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
             <SpellList
                 onResultPress={onResultPress}
                 spellIDs={value.prepared}
@@ -89,6 +89,14 @@ export default function CharacterPage({navigation, route}) {
                 prevScreen="Character"
                 scrollEnabled={true}>
             </SpellList>
+            <Pressable
+              onPress={() => {
+                updateFilter({Class: [key]})
+                navigation.navigate('Spells', {screen: 'Search Spells'})
+              }}
+              style={[AppStyles.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
+              <Text style={AppStyles.Header4}>Add {key} spells</Text>
+            </Pressable>
           </View>
 
           newData[key] = tempStats
@@ -108,6 +116,18 @@ export default function CharacterPage({navigation, route}) {
         await AsyncStorage.setItem('characters', jsonValue)
       } catch (e) {I
         console.log("Error updating characters")
+        console.log(e)
+      }
+    }
+
+    const updateFilter = async (value) => {
+      try {
+        const jsonValue = JSON.stringify(value)
+        await AsyncStorage.setItem('filter', jsonValue)
+        console.log()
+        setFilter(value)
+      } catch (e) {I
+        console.log("Error updating filters")
         console.log(e)
       }
     }
