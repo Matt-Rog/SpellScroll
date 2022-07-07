@@ -21,6 +21,22 @@ const {width, height} = Dimensions.get('screen')
 
 const SlidingTab = (props) => {
 
+    const [data, setData] = useState(Object.keys(props.data).map((i) => ({
+      key: i,
+      class: i,
+      content: props.data[i],
+      ref: React.createRef()
+    })))
+
+    useEffect(() => {
+      setData(Object.keys(props.data).map((i) => ({
+        key: i,
+        class: i,
+        content: props.data[i],
+        ref: React.createRef()
+      })))
+    }, [props.data])
+
     const scrollX = React.useRef(new Animated.Value(0)).current
     const ref = React.useRef()
     const onItemPress = React.useCallback(itemIndex => {
@@ -28,12 +44,6 @@ const SlidingTab = (props) => {
         offset: itemIndex * width
       })
     })
-    const data = Object.keys(props.data).map((i) => ({
-      key: i,
-      class: i,
-      content: props.data[i],
-      ref: React.createRef()
-    }))
 
     const Tab = React.forwardRef(({item, onItemPress}, ref) => {
       return (

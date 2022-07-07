@@ -23,7 +23,7 @@ import { ModalBase } from '../../components/ModalBase';
 import Splash from '../../components/Splash';
 import SlidingTab from '../../components/SlidingTab';
 import SpellList from '../../components/SpellList';
-import SpellSettings from './SpellSettings';
+import SpellSettings from '../Characters/SpellSettings';
 import Tags from '../../components/Tags'
 
 

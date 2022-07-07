@@ -21,18 +21,20 @@ const Splash = (props) => {
 
     const hide = props.hide
 
-    const [image, setImage] = useState(props.image!=undefined ? props.image : "default")
+    const [image, setImage] = useState(props.image)
 
     if(hide){
         return null
     }
     return (
         <View style={styles.splash}>
-            <Image
-                style={styles.splashIMG}
-                source={Images.splash[image]}
-                resizeMode="contain">
-            </Image>
+            {props.image != undefined ?
+                <Image
+                    style={styles.splashIMG}
+                    source={Images.splash[image]}
+                    resizeMode="contain">
+                </Image>
+            : null}
             <Text style={AppStyles.Header2}>{props.title}</Text>
             <Text style={[AppStyles.ContentBody, {marginTop: 5, maxWidth: "70%", textAlign: "center"}]}>{props.body}</Text>
             {props.component}

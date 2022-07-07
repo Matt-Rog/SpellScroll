@@ -44,6 +44,10 @@ export default function CharacterPage({navigation, route}) {
     const {charID} = route.params;
     const [firstClass, setFirstClass] = useState(char.classes[0])
 
+    useEffect(() => {
+      console.log("SPELLS CHANGED")
+      navigation.navigate("Character", {charID: char.ID})
+    }, [spells])
 
     useEffect(() => {
       const loadData = navigation.addListener('focus', () => {

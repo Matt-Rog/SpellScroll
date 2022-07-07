@@ -46,7 +46,7 @@ export default StyleSheet.create({
     },
     PrimaryButton: {
         color: COLORS.primary_content,
-        borderRadius: 25, 
+        borderRadius: 15, 
         paddingHorizontal: 30,
         paddingVertical: 15,
         backgroundColor: COLORS.primary_accent

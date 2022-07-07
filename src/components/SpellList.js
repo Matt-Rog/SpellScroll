@@ -18,7 +18,7 @@ import {COLORS} from '../utils/Colors'
 import AppStyles from '../utils/AppStyles';
 // Components
 import Tags from './Tags';
-import SpellSettings from '../screens/Spells/SpellSettings';
+import SpellSettings from '../screens/Characters/SpellSettings';
 
 
 

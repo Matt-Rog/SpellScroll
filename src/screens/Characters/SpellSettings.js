@@ -80,7 +80,6 @@ const SpellSettings = (props) => {
 
     function manageStats(item, index, stat){
         if(selectedChar!={spells: {}}){
-            console.log(index)
             const STAT_INDEX = stat == 'known' ? 0 : 1
             var tempSpells = Object.values(selectedChar.spells)
             var tempClassSpells = tempSpells[index]
@@ -94,8 +93,6 @@ const SpellSettings = (props) => {
             
             
             selectedChar.spells[selectedChar.classes[index]] = stat == 'known' ? {known: tempStat, prepared: Object.values(tempSpells[index])[1]} : {known: Object.values(tempSpells[index])[0], prepared: tempStat}
-            console.log("final!!!!!")
-            console.log(selectedChar)
             const newChars = Chars
             newChars[selectedChar.ID] = selectedChar
             setSelectedChar(selectedChar)
@@ -109,19 +106,19 @@ const SpellSettings = (props) => {
             data={Object.values(selectedChar?.spells)}
             renderItem={({item, index}) => (               
                 
-                    <View style={{flexDirection: 'row', alignItems: 'center', marginVertical: 8}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginVertical: 8, justifyContent: 'space-evenly'}}>
                         <FontAwesome5
-                            style={{marginHorizontal: 10, marginLeft: 10, transform: [{rotate: '0deg'}]}}
+                            style={{marginHorizontal: 10, marginLeft: 20, transform: [{rotate: '0deg'}]}}
                             name={'scroll'}
                             color={selectedChar.color}
                             size={18}/>
-                        <View style={{backgroundColor: COLORS.back_light, borderRadius: 8, padding: 8, flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <View style={{backgroundColor: COLORS.back_light, width: 200, borderRadius: 8, padding: 8, flexDirection: 'row', justifyContent: 'space-between'}}>
                             <Text style={{color: COLORS.primary_content, fontWeight: 'bold', marginHorizontal: 10}}>{selectedChar.classes[index]}</Text>
                             <View style={{flexDirection: 'row'}}>
                                 <Pressable
                                     onPress={() => manageStats(item, index, 'known')}>
                                     <FontAwesome5
-                                        style={{marginHorizontal: 10, marginLeft: 30}}
+                                        style={{marginHorizontal: 10}}
                                         name={'graduation-cap'}
                                         color={(item['known'].includes(spellID)) ? selectedChar.color : COLORS.back}
                                         size={18}/>
@@ -129,7 +126,7 @@ const SpellSettings = (props) => {
                                 <Pressable
                                     onPress={() => manageStats(item, index, 'prepared')}>
                                     <FontAwesome5
-                                        style={{marginHorizontal: 10, marginLeft: 30}}
+                                        style={{marginHorizontal: 10}}
                                         name={'magic'}
                                         color={(item['prepared'].includes(spellID)) ? selectedChar.color : COLORS.back}
                                         size={18}/>
@@ -153,22 +150,46 @@ const SpellSettings = (props) => {
                 component={
                     <View style={{marginVertical: 0}}>
                         <Text style={[AppStyles.Header4, {fontStyle: 'italic', color: COLORS.secondary_content, marginTop: 5, marginBottom: 10}]}>{spell.name}</Text>
+                    {Chars.length==0 ? 
+                    <Splash
+                        body={"No characters found"}
+                        component={
+                        <Pressable
+                            onPress={() => {
+                                changeModalVisibility(false)
+                                props.navigation.navigate("Add Character", {edit: false})
+                            }}
+                            style={[AppStyles.PrimaryButton, {marginTop: 10}]}>
+                            <Text style={AppStyles.Header4}>Add Character</Text> 
+                        </Pressable>
+                        }></Splash>
+                    : null}
                     <FlatList
                         data={Chars}
                         showsVerticalScrollIndicator={false}
                         renderItem={({item}) => (
-                            <View>                            
+                            <View style={{marginBottom: 10}}>                            
                                 <Pressable 
                                     onPress={() => selectCharacter(item)}
-                                    style={({pressed}) => [{backgroundColor: pressed? COLORS.primary_accent : COLORS.back_light}, {flexDirection: 'row', alignItems: "center", padding: 8, borderRadius: 15}]}>
-                                    <View style={{padding: 5, backgroundColor: item.color, borderRadius: 15}}>
-                                        <Image
-                                            style={{height: 35, width: 35,}}
-                                            source={Images.icon[item.icon.toLowerCase()]}
-                                            resizeMode="contain">
-                                        </Image>
+                                    style={({pressed}) => [{backgroundColor: pressed? COLORS.back_light : COLORS.back_light}, {flexDirection: 'row', alignItems: "center", padding: 8, borderRadius: 15, justifyContent: 'space-between'}]}>
+                                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                        <View style={{padding: 5, backgroundColor: item.color, borderRadius: 15}}>
+                                            <Image
+                                                style={{height: 35, width: 35,}}
+                                                source={Images.icon[item.icon.toLowerCase()]}
+                                                resizeMode="contain">
+                                            </Image>
+                                        </View>
+                                        <Text style={[AppStyles.Header3, {marginLeft: 8}]}>{item.name}</Text>
                                     </View>
-                                    <Text style={[AppStyles.Header3, {marginLeft: 8}]}>{item.name}</Text>
+
+                                        
+                                        <FontAwesome5
+                                            style={{marginRight: 10}}
+                                            name={(selectedChar != {} && selectedChar.ID == item.ID? 'angle-up' : 'angle-down')}
+                                            color={COLORS.secondary_content}
+                                            size={20}/>
+
                                 </Pressable>
                                 {(selectedChar != {} && selectedChar.ID == item.ID? classList : null)}
                             </View>
