@@ -164,7 +164,7 @@ export default function AddCharacterPage({navigation, route}){
         
     }
 
-    const colorList = ["#ef5c3e","#88b9ed","#E94CE0","#b0f389","#f2a261"]
+    const colorList = ["#e6646e","#ffd164","#b4f09b","#a5cdff","#8cb4eb", "#a35bef", "#feca9c", "#c5d3dd", "#c68d7a"]
     function selectColor(selection){
         if(selection == color){
             setColor("#FFF")
@@ -173,7 +173,7 @@ export default function AddCharacterPage({navigation, route}){
         }
     }
 
-    const iconList = ["wizard", "orc", "elf1", "faun", "gnome"]
+    const iconList = ["blacksmith", "bard", "cleric", "druid", "elf1", "elf2", "genie", "gnome", "faun", "orc", "warlock", "wizard", "warrior1", "warrior2"]
     function selectIcon(selection){
         if(selection == icon){
             setIcon("hat")
@@ -281,7 +281,7 @@ export default function AddCharacterPage({navigation, route}){
                                 return (
                                     <Pressable
                                         onPress={() => selectIcon(item)}
-                                        style={[styles.icon, {backgroundColor: icon == item ? "#CCD2E3" : "#373C48" }]}
+                                        style={[styles.icon, {backgroundColor: icon == item ? color : "#373C48" }]}
                                     
                                     >
                                         <Image 
