@@ -69,7 +69,7 @@ export default function CharacterPage({navigation, route}) {
           var tempStats = <View style={STYLES.Container}>
             <View style={{marginBottom: 20}}>
               <Text style={STYLES.Header4}>KNOWN</Text>
-              {value.known.length == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
+              {value.known.length == 0 ? <Text style={STYLES.ContentBody}>No spells found</Text> : null}
               <SpellList
                   onResultPress={onResultPress}
                   spellIDs={value.known}
@@ -79,7 +79,7 @@ export default function CharacterPage({navigation, route}) {
               </SpellList>
             </View>
             <Text style={STYLES.Header4}>PREPARED</Text>
-            {value.prepared.length == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
+            {value.prepared.length == 0 ? <Text style={STYLES.ContentBody}>No spells found</Text> : null}
             <SpellList
                 onResultPress={onResultPress}
                 spellIDs={value.prepared}
