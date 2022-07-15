@@ -1,10 +1,9 @@
 import { 
-  Text,
   StyleSheet,
   Dimensions,
-  View
+  View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,11 +17,20 @@ import YourCharactersPage from '../screens/Characters/YourCharacters';
 import CharacterPage from '../screens/Characters/Character';
 import AddCharacterPage from '../screens/Characters/AddCharacter';
 import SettingsPage from '../screens/Settings/Settings';
-import { COLORS } from './Colors';
+import * as THEME from './Theme'
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const Stack = createStackNavigator();
 const MenuTab = createBottomTabNavigator()
 const WIDTH = Dimensions.get('window').width
+
 const Theme = {
   dark: true,
   colors: {
@@ -100,68 +108,66 @@ function Settings(){
 }
 
 
-
 export default function App() {
 
   return (
-    <NavigationContainer
-      theme={Theme}>
-      <MenuTab.Navigator
-        style={{
-          overflow: 'hidden'
-        }}
-        screenOptions={{
-          headerShown: false,
-          footerShown: true,
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            backgroundColor: COLORS.back,
-            borderRadius: 25,
-            overflow: 'hidden',
-            marginTop: -90,
-            height: 70,
-            width: "100%",
-            alignSelf: "center"
-            
-          },
-        }}
-      >
-        <MenuTab.Screen name="Spells" component={Spells} options={{
-          tabBarIcon: ({focused}) => (
-            <View style={focused ? styles.selectedTab : styles.unselectedTab}>
-              <FontAwesome
-                name={"search"}
-                size={focused ? 35 : 30}
-                color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
-            </View>
-          )
-        }}
-          />
-        <MenuTab.Screen name="Characters" component={Characters} options={{
-          tabBarIcon: ({focused}) => (
-            <View style={focused ? styles.selectedTab : styles.unselectedTab}>
-              <FontAwesome
-                name={"user"}
-                size={focused ? 35 : 30}
-                color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
-            </View>
-          )
-        }}
-          />
-        <MenuTab.Screen name="Settings" component={Settings} options={{
-          tabBarIcon: ({focused}) => (
-            <View style={focused ? styles.selectedTab : styles.unselectedTab}>
-              <FontAwesome
-                name={"cog"}
-                size={focused ? 35 : 30}
-                color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
-            </View>
-          )
-        }}
-          />
-      </MenuTab.Navigator>
-    </NavigationContainer>
-
+      <NavigationContainer
+        theme={Theme}>
+        <MenuTab.Navigator
+          style={{
+            overflow: 'hidden'
+          }}
+          screenOptions={{
+            headerShown: false,
+            footerShown: true,
+            tabBarShowLabel: false,
+            tabBarStyle: {
+              backgroundColor: COLORS.back,
+              borderRadius: 25,
+              overflow: 'hidden',
+              marginTop: -90,
+              height: 70,
+              width: "100%",
+              alignSelf: "center"
+              
+            },
+          }}
+        >
+          <MenuTab.Screen name="Spells" component={Spells} options={{
+            tabBarIcon: ({focused}) => (
+              <View style={focused ? [styles.selectedTab, {backgroundColor: COLORS.back_light}] : styles.unselectedTab}>
+                <FontAwesome
+                  name={"search"}
+                  size={focused ? 35 : 30}
+                  color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
+              </View>
+            )
+          }}
+            />
+          <MenuTab.Screen name="Characters" component={Characters} options={{
+            tabBarIcon: ({focused}) => (
+              <View style={focused ? [styles.selectedTab, {backgroundColor: COLORS.back_light}] : styles.unselectedTab}>
+                <FontAwesome
+                  name={"user"}
+                  size={focused ? 35 : 30}
+                  color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
+              </View>
+            )
+          }}
+            />
+          <MenuTab.Screen name="Settings" component={Settings} options={{
+            tabBarIcon: ({focused}) => (
+              <View style={focused ? [styles.selectedTab, {backgroundColor: COLORS.back_light}] : styles.unselectedTab}>
+                <FontAwesome
+                  name={"cog"}
+                  size={focused ? 35 : 30}
+                  color={focused ? COLORS.primary_content : COLORS.secondary_content}/>
+              </View>
+            )
+          }}
+            />
+        </MenuTab.Navigator>
+      </NavigationContainer>
   );
 }
 
@@ -170,8 +176,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   selectedTab: {
-    borderRadius: 1000, 
-    backgroundColor: COLORS.back_light, 
+    borderRadius: 1000,
     width: 150, 
     height: 150, 
     justifyContent: "center", 

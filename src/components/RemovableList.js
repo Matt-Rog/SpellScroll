@@ -1,14 +1,19 @@
 import {
     FlatList,
-    View,
     Text,
     Pressable
 } from 'react-native'
-import {useState} from 'react'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../utils/AppStyles'
-import {COLORS} from '../utils/Colors'
+import * as THEME from '../utils/Theme'
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const RemovableList = (props) => {
 
@@ -21,11 +26,10 @@ const RemovableList = (props) => {
                 return (
                     <Pressable
                         onPress={() => props.onXPress(item)}
-                        style={[AppStyles.Removable, {borderColor: COLORS.primary_accent, flexDirection: "row"}]}>
+                        style={[STYLES.Removable, {borderColor: COLORS.primary_accent, flexDirection: "row"}]}>
                             <FontAwesome
                                 name={"times"}
                                 size={17}
-                                color={"#fff"}
                                 style={{color: COLORS.primary_accent, marginRight: 7}}
                             />
                             <Text style={{color: COLORS.primary_accent, fontSize: 15, fontWeight: "bold"}}>{item}</Text>

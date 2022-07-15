@@ -2,7 +2,6 @@ import {
     StyleSheet,
     SafeAreaView,
     Text,
-    TextInput,
     FlatList,
     Pressable,
     View,
@@ -14,14 +13,20 @@ import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../../utils/AppStyles';
+import * as THEME from '../../utils/Theme'
 import Images from '../../utils/Images';
 // Components
 import Splash from '../../components/Splash';
-import ModalChar from "../../components/ModalChar"
 import CharacterSettings from './CharacterSettings';
 import Tags from '../../components/Tags'
-import { COLORS } from '../../utils/Colors';
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 
 export default function YourCharactersPage({navigation, route}) {
@@ -115,12 +120,12 @@ export default function YourCharactersPage({navigation, route}) {
     
       
     return (
-        <SafeAreaView style={[AppStyles.Background]}>
-          <View style={AppStyles.Container}>
-          <Text style={AppStyles.Header1}>Your Characters</Text>
+        <SafeAreaView style={[STYLES.Background]}>
+          <View style={STYLES.Container}>
+          <Text style={STYLES.Header1}>Your Characters</Text>
           <Pressable
             onPress={()=>clearAsyncStorage()}>
-            <Text style={AppStyles.Header3}>CLEAR ALL</Text>
+            <Text style={STYLES.Header3}>CLEAR ALL</Text>
           </Pressable>
           <Splash
             hide={hideSplash}
@@ -129,8 +134,8 @@ export default function YourCharactersPage({navigation, route}) {
             component={
               <Pressable
                 onPress={() => navigation.navigate("Add Character", {edit: false})}
-                style={AppStyles.PrimaryButton}>
-                <Text style={AppStyles.Header4}>Add Character</Text> 
+                style={STYLES.PrimaryButton}>
+                <Text style={STYLES.Header4}>Add Character</Text> 
               </Pressable>
             }>
 
@@ -142,8 +147,8 @@ export default function YourCharactersPage({navigation, route}) {
                 <Pressable 
                   onPress={() => navigation.navigate("Character", {charID: item.ID})}
                   onLongPress={() => onLongPress(item)}
-                  style={({pressed}) => [{backgroundColor: pressed? '#545A67' : '#373C48'}, styles.resultBox]}
-                  android_ripple={{color:'#4C515B'}}>
+                  style={({pressed}) => [{backgroundColor: pressed? COLORS.back_light : COLORS.back}, styles.resultBox]}
+                  android_ripple={{color: COLORS.back_light}}>
                   
                   <View style={[styles.bar, {backgroundColor: item.color}]}>
                     <Image
@@ -153,7 +158,7 @@ export default function YourCharactersPage({navigation, route}) {
                     </Image>
                   </View>
                   <View style={{flexDirection: "column"}}>
-                    <Text adjustsFontSizeToFit={true} numberOfLines={3} style={[AppStyles.Header3,{maxWidth: "110%"}]}>{item.name}</Text>
+                    <Text adjustsFontSizeToFit={true} numberOfLines={3} style={[STYLES.Header3,{maxWidth: "110%"}]}>{item.name}</Text>
                     <Tags
                       background={COLORS.back_light}
                       tags={item.classes}>
@@ -166,7 +171,7 @@ export default function YourCharactersPage({navigation, route}) {
             <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", position: "absolute", bottom: 100, right: 0}}>
               <Pressable
                   onPress={() => navigation.navigate("Add Character", {edit: false})}
-                  style={styles.applyBTN}    
+                  style={[styles.applyBTN, {backgroundColor: COLORS.primary_accent}]}    
               >
                   <FontAwesome
                     name={"plus"}
@@ -196,11 +201,6 @@ export default function YourCharactersPage({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-    base: {
-      backgroundColor: "#181D23",
-      height: '100%',
-      width: "100%"
-    },
     bar: {
       "borderBottomLeftRadius": 12,
       "borderTopLeftRadius": 12,
@@ -208,21 +208,6 @@ const styles = StyleSheet.create({
       padding: 10,
       marginRight: 15,
       justifyContent: "center"
-    },
-    title: {
-      color: "#FFFFFF",
-      fontSize: 30,
-      padding: 10,
-      fontWeight: "bold"
-    },
-    charTitle: {
-      color: "#FFFFFF",
-      fontSize: 25,
-      fontWeight: "bold",
-      marginTop: 10,
-      marginLeft: 10,
-    },
-    resultContainer: {
     },
     resultBox: {
       flexDirection: "row",
@@ -232,25 +217,6 @@ const styles = StyleSheet.create({
       marginBottom: 15,
       padding: 10,
       width: "100%"
-    },
-    spellTXT: {
-      color: "#FFFFFF",
-      fontSize: 15
-    },
-    schoolTXT:{
-      color: "#CCD2E3",
-      fontSize: 20,
-      marginTop: 3,
-      marginLeft: 10
-    },
-    input:{
-      borderWidth: 1,
-      borderColor: "#CCD2E3",
-      color:"#CCD2E3",
-      width: "50%",
-      borderRadius: 12,
-      fontSize: 15,
-      padding: 5
     },
     icon: {
       width: 50,
@@ -263,7 +229,6 @@ const styles = StyleSheet.create({
     },
     applyBTN: {
         borderRadius: 100,
-        backgroundColor: "#4CBBE9",
         padding: 8,
         marginRight: 30,
         justifyContent: "center",
@@ -276,17 +241,5 @@ const styles = StyleSheet.create({
         width: "40%",
         justifyContent: "center",
         marginRight: 30,
-    },
-    applyTXT: {
-        color: "#fff",
-        fontSize: 20,
-        fontWeight: "bold",
-        textAlign: "center"
-    },
-    cancelTXT: {
-        color: "#CCD2E3",
-        fontSize: 20,
-        fontWeight: "bold",
-        textAlign: "center"
     },
   });

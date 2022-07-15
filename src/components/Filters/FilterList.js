@@ -1,24 +1,25 @@
 import {
     StyleSheet,
-    SafeAreaView,
     Text,
-    TextInput,
-    FlatList,
     Pressable,
     View,
-    Modal,
-    ScrollView
-    
+    Modal,    
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import { COLORS } from '../../utils/Colors';
-import AppStyles from '../../utils/AppStyles';
+import * as THEME from '../../utils/Theme'
 // Components
 import {ModalList} from '../ModalList'
 import RemovableList from '../RemovableList';
 
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 const FilterList = (props) => {
 
     const options = props.options
@@ -67,11 +68,11 @@ const FilterList = (props) => {
 
     return (
 
-        <View style={styles.resultBox}>
+        <View style={[styles.resultBox, {backgroundColor: COLORS.back}]}>
             <Pressable 
               onPress={() => onPlusPress()}
               style={styles.heading}>
-              <Text style={AppStyles.Header4}>{props.name}</Text>
+              <Text style={STYLES.Header4}>{props.name}</Text>
               <View style={{flexDirection:"row", alignItems: "center"}}>
                     <FontAwesome
                     name={"plus-square"}
@@ -112,7 +113,6 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       marginTop: 8,
       borderRadius: 12,
-      backgroundColor: COLORS.back,
       paddingBottom: 8,
     },
     heading: {

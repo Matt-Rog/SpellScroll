@@ -2,32 +2,30 @@ import {
     StyleSheet,
     SafeAreaView,
     Text,
-    TextInput,
     FlatList,
     Pressable,
     View,
     Image,
-    Modal,
-    ScrollView,
-    Dimensions,
-    
+    Modal,    
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../../utils/AppStyles';
+import * as THEME from '../../utils/Theme'
 import Images from '../../utils/Images';
 // Components
 import TopMenu from '../../components/TopMenu';
-import Splash from '../../components/Splash';
 import SlidingTab from '../../components/SlidingTab';
 import SpellList from '../../components/SpellList';
-
 import CharacterSettings from './CharacterSettings';
 
-const {width, height} = Dimensions.get('screen')
-
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 export default function CharacterPage({navigation, route}) {
 
@@ -68,10 +66,10 @@ export default function CharacterPage({navigation, route}) {
         for (const [key, value] of Object.entries(tempChar.spells)) {
           console.log("gerro")
           console.log(value)
-          var tempStats = <View style={AppStyles.Container}>
+          var tempStats = <View style={STYLES.Container}>
             <View style={{marginBottom: 20}}>
-              <Text style={AppStyles.Header4}>KNOWN</Text>
-              {value.known.length == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
+              <Text style={STYLES.Header4}>KNOWN</Text>
+              {value.known.length == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
               <SpellList
                   onResultPress={onResultPress}
                   spellIDs={value.known}
@@ -80,8 +78,8 @@ export default function CharacterPage({navigation, route}) {
                   scrollEnabled={true}>
               </SpellList>
             </View>
-            <Text style={AppStyles.Header4}>PREPARED</Text>
-            {value.prepared.length == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
+            <Text style={STYLES.Header4}>PREPARED</Text>
+            {value.prepared.length == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
             <SpellList
                 onResultPress={onResultPress}
                 spellIDs={value.prepared}
@@ -94,8 +92,8 @@ export default function CharacterPage({navigation, route}) {
                 updateFilter({Class: [key]})
                 navigation.navigate('Spells', {screen: 'Search Spells'})
               }}
-              style={[AppStyles.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
-              <Text style={AppStyles.Header4}>Add {key} spells</Text>
+              style={[STYLES.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
+              <Text style={STYLES.Header4}>Add {key} spells</Text>
             </Pressable>
           </View>
 
@@ -169,7 +167,7 @@ export default function CharacterPage({navigation, route}) {
    
 
     return (
-      <SafeAreaView style={AppStyles.Background}>
+      <SafeAreaView style={STYLES.Background}>
         <View style={[styles.colorTab, {backgroundColor: char.color}]}></View>
         <TopMenu
           bubble={true}
@@ -194,7 +192,7 @@ export default function CharacterPage({navigation, route}) {
               ></CharacterSettings>
           </Modal>
 
-        <View style={[styles.contentTab, {marginTop: 20}]}>
+        <View style={[styles.contentTab, {marginTop: 20, backgroundColor: COLORS.back}]}>
           <View style={{flexDirection: "row", marginBottom: 0, alignItems: "center"}}>
             <Image
               style={styles.icon}
@@ -202,19 +200,19 @@ export default function CharacterPage({navigation, route}) {
               resizeMode="stretch">
             </Image>
             <View style={{flexDirection: "column", justifyContent: "center"}}>
-              <Text adjustsFontSizeToFit={true} style={[AppStyles.Header2, {maxWidth: 210, marginTop: 0}]}>{char.name}</Text>
+              <Text adjustsFontSizeToFit={true} style={[STYLES.Header2, {maxWidth: 210, marginTop: 0}]}>{char.name}</Text>
               <FlatList
                 data={char.classes}
                 numColumns={2}
                 scrollEnabled={false}
                 renderItem={({item}) => {
                   return (
-                    <View style={[AppStyles.Tags, {marginTop: 10, marginRight: 8}]}>
-                      <Text style={{color: "#CCD2E3"}}>{item.toUpperCase()}</Text>
+                    <View style={[STYLES.Tags, {marginTop: 10, marginRight: 8}]}>
+                      <Text style={{color: COLORS.secondary_content}}>{item.toUpperCase()}</Text>
                     </View>
                   )
                 }}></FlatList>
-                <Text style={[AppStyles.ContentBody, {marginTop: char.notes.length > 0 ? 10 : 0}]}>{char.notes}</Text>
+                <Text style={[STYLES.ContentBody, {marginTop: char.notes.length > 0 ? 10 : 0}]}>{char.notes}</Text>
             </View>
           </View>
           
@@ -226,13 +224,13 @@ export default function CharacterPage({navigation, route}) {
         : 
         <View>
           <View style={{alignSelf: "center"}}>
-            <Text style={[AppStyles.Header4, {paddingVertical: 10,}]}>{char.classes[0]}</Text>
+            <Text style={[STYLES.Header4, {paddingVertical: 10,}]}>{char.classes[0]}</Text>
             <View style={{height: 4, width: "auto",backgroundColor: char.color}}></View>
           </View>
-          <View style={AppStyles.Container}>
+          <View style={STYLES.Container}>
           <View style={{marginBottom: 20}}>
-              <Text style={AppStyles.Header4}>KNOWN</Text>
-              {(Object.values(Object.values(spells)[0])[0]) == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
+              <Text style={STYLES.Header4}>KNOWN</Text>
+              {(Object.values(Object.values(spells)[0])[0]) == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
               <SpellList
                   onResultPress={onResultPress}
                   spellIDs={Object.values(Object.values(spells)[0])[0]}
@@ -241,8 +239,8 @@ export default function CharacterPage({navigation, route}) {
                   scrollEnabled={true}>
               </SpellList>
             </View>
-            <Text style={AppStyles.Header4}>PREPARED</Text>
-            {(Object.values(Object.values(spells)[0])[1]) == 0 ? <Text style={AppStyles.ContentBody}>No spells found :(</Text> : null}
+            <Text style={STYLES.Header4}>PREPARED</Text>
+            {(Object.values(Object.values(spells)[0])[1]) == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
             <SpellList
                 onResultPress={onResultPress}
                 spellIDs={Object.values(Object.values(spells)[0])[1]}
@@ -255,8 +253,8 @@ export default function CharacterPage({navigation, route}) {
                 updateFilter({Class: [char.classes[0]]})
                 navigation.navigate('Spells', {screen: 'Search Spells'})
               }}
-              style={[AppStyles.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
-              <Text style={AppStyles.Header4}>Add {char.classes[0]} spells</Text>
+              style={[STYLES.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
+              <Text style={STYLES.Header4}>Add {char.classes[0]} spells</Text>
             </Pressable>
           </View>
         </View>}
@@ -279,7 +277,6 @@ const styles = StyleSheet.create({
     width: "90%",
     padding: 20,
     height: "auto",
-    backgroundColor: "#373C48",
     flexDirection: "column",
   },
   icon: {

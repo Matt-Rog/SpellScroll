@@ -1,23 +1,25 @@
 import {
-    StyleSheet,
     Text,
-    Image,
     View,
-    TouchableOpacity,
     Dimensions,
     Pressable,
-    FlatList,
     Modal
 } from 'react-native'
-import React, {useEffect, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../../utils/AppStyles';
-import Images from '../../utils/Images';
+import * as THEME from '../../utils/Theme'
 // Components
 import { ModalBase } from '../../components/ModalBase';
 import Splash from '../../components/Splash';
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -67,23 +69,23 @@ const CharacterSettings = (props) => {
                     <View style={{marginVertical: 10}}>
                     <Pressable
                         onPress={() => onEditCharacter()}
-                        style={[AppStyles.PrimaryButton, {backgroundColor: "#545A67",flexDirection: "row"}]}>
+                        style={[STYLES.PrimaryButton, {backgroundColor: COLORS.back_light,flexDirection: "row"}]}>
                         <FontAwesome
                             name={"pencil"}
                             size={25}
-                            color={"#fff"}
+                            color={COLORS.primary_content}
                             />
-                        <Text style={[{marginLeft: 15},AppStyles.Header3]}>Edit Character</Text>
+                        <Text style={[{marginLeft: 15},STYLES.Header3]}>Edit Character</Text>
                     </Pressable>
                     <Pressable
                         onPress={() => onDeleteCharacter()}
-                        style={[AppStyles.SecondaryButton, {borderColor: "#E94C4C",flexDirection: "row", marginTop: 15}]}>
+                        style={[STYLES.SecondaryButton, {borderColor: COLORS.secondary_accent,flexDirection: "row", marginTop: 15}]}>
                         <FontAwesome
                             name={"trash"}
                             size={25}
-                            color={"#fff"}
+                            color={COLORS.primary_content}
                             />
-                        <Text style={[{marginLeft: 15},AppStyles.Header3]}>Delete Character</Text>
+                        <Text style={[{marginLeft: 15},STYLES.Header3]}>Delete Character</Text>
                     </Pressable>
                     </View>
                 }
@@ -112,13 +114,13 @@ const CharacterSettings = (props) => {
                             <View style={{flexDirection: "row", marginTop: 20}}>
                                 <Pressable 
                                 onPress={() => changeDeleteModalVisibility(false)}
-                                style={AppStyles.TertiaryButton}>
-                                <Text style={AppStyles.Header4}>Cancel</Text>
+                                style={STYLES.TertiaryButton}>
+                                <Text style={STYLES.Header4}>Cancel</Text>
                                 </Pressable>
                                 <Pressable
                                 onPress={() => deleteCharacter()}
-                                style={[AppStyles.SecondaryButton, {borderColor: "#E94C4C"}]}>
-                                <Text style={AppStyles.Header4}>Delete</Text>
+                                style={[STYLES.SecondaryButton, {borderColor: COLORS.secondary_accent}]}>
+                                <Text style={STYLES.Header4}>Delete</Text>
                                 </Pressable>
                             </View>
                             }></Splash>

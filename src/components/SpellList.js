@@ -1,8 +1,6 @@
 import {
     StyleSheet,
-    SafeAreaView,
     Text,
-    TextInput,
     FlatList,
     Pressable,
     View,
@@ -14,12 +12,18 @@ import { useState, useEffect } from 'react';
 import MOCKDATA from "../../MOCK_SPELL_DATA.json"
 // Utility
 import Images from '../utils/Images';
-import {COLORS} from '../utils/Colors'
-import AppStyles from '../utils/AppStyles';
+import * as THEME from '../utils/Theme'
 // Components
 import Tags from './Tags';
 import SpellSettings from '../screens/Characters/SpellSettings';
 
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 
 const SpellList = (props) => {
@@ -118,11 +122,11 @@ const SpellList = (props) => {
                     </View>
                     <View style={styles.text}>
                       <View style={styles.rowOne}>
-                        <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[AppStyles.Header4]}>{item?.name}</Text>
-                        <Text style={styles.spellTXT}>{levelLogic({item})}</Text>
+                        <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[STYLES.Header4]}>{item?.name}</Text>
+                        <Text style={[styles.spellTXT, {color: COLORS.secondary_content}]}>{levelLogic({item})}</Text>
                       </View>
                       <View style={[styles.rowOne, {marginTop: 6}]}>
-                        <Text style={[AppStyles.Header4, {fontSize: 17, color: COLORS.secondary_content}]}>{item?.school}</Text>
+                        <Text style={[STYLES.Header4, {fontSize: 17, color: COLORS.secondary_content}]}>{item?.school}</Text>
                         <Tags
                           tags={(item?.tags!=undefined ? item?.tags : (item?.effect!=undefined ? [item?.effect] : ["No Effect"]))}
                           background={COLORS.back_light}
@@ -144,34 +148,12 @@ const styles = StyleSheet.create({
     resultBox: {
       marginVertical: 5,
       borderRadius: 12,
-      
       flexDirection:'row'
     },
     spellTXT: {
-      color: COLORS.secondary_content,
       fontSize: 17,
       fontWeight: "bold",
       fontStyle: "italic"
-    },
-    schoolTXT:{
-      color: "#CCD2E3",
-      fontSize: 14,
-      fontWeight: "bold",
-    },
-    subTXT:{
-      color: "#CCD2E3",
-      fontSize: 14,
-    },
-
-    input:{
-      borderWidth: 1,
-      backgroundColor: "#373C48",
-      borderColor: "#373C48",
-      width: "50%",
-      borderRadius: 12,
-      fontSize: 15,
-      padding: 5,
-
     },
     icon: {
       width: 36,
@@ -181,8 +163,7 @@ const styles = StyleSheet.create({
       "borderBottomLeftRadius": 12,
       "borderTopLeftRadius": 12,
       alignItems: "center",
-      justifyContent: "center",
-      
+      justifyContent: "center", 
       width: "15%",
     },
     text: {
@@ -193,14 +174,10 @@ const styles = StyleSheet.create({
     },
     rowOne: {
       flexDirection: "row",
-      
       alignContent: "center",
       justifyContent: "space-between",
       alignItems: "baseline"
     },
-     column: {
-
-     }
   });
 
 export default SpellList;

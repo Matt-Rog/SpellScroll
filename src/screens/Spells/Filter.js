@@ -2,12 +2,8 @@ import {
     StyleSheet,
     SafeAreaView,
     Text,
-    TextInput,
     FlatList,
-    Pressable,
     View,
-    Image,
-    ScrollView
     
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
@@ -15,16 +11,19 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 // Utility
-import AppStyles from '../../utils/AppStyles';
-import {COLORS} from '../../utils/Colors'
+import * as THEME from '../../utils/Theme'
 import * as FILTER from '../../utils/FilterHelper'
 import FilterComponents from '../../utils/FilterComponents';
 // Components
 import TopMenu from '../../components/TopMenu';
-import FilterList from '../../components/Filters/FilterList'
-import FilterButton from '../../components/Filters/FilterButton'
 
-
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 export default function FilterPage({navigation, route}) {
 
@@ -104,10 +103,10 @@ export default function FilterPage({navigation, route}) {
     }
 
     return (
-        <SafeAreaView style={AppStyles.Background}>
-          <View style={AppStyles.Container}> 
+        <SafeAreaView style={STYLES.Background}>
+          <View style={STYLES.Container}> 
             <TopMenu
-              bubble={false}
+              bubble={true}
               onLeftPress={()=>onBackPress()}
               settings={true}
               rightIcon={ 
@@ -118,7 +117,7 @@ export default function FilterPage({navigation, route}) {
                   style
                   />}
               onRightPress={()=>onFilterReset()}></TopMenu>
-            <Text style={styles.title}>Filter Spells</Text>
+            <Text style={STYLES.Header2}>Filter Spells</Text>
             <FlatList
               style={{borderRadius: 12}}
               showsVerticalScrollIndicator={false}
@@ -138,17 +137,6 @@ export default function FilterPage({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-    base: {
-      backgroundColor: "#181D23",
-      height: '100%',
-      width: "100%"
-    },
-    title: {
-      color: "#FFFFFF",
-      fontSize: 30,
-      padding: 10,
-      fontWeight: "bold"
-    },
     resultBox: {
       marginBottom: 8,
       marginTop: 8,
@@ -156,11 +144,6 @@ const styles = StyleSheet.create({
       marginRight: 30,
       borderRadius: 12,
       backgroundColor: "#373C48"
-    },
-    spellTXT: {
-      color: "#FFFFFF",
-      fontSize: 15,
-      fontWeight: "bold",
     },
     heading: {
       flexDirection: "row",

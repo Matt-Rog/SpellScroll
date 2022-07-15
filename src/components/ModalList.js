@@ -3,16 +3,21 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
     Dimensions,
     Pressable,
     FlatList,
-    TextInput
 } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../utils/AppStyles';
-import { COLORS } from '../utils/Colors';
+import * as THEME from '../utils/Theme'
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -41,9 +46,9 @@ const ModalList = (props) => {
         <Pressable
             style={styles.container}
         >
-            <View style={[AppStyles.Modal, {width: WIDTH - 20, height: HEIGHT/1.7}]}>
+            <View style={[STYLES.Modal, {width: WIDTH - 20, height: HEIGHT/1.7}]}>
                 <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", margin: 5}}>
-                    <Text style={AppStyles.Header2}>{props.name}</Text>
+                    <Text style={STYLES.Header2}>{props.name}</Text>
                     <View style={{flexDirection: "row"}}>
                         <Pressable
                             onPress={() => (selected.length>0 ? setSelected([]) : setSelected(options))}
@@ -52,9 +57,9 @@ const ModalList = (props) => {
                             <FontAwesome
                                 name={((selected.length>0) ? "minus-square" : "check-square")}
                                 size={30}
-                                color={((selected.length>0) ? "#CCD2E3" : "#4CBBE9")}
+                                color={((selected.length>0) ? COLORS.secondary_content : COLORS.primary_accent)}
                             />
-                            <Text style={[AppStyles.Header3, {marginLeft: 10}]}>
+                            <Text style={[STYLES.Header3, {marginLeft: 10}]}>
                                 All Items
                             </Text>
                         </Pressable>
@@ -73,9 +78,9 @@ const ModalList = (props) => {
                                 <FontAwesome
                                 name={(selected.includes(item) ? "check-square" : "square")}
                                 size={20}
-                                color={(selected.includes(item) ? "#4CBBE9" : "#CCD2E3")}
+                                color={(selected.includes(item) ? COLORS.primary_accent : COLORS.secondary_content)}
                                 />
-                                <Text style={[AppStyles.Header3, {color: selected.includes(item) ? "#FFF" :"#CCD2E3"}, {marginLeft: 16}]}>{item}</Text>
+                                <Text style={[STYLES.Header3, {color: selected.includes(item) ? COLORS.primary_content : COLORS.secondary_content}, {marginLeft: 16}]}>{item}</Text>
                             </Pressable>
                         )
                     }}>
@@ -84,15 +89,15 @@ const ModalList = (props) => {
                 <View style={{flexDirection: "row-reverse", justifyContent: "center", marginTop: 15}}>
                     <Pressable
                         onPress={() => onApplyPress()}
-                        style={AppStyles.PrimaryButton}    
+                        style={STYLES.PrimaryButton}    
                     >
-                        <Text style={styles.applyTXT}>Apply</Text>
+                        <Text style={[styles.applyTXT, {color: COLORS.primary_content}]}>Apply</Text>
                     </Pressable>
                     <Pressable
                         onPress={() => props.changeModalVisibility(false)}
-                        style={AppStyles.TertiaryButton}    
+                        style={STYLES.TertiaryButton}    
                     >
-                        <Text style={styles.cancelTXT}>Cancel</Text>
+                        <Text style={[styles.cancelTXT, {color: COLORS.secondary_content}]}>Cancel</Text>
                     </Pressable>
                 </View>
             </View>       
@@ -108,24 +113,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
-    modal: {
-        backgroundColor: "#373C48",
-        borderRadius: 15,
-        padding: 20
-    },
     option:{
         width:"100%",
         flexDirection: "row",
         padding: 10,
         borderRadius: 0,
         alignItems: "center"
-    },
-    name: {
-        color: "#000",
-        fontSize: 20,
-        fontWeight: "bold",
-        marginTop: 10,
-        marginBottom: 10
     },
     optionTXT: {
         marginLeft: 15
@@ -135,36 +128,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center"
     },
-    clearTXT: {
-        color: "#CCD2E3",
-        fontSize: 15,
-        fontWeight: "bold",
-        textAlign: "center"
-    },
-    applyBTN: {
-        borderRadius: 12,
-        backgroundColor: "#4CBBE9",
-        padding: 8,
-        marginTop: 10,
-        width: "50%",
-        justifyContent: "center",
-    },
-    cancelBTN: {
-        borderRadius: 12,
-        borderColor: "#CCD2E3",
-        padding: 8,
-        marginTop: 10,
-        width: "50%",
-        justifyContent: "center",
-    },
     applyTXT: {
-        color: "#fff",
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center"
     },
     cancelTXT: {
-        color: "#CCD2E3",
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center"

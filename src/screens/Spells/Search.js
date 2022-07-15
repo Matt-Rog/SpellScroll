@@ -7,10 +7,7 @@ import {
     Pressable,
     Dimensions,
     View,
-    Image,
     Modal,
-    ScrollView,
-    TouchableWithoutFeedback,
     TouchableOpacity
 } from 'react-native';
 import React, {useEffect, useState, useRef} from 'react';
@@ -19,20 +16,23 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 // Utility
-import AppStyles from '../../utils/AppStyles';
+// import STYLES from '../../utils/STYLES';
 import * as FILTER from '../../utils/FilterHelper'
 import FilterComponents from '../../utils/FilterComponents';
 // Components
-import FilterList from '../../components/Filters/FilterList';
-import ModalSearch from '../../components/ModalSearch'
 import SpellList from '../../components/SpellList';
 import Splash from '../../components/Splash'
-import EmptySplash from '../../components/EmptySplash';
 
+import * as THEME from '../../utils/Theme'
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
-import {COLORS} from '../../utils/Colors'
 import { ModalBase } from '../../components/ModalBase';
-
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
@@ -224,18 +224,18 @@ export default function SearchPage({navigation, route}) {
     }
 
     return (
-        <SafeAreaView style={AppStyles.Background}>
-          <View style={AppStyles.Container}>
+        <SafeAreaView style={STYLES.Background}>
+          <View style={STYLES.Container}>
             
-            <Text style={AppStyles.Header1}>Search Spells</Text>
+            <Text style={STYLES.Header1}>Search Spells</Text>
             <View style={styles.searchBox}>
-              <View style={styles.searchBar}>
+              <View style={[styles.searchBar, {backgroundColor: COLORS.back, borderColor: COLORS.back,}]}>
                 <TextInput 
-                  style={styles.input}
+                  style={[styles.input, {backgroundColor: COLORS.back,borderColor: COLORS.back,color: COLORS.secondary_content,}]}
                   placeholder="Search"
                   value={search}
-                  selectionColor="#CCD2E3"
-                  placeholderTextColor="#CCD2E3"
+                  selectionColor={COLORS.secondary_content}
+                  placeholderTextColor={COLORS.secondary_content}
                   onChangeText={(text)=> searchSpells(text)}
                 >
                 </TextInput>
@@ -249,13 +249,13 @@ export default function SearchPage({navigation, route}) {
                     <FontAwesome
                     name={((search==="") ? "search" : "times")}
                     size={20}
-                    color={"#CCD2E3"}
+                    color={COLORS.secondary_content}
                     />
                 </Pressable>
               </View>
               <Pressable
               onPress={onFilterPress}
-              style={styles.filterIcon}>
+              style={[styles.filterIcon, {backgroundColor: COLORS.back}]}>
                 <FontAwesome5
                 name={"sliders-h"}
                 size={20}
@@ -292,7 +292,7 @@ export default function SearchPage({navigation, route}) {
                   return (
                     <Pressable
                       onPress={() => onModalPress(item)}
-                      style={({pressed}) => [{backgroundColor: pressed? '#565C6B' : '#373C48'}, (filter[item.name] ? styles.activeButton : styles.button)]}
+                      style={({pressed}) => [{backgroundColor: pressed? COLORS.back_light : COLORS.back}, (filter[item.name] ? [styles.activeButton, {backgroundColor: COLORS.primary_accent}] : styles.button)]}
                   >
                     <Text style={[styles.option, {color: (filter[item.title] ? COLORS.primary_content : COLORS.secondary_content)}]}> {item.title.length < 15
                   ? `${item.title}`
@@ -323,9 +323,9 @@ export default function SearchPage({navigation, route}) {
                           <View style={{alignItems: "center"}}>
                               <Pressable
                                   onPress={() => onApplyPress()}
-                                  style={AppStyles.PrimaryButton}    
+                                  style={STYLES.PrimaryButton}    
                               >
-                                  <Text style={AppStyles.Header4}>Save</Text>
+                                  <Text style={STYLES.Header4}>Save</Text>
                               </Pressable>
                           </View>
                         </View>
@@ -341,7 +341,7 @@ export default function SearchPage({navigation, route}) {
 
             {/* Sorting */}
             <View style={styles.searchBox}>
-                <Text style={styles.spellTXT}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
+                <Text style={[STYLES.Note, {color: COLORS.secondary_content}]}>{resultSpells.length!=0 ? resultSpells.length + " results" : ""}</Text>
                 <View style={{flexDirection: "row"}}>
                   <Pressable
                     onPress={() => setSort({abc: true, chron: (sort.abc? !sort.chron : sort.chron)})}
@@ -382,15 +382,6 @@ export default function SearchPage({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-    title: {
-      color: "#FFFFFF",
-      fontSize: 30,
-      
-      padding: 10,
-      fontWeight: "bold"
-    },
-    resultContainer: {
-    },
     searchBox: {
       marginBottom: 8,
       marginTop: 8,
@@ -405,25 +396,13 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       alignItems: "center",
     },
-    spellTXT: {
-      color: "#FFFFFF",
-      fontSize: 15,
-      fontWeight: "bold"
-    },
     sort: {
       paddingHorizontal: 5,
       borderRadius: 8,
       marginRight: 5
     },
-    schoolTXT:{
-      color: "#CCD2E3",
-      fontSize: 14,
-    },
     input:{
       borderWidth: 1,
-      backgroundColor: "#373C48",
-      borderColor: "#373C48",
-      color: "#CCD2E3",
       borderRadius: 12,
       fontSize: 15,
       paddingLeft: 17,
@@ -434,8 +413,6 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       alignItems: "center",
       borderWidth: 1,
-      backgroundColor: "#373C48",
-      borderColor: "#373C48",
       borderRadius: 12,
       fontSize: 15,
       width: "85%",
@@ -446,7 +423,6 @@ const styles = StyleSheet.create({
       marginRight: 15
     },
     filterIcon: {
-      backgroundColor: COLORS.back,
       padding: 10,
       borderRadius: 12
     },
@@ -464,7 +440,6 @@ const styles = StyleSheet.create({
       marginTop: 3
     },
     activeButton: {
-      backgroundColor: COLORS.primary_accent,
       borderRadius: 50,
       padding: 7,
       marginRight: 8,

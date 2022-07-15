@@ -1,17 +1,22 @@
 import {
     StyleSheet,
-    SafeAreaView,
     Text,
-    TextInput,
     FlatList,
     Pressable,
     View,
-    Image,
-    ScrollView
     
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+// Utility
+import * as THEME from '../../utils/Theme'
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 
 const FilterButton = (props) => {
@@ -43,9 +48,9 @@ const FilterButton = (props) => {
     }
 
     return (
-        <View style={styles.resultBox}>
+        <View style={[styles.resultBox, {backgroundColor: COLORS.back}]}>
             <View style={styles.heading}>
-              <Text style={styles.spellTXT}>{props.name}</Text>
+              <Text style={STYLES.Header4}>{props.name}</Text>
             </View>
             <View style={styles.content}>
               <FlatList
@@ -56,8 +61,8 @@ const FilterButton = (props) => {
                     <View>
                       <Pressable
                         onPress={() => onButtonPress(item)}
-                        style={[{backgroundColor: (selected.includes(item))? '#4CBBE9' : '#CCD2E3'}, styles.button]}>
-                        <Text style={[{color: (selected.includes(item))? '#373C48' : '#373C48'}, styles.option]}>{item}</Text>
+                        style={[{backgroundColor: (selected.includes(item))? COLORS.primary_accent : COLORS.secondary_content}, styles.button]}>
+                        <Text style={[{color: (selected.includes(item))? COLORS.back : COLORS.back}, styles.option]}>{item}</Text>
                       </Pressable>
                     </View>
                   )
@@ -73,16 +78,6 @@ const styles = StyleSheet.create({
       marginBottom: 8,
       marginTop: 8,
       borderRadius: 12,
-      backgroundColor: "#373C48"
-    },
-    spellTXT: {
-      color: "#FFFFFF",
-      fontSize: 18,
-      fontWeight: "bold",
-    },
-    nullTXT: {
-      color: "#4CBBE9",
-      fontSize: 14,
     },
     heading: {
       flexDirection: "row",

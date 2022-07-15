@@ -4,15 +4,19 @@ import {
     Text,
     Image,
     View,
-    TouchableOpacity,
     Dimensions,
-    Pressable,
-    FlatList
 } from 'react-native'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../utils/AppStyles';
+import * as THEME from '../utils/Theme'
 import Images from '../utils/Images';
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
@@ -35,8 +39,8 @@ const Splash = (props) => {
                     resizeMode="contain">
                 </Image>
             : null}
-            <Text style={AppStyles.Header2}>{props.title}</Text>
-            <Text style={[AppStyles.ContentBody, {marginTop: 5, maxWidth: "70%", textAlign: "center"}]}>{props.body}</Text>
+            <Text style={STYLES.Header2}>{props.title}</Text>
+            <Text style={[STYLES.ContentBody, {marginTop: 5, maxWidth: "70%", textAlign: "center"}]}>{props.body}</Text>
             {props.component}
         </View>
     )
@@ -47,17 +51,7 @@ const styles = StyleSheet.create({
     splash: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 0//HEIGHT/20
-    },
-    oopsTXT: {
-      fontSize: 30,
-      fontWeight: "bold",
-      color: "#CCD2E3"
-    },
-    tryTXT: {
-    fontSize: 15,
-      color: "#CCD2E3",
-      marginTop: 10
+        marginTop: 0
     },
     splashIMG: {
         height: 200,

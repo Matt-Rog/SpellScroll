@@ -1,21 +1,22 @@
 import {
-    StyleSheet,
-    SafeAreaView,
     Text,
-    TextInput,
-    FlatList,
     Pressable,
     View,
-    Image,
-    Modal,
-    ScrollView,
     Dimensions,
     Animated,
-    
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+// Utility
+import * as THEME from '../utils/Theme'
 // Components
-import AppStyles from '../utils/AppStyles';
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const {width, height} = Dimensions.get('screen')
 
@@ -50,7 +51,7 @@ const SlidingTab = (props) => {
         <Pressable
           onPress={onItemPress}>
         <View style={{paddingVertical: 10, maxWidth: 150}}ref={ref}>
-          <Text adjustsFontSizeToFit={true} numberOfLines={1}style={[AppStyles.Header4, (data.length>5 ? {fontSize: 100/data.length} : {})]}>{item.class}</Text>
+          <Text adjustsFontSizeToFit={true} numberOfLines={1}style={[STYLES.Header4, (data.length>5 ? {fontSize: 100/data.length} : {})]}>{item.class}</Text>
         </View>
         </Pressable>
       )

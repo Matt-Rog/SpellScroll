@@ -11,17 +11,23 @@ import {
 } from 'react-native'
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import MOCKDATA from '../../../MOCK_SPELL_DATA.json'
 // Utility
-import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
-import {COLORS} from '../../utils/Colors'
+import * as THEME from '../../utils/Theme'
+
 // Components
 import { ModalBase } from '../../components/ModalBase';
 import Splash from '../../components/Splash';
 
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
@@ -59,8 +65,7 @@ const SpellSettings = (props) => {
           console.log(e)
         }
       }
-
-    const navigation = props.navigation
+    
     const spellID = props.spellID
 
     const spell = MOCKDATA.find(spell => spell.ID == spellID)
@@ -149,7 +154,7 @@ const SpellSettings = (props) => {
                 title={"Manage spell"}
                 component={
                     <View style={{marginVertical: 0}}>
-                        <Text style={[AppStyles.Header4, {fontStyle: 'italic', color: COLORS.secondary_content, marginTop: 5, marginBottom: 10}]}>{spell.name}</Text>
+                        <Text style={[STYLES.Header4, {fontStyle: 'italic', color: COLORS.secondary_content, marginTop: 5, marginBottom: 10}]}>{spell.name}</Text>
                     {Chars.length==0 ? 
                     <Splash
                         body={"No characters found"}
@@ -159,8 +164,8 @@ const SpellSettings = (props) => {
                                 changeModalVisibility(false)
                                 props.navigation.navigate("Add Character", {edit: false})
                             }}
-                            style={[AppStyles.PrimaryButton, {marginTop: 10}]}>
-                            <Text style={AppStyles.Header4}>Add Character</Text> 
+                            style={[STYLES.PrimaryButton, {marginTop: 10}]}>
+                            <Text style={STYLES.Header4}>Add Character</Text> 
                         </Pressable>
                         }></Splash>
                     : null}
@@ -180,7 +185,7 @@ const SpellSettings = (props) => {
                                                 resizeMode="contain">
                                             </Image>
                                         </View>
-                                        <Text style={[AppStyles.Header3, {marginLeft: 8}]}>{item.name}</Text>
+                                        <Text style={[STYLES.Header3, {marginLeft: 8}]}>{item.name}</Text>
                                     </View>
 
                                         

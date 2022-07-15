@@ -2,9 +2,7 @@ import {
     StyleSheet,
     SafeAreaView,
     Text,
-    TextInput,
     FlatList,
-    Pressable,
     View,
     Image,
     Modal,
@@ -14,18 +12,23 @@ import {
 import React, {useState} from 'react';
 import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
 // Utility
-import AppStyles from '../../utils/AppStyles';
 import Images from '../../utils/Images';
-import {COLORS} from '../../utils/Colors'
+import * as THEME from '../../utils/Theme'
 // Components
 import TopMenu from '../../components/TopMenu';
-import { ModalBase } from '../../components/ModalBase';
 import Splash from '../../components/Splash';
 import SlidingTab from '../../components/SlidingTab';
-import SpellList from '../../components/SpellList';
 import SpellSettings from '../Characters/SpellSettings';
 import Tags from '../../components/Tags'
 
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 export default function SpellPage({navigation, route}) {
 
@@ -63,15 +66,15 @@ export default function SpellPage({navigation, route}) {
     function getStyledDescription(description){
       const sections = description.split("\r\nAt Higher Levels. ")
       if(sections.length==1){
-        return <View style={styles.description}>
-                  <Text style={AppStyles.ContentBody}>{description}</Text>
+        return <View style={[styles.description]}>
+                  <Text style={STYLES.ContentBody}>{description}</Text>
                 </View>
       } else {
         var beforeHigher = 1
         return <View style={styles.description}>
-        <Text style={AppStyles.ContentBody}>{sections[0]}</Text>
-        <Text style={[AppStyles.Header3]}>At Higher Levels</Text>
-        <Text style={AppStyles.ContentBody}>{sections[1]}</Text>
+        <Text style={STYLES.ContentBody}>{sections[0]}</Text>
+        <Text style={[STYLES.Header3]}>At Higher Levels</Text>
+        <Text style={STYLES.ContentBody}>{sections[1]}</Text>
       </View>
       }
 
@@ -90,38 +93,38 @@ export default function SpellPage({navigation, route}) {
         <View style={{width: "100%"}}>
 
           <View style={{flexDirection: "row", justifyContent: "space-evenly"}}> 
-            <View style={styles.attributeTab}>
-              <Text style={styles.attributeName}>Casting Time</Text>
-              <Text numberOfLines={1} adjustsFontSizeToFit={true} adjustsFontSizeToFit={true} style={styles.attributeValue}>{spell.time}</Text>
+            <View style={[[styles.attributeTab, {backgroundColor: COLORS.back}], {backgroundColor: COLORS.back}]}>
+              <Text style={[[[styles.attributeName, {color: COLORS.secondary_content}], {color: COLORS.primary_content}], {color: COLORS.primary_content}]}>Casting Time</Text>
+              <Text numberOfLines={1} adjustsFontSizeToFit={true} adjustsFontSizeToFit={true} style={[styles.attributeValue, {color: COLORS.primary_content}]}>{spell.time}</Text>
             </View>
-            <View style={styles.attributeTab}>
-              <Text style={styles.attributeName}>Range/Area</Text>
-              <Text numberOfLines={1} adjustsFontSizeToFit={true} adjustsFontSizeToFit={true} style={styles.attributeValue}>{spell.range}</Text>
-            </View>
-          </View>
-          <View style={{flexDirection: "row", justifyContent: "space-evenly"}}> 
-            <View style={styles.attributeTab}>
-              <Text style={styles.attributeName}>Components</Text>
-              <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.attributeValue}>{getComponentList(spell.components)}</Text>
-            </View>
-            <View style={styles.attributeTab}>
-              <Text style={styles.attributeName}>Damage/Effect</Text>
-              <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.attributeValue}>{spell.effect}</Text>
+            <View style={[styles.attributeTab, {backgroundColor: COLORS.back}]}>
+              <Text style={[[styles.attributeName, {color: COLORS.secondary_content}], {color: COLORS.primary_content}]}>Range/Area</Text>
+              <Text numberOfLines={1} adjustsFontSizeToFit={true} adjustsFontSizeToFit={true} style={[[styles.attributeValue, {color: COLORS.primary_content}], {color: COLORS.primary_content}]}>{spell.range}</Text>
             </View>
           </View>
           <View style={{flexDirection: "row", justifyContent: "space-evenly"}}> 
-            <View style={styles.attributeTab}>
-              <Text style={styles.attributeName}>Attack/Save</Text>
-              <Text numberOfLines={1} adjustsFontSizeToFit={true}style={styles.attributeValue}>{spell.attack}</Text>
+            <View style={[styles.attributeTab, {backgroundColor: COLORS.back}]}>
+              <Text style={[[styles.attributeName, {color: COLORS.secondary_content}], {color: COLORS.primary_content}]}>Components</Text>
+              <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[styles.attributeValue, {color: COLORS.primary_content}]}>{getComponentList(spell.components)}</Text>
             </View>
-            <View style={styles.attributeTab}>
-              <Text style={styles.attributeName}>Duration</Text>
-              <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.attributeValue}>{spell.duration}</Text>
+            <View style={[styles.attributeTab, {backgroundColor: COLORS.back}]}>
+              <Text style={[[styles.attributeName, {color: COLORS.secondary_content}], {color: COLORS.primary_content}]}>Damage/Effect</Text>
+              <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[styles.attributeValue, {color: COLORS.primary_content}]}>{spell.effect}</Text>
+            </View>
+          </View>
+          <View style={{flexDirection: "row", justifyContent: "space-evenly"}}> 
+            <View style={[styles.attributeTab, {backgroundColor: COLORS.back}]}>
+              <Text style={[[styles.attributeName, {color: COLORS.secondary_content}], {color: COLORS.primary_content}]}>Attack/Save</Text>
+              <Text numberOfLines={1} adjustsFontSizeToFit={true}style={[styles.attributeValue, {color: COLORS.primary_content}]}>{spell.attack}</Text>
+            </View>
+            <View style={[styles.attributeTab, {backgroundColor: COLORS.back}]}>
+              <Text style={[[styles.attributeName, {color: COLORS.secondary_content}], {color: COLORS.primary_content}]}>Duration</Text>
+              <Text numberOfLines={1} adjustsFontSizeToFit={true} style={[styles.attributeValue, {color: COLORS.primary_content}]}>{spell.duration}</Text>
             </View>
           </View>
           
           <View style={{alignSelf: "center"}}>
-            <Text style={AppStyles.Header3}>Classes</Text>
+            <Text style={STYLES.Header3}>Classes</Text>
             <Tags
               tags={spell.class}
               background={COLORS.back}>
@@ -156,7 +159,7 @@ export default function SpellPage({navigation, route}) {
 
 
     return (
-        <SafeAreaView style={AppStyles.Background}> 
+        <SafeAreaView style={STYLES.Background}> 
           <View style={[styles.colorTab, {backgroundColor: COLORS.school[Spell.school.toLowerCase()]}]}></View>
           <TopMenu
             bubble={true}
@@ -180,7 +183,7 @@ export default function SpellPage({navigation, route}) {
           </Modal>
 
 
-          <View style={[styles.contentTab, {marginTop: 20}]}>
+          <View style={[styles.contentTab, {marginTop: 20, backgroundColor: COLORS.back}]}>
             {/* School Icon & Spell Name */}
             <View style={{flexDirection: "row", marginBottom: 0, alignItems: "center"}}>
               <Image
@@ -189,20 +192,20 @@ export default function SpellPage({navigation, route}) {
                 resizeMode="stretch">
               </Image>
               <View style={{justifyContent: "center"}}>
-                <Text adjustsFontSizeToFit={true} style={[AppStyles.Header2, {maxWidth: 210, marginTop: 0}]}>{Spell.name}</Text>
+                <Text adjustsFontSizeToFit={true} style={[STYLES.Header2, {maxWidth: 210, marginTop: 0}]}>{Spell.name}</Text>
               </View>
             </View>
             {/* Level & School Subtitle  / Tags*/}
             <View style={{marginLeft: 10}}>          
-              <Text style={[AppStyles.Header3, {fontStyle: "italic", color: COLORS.secondary_content}]}>{getSubtitle(Spell)}</Text>
+              <Text style={[STYLES.Header3, {fontStyle: "italic", color: COLORS.secondary_content}]}>{getSubtitle(Spell)}</Text>
               <FlatList
                 data={Spell.tags}
                 numColumns={2}
                 scrollEnabled={false}
                 renderItem={({item}) => {
                   return (
-                    <View style={[AppStyles.Tags, {marginTop: 10, marginRight: 8}]}>
-                      <Text style={{color: "#CCD2E3"}}>{item.toUpperCase()}</Text>
+                    <View style={[STYLES.Tags, {marginTop: 10, marginRight: 8}]}>
+                      <Text style={{color: COLORS.secondary_content}}>{item.toUpperCase()}</Text>
                     </View>
                   )
               }}></FlatList>
@@ -234,7 +237,6 @@ const styles = StyleSheet.create({
       width: "90%",
       padding: 20,
       height: "auto",
-      backgroundColor: "#373C48",
       flexDirection: "column",
     },
     icon: {
@@ -249,7 +251,6 @@ const styles = StyleSheet.create({
       marginBottom: 400,
       paddingVertical: 20,
       paddingHorizontal: 15,
-      backgroundColor: COLORS.back,
       borderRadius: 8
     }, 
     attributeTab: {

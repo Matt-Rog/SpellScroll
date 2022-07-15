@@ -1,18 +1,20 @@
 import {
     StyleSheet,
     SafeAreaView,
-    Text,
-    TextInput,
-    FlatList,
     Pressable,
-    Dimensions,
-    View,
-    Image,
-    Modal,
-    ScrollView
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+// Utility
+import * as THEME from '../utils/Theme'
+
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 
 const TopMenu = (props) => {
 
@@ -24,7 +26,7 @@ const TopMenu = (props) => {
             <FontAwesome
             name={"cog"}
             size={30}
-            color={"#fff"}
+            color="#FFF"
             style
             />
         
@@ -39,7 +41,7 @@ const TopMenu = (props) => {
                     <FontAwesome
                     name={"chevron-left"}
                     size={28}
-                    color={"#fff"}
+                    color="#FFF"
                     style
                     />
             </Pressable>

@@ -5,18 +5,15 @@ import {
     TextInput,
     FlatList,
     Pressable,
-    Dimensions,
     View,
     Image,
     Modal,
-    ScrollView,
-    Platform
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 // Utility
-import AppStyles from '../../utils/AppStyles';
+import * as THEME from '../../utils/Theme'
 import Images from '../../utils/Images';
 // Components
 import { ModalList } from '../../components/ModalList';
@@ -25,8 +22,13 @@ import Splash from '../../components/Splash';
 import TopMenu from '../../components/TopMenu';
 import RemovableList from '../../components/RemovableList';
 
-import MOCKDATA from "../../../MOCK_SPELL_DATA.json"
-
+var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)]
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+        STYLES = theme.STYLES
+    }
+)
 export default function AddCharacterPage({navigation, route}){
 
     const [Chars, setChars] = useState([])
@@ -77,7 +79,7 @@ export default function AddCharacterPage({navigation, route}){
     const [name, setName] = useState("")
     const [classes, setClasses] = useState([])
     const [icon, setIcon] = useState("hat")
-    const [color, setColor] = useState("#FFF")
+    const [color, setColor] = useState(COLORS.back)
     const [notes, setNotes] = useState("")
     const [spells, setSpells] = useState({})
     const [ID, setID] = useState(0)
@@ -167,7 +169,7 @@ export default function AddCharacterPage({navigation, route}){
     const colorList = ["#e6646e","#ffd164","#b4f09b","#a5cdff","#8cb4eb", "#a35bef", "#feca9c", "#c5d3dd", "#c68d7a"]
     function selectColor(selection){
         if(selection == color){
-            setColor("#FFF")
+            setColor(COLORS.back)
         } else {
             setColor(selection)
         }
@@ -189,29 +191,29 @@ export default function AddCharacterPage({navigation, route}){
                 <FontAwesome
                 name={(status ? "check" : "check")}
                 size={20}
-                color={(status ? "#79e46b" : "#CCD2E3")}
+                color={(status ? "#79e46b" : COLORS.secondary_content)}
                 style={styles.icon}></FontAwesome>
             </View>
         )
     }
 
     return (
-        <SafeAreaView style={AppStyles.Background}>
-            <View style={AppStyles.Container}>
+        <SafeAreaView style={STYLES.Background}>
+            <View style={STYLES.Container}>
                 <TopMenu
                     bubble={false}
                     onLeftPress={()=>onBackPress()}></TopMenu>
-                <Text style={AppStyles.Header2}>{title}</Text>
+                <Text style={STYLES.Header2}>{title}</Text>
 
                 {/* Name */}
                 <View style={styles.field}>
-                    <Text style={[AppStyles.Header3]}>Name</Text>
+                    <Text style={[STYLES.Header3]}>Name</Text>
                     <View style={styles.input}>
                         <TextInput 
-                            style={AppStyles.Input}
+                            style={STYLES.Input}
                             placeholder="Enter a name"
                             value={name}
-                            placeholderTextColor="#CCD2E3"
+                            placeholderTextColor={COLORS.secondary_content}
                             onChangeText={(text) => setName(text)}
                         ></TextInput>
                         {fieldCheck(name.length>0)}
@@ -220,9 +222,9 @@ export default function AddCharacterPage({navigation, route}){
 
                 {/* Class */}
                 <View style={styles.field}>
-                    <Text style={[AppStyles.Header3]}>Class</Text>
+                    <Text style={[STYLES.Header3]}>Class</Text>
                     <View style={styles.input}>
-                        <View style={[AppStyles.Input, {height: "auto", flexDirection: "row"}]}>
+                        <View style={[STYLES.Input, {height: "auto", flexDirection: "row"}]}>
                             <RemovableList
                                 selected={classes}
                                 onXPress={(item) => onXPress(item)}>
@@ -232,7 +234,7 @@ export default function AddCharacterPage({navigation, route}){
                                 <FontAwesome
                                     name={"plus-circle"}
                                     size={25}
-                                    color={"#FFF"}
+                                    color={COLORS.primary_content}
                                     style={{margin: 5, marginHorizontal: 10}}
                                     />
                             </Pressable>
@@ -258,12 +260,12 @@ export default function AddCharacterPage({navigation, route}){
 
                 {/* Notes */}
                 <View style={styles.field}>
-                    <Text style={[AppStyles.Header3]}>Notes</Text>
+                    <Text style={[STYLES.Header3]}>Notes</Text>
                     <View style={styles.input}>
                         <TextInput 
-                            style={AppStyles.Input}
+                            style={STYLES.Input}
                             placeholder="Optional notes"
-                            placeholderTextColor="#CCD2E3"
+                            placeholderTextColor={COLORS.secondary_content}
                             onChangeText={(text) => setNotes(text)}
                         ></TextInput>
                     </View>
@@ -271,7 +273,7 @@ export default function AddCharacterPage({navigation, route}){
 
                 {/* Icon */}
                 <View style={styles.field}>
-                    <Text style={[AppStyles.Header3]}>Icon</Text>
+                    <Text style={[STYLES.Header3]}>Icon</Text>
                     <View style={styles.input}>
                         <FlatList
                             data={iconList}
@@ -281,7 +283,7 @@ export default function AddCharacterPage({navigation, route}){
                                 return (
                                     <Pressable
                                         onPress={() => selectIcon(item)}
-                                        style={[styles.icon, {backgroundColor: icon == item ? color : "#373C48" }]}
+                                        style={[styles.icon, {backgroundColor: color, borderWidth: 3, borderColor: icon == item ? COLORS.primary_content : color}]}
                                     
                                     >
                                         <Image 
@@ -298,7 +300,7 @@ export default function AddCharacterPage({navigation, route}){
 
                 {/* Color */}
                 <View style={styles.field}>
-                    <Text style={[AppStyles.Header3]}>Color</Text>
+                    <Text style={[STYLES.Header3]}>Color</Text>
                     <View style={styles.input}>
                         <FlatList
                             data={colorList}
@@ -308,7 +310,7 @@ export default function AddCharacterPage({navigation, route}){
                                 return (
                                     <Pressable
                                         onPress={() => selectColor(item)}
-                                        style={[ styles.color, {borderWidth: color == item ? 3: 0, backgroundColor: item}]}
+                                        style={[ styles.color, {borderWidth: color == item ? 3: 0, backgroundColor: item, borderColor: COLORS.primary_content,}]}
                                     ></Pressable>
                                 )}}>
 
@@ -319,15 +321,15 @@ export default function AddCharacterPage({navigation, route}){
                 <View style={{flexDirection: "row-reverse", alignItems: "center"}}>
                     <Pressable
                         onPress={() => onApplyPress()}
-                        style={[AppStyles.PrimaryButton, {backgroundColor: (classes.length>0 && name.length>0 ? "#4CBBE9" : "#CCD2E3")}]}    
+                        style={[STYLES.PrimaryButton, {backgroundColor: (classes.length>0 && name.length>0 ? COLORS.primary_accent : COLORS.secondary_content)}]}    
                     >
-                        <Text style={[AppStyles.Header4, {color: (classes.length>0 && name.length>0 ? "#FFF" : "#373C48")}]}>{route.params.edit ? "Save" : "Create"}</Text>
+                        <Text style={[STYLES.Header4, {color: (classes.length>0 && name.length>0 ? COLORS.primary_content : COLORS.back)}]}>{route.params.edit ? "Save" : "Create"}</Text>
                     </Pressable>
                     <Pressable
                         onPress={() => navigation.navigate("Your Characters")}
-                        style={AppStyles.TertiaryButton}    
+                        style={STYLES.TertiaryButton}    
                     >
-                        <Text style={AppStyles.Header4}>Cancel</Text>
+                        <Text style={STYLES.Header4}>Cancel</Text>
                     </Pressable>
                 </View>                                                     
             </View>
@@ -353,8 +355,8 @@ export default function AddCharacterPage({navigation, route}){
                                 onPress={() => {
                                     continueToChar()
                                 }}
-                                style={[AppStyles.PrimaryButton, {marginTop: 20}]}>
-                                    <Text style={AppStyles.Header4}>Continue</Text>
+                                style={[STYLES.PrimaryButton, {marginTop: 20}]}>
+                                    <Text style={STYLES.Header4}>Continue</Text>
                                 </Pressable>
                             }></Splash>
                         </View>
@@ -378,16 +380,14 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     icon: {
-        padding: 1, 
+        padding: 0, 
         borderRadius: 15, 
-        borderColor: "#fff",
         margin: 5
     },
     color: {
         width: 40, 
         height: 40, 
         borderRadius: 50,
-        borderColor: "#fff",
         marginRight: 10,
     }
 })

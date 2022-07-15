@@ -1,9 +1,15 @@
 import { StyleSheet } from "react-native";
 // Utility
-import {COLORS} from './Colors.js'
+import * as THEME from './Theme'
 
+var COLORS = THEME.DarkTheme
+THEME.getTheme().then(
+    theme => {
+        COLORS = theme.COLORS
+    }
+)
 
-export default StyleSheet.create({
+let styles = StyleSheet.create({
     Background: {
         backgroundColor: COLORS.back_dark,
         height: '100%',
@@ -97,3 +103,5 @@ export default StyleSheet.create({
 
 
 })
+
+export default styles
