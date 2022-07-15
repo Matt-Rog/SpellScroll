@@ -122,7 +122,7 @@ export default function App() {
             footerShown: true,
             tabBarShowLabel: false,
             tabBarStyle: {
-              backgroundColor: COLORS.back,
+              backgroundColor: "#373C48",
               borderRadius: 25,
               overflow: 'hidden',
               marginTop: -90,
