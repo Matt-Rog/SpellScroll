@@ -7,13 +7,13 @@ export default function FilterComponents(props) {
     
     return [
         {
-        title: "Class",
-        name: "Class",
+        title: "Classes",
+        name: "Classes",
         prompt: "Select classes",
         options: ["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
         component:
             <FilterList
-            name="Class"
+            name="Classes"
             optionName="Classes"
             options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
             setFilterProp={(params) => props.setFilterProp(params)}

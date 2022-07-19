@@ -89,7 +89,7 @@ export default function CharacterPage({navigation, route}) {
             </SpellList>
             <Pressable
               onPress={() => {
-                updateFilter({Class: [key]})
+                updateFilter({Classes: [key]})
                 navigation.navigate('Spells', {screen: 'Search Spells'})
               }}
               style={[STYLES.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>

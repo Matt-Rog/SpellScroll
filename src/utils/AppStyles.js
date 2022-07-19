@@ -12,10 +12,10 @@ THEME.getTheme().then(
 let styles = StyleSheet.create({
     Background: {
         backgroundColor: COLORS.back_dark,
-        height: '100%',
         width: "100%",
     },
     Container: {
+        flex: 1,
         marginTop: 10,
         marginBottom: 247,
         width: "88%",

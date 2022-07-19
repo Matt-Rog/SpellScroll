@@ -132,7 +132,7 @@ const SlidingTab = (props) => {
             )}
             renderItem={({item})=> {
               return(
-                <View style={{width: width}}>
+                <View style={{width: width, flex: 1}}>
                     {item.content}
                 </View>
               )
