@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useState, useEffect } from "react";
 import MOCKDATA from "../../ALL_SPELL_DATA.json";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 // Utility
 import * as THEME from "../utils/Theme";
 // Components
@@ -122,13 +123,22 @@ const SpellList = (props) => {
             </View>
             <View style={styles.text}>
               <View style={styles.rowOne}>
-                <Text
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                  <Text
                   numberOfLines={1}
                   adjustsFontSizeToFit={true}
                   style={[STYLES.Header4]}
-                >
-                  {item?.name}
-                </Text>
+                  >
+                    {item?.name}
+                  </Text>
+                  {item?.paywall == "TRUE" ? 
+                  <FontAwesome5
+                    style={{marginLeft: 8}}
+                    name={"lock"}
+                    size={15}
+                    color={COLORS.back_light}/>:null}
+                </View>
+                
                 <Text
                   style={[styles.spellTXT, { color: COLORS.secondary_content }]}
                 >
@@ -144,13 +154,28 @@ const SpellList = (props) => {
                 >
                   {item?.school}
                 </Text>
-                <Tags
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                  {item?.ritual == "YES" ? 
+                  <FontAwesome5
+                    style={{marginRight: 8}}
+                    name={"hand-sparkles"}
+                    size={15}
+                    color={COLORS.secondary_content}/>:null}
+                  {item?.concentration == "YES" ? 
+                  <FontAwesome5
+                    style={{marginRight: 8}}
+                    name={"crosshairs"}
+                    size={15}
+                    color={COLORS.secondary_content}/>:null}
+                  <Tags
                   tags={
                     [item.time]
                   }
-                  background={COLORS.back_light}
-                  fontSize={13}
-                ></Tags>
+                    background={COLORS.back_light}
+                    fontSize={13}
+                  ></Tags>
+                  </View>
+                
               </View>
             </View>
           </Pressable>
