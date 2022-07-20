@@ -171,20 +171,21 @@ export default function SettingsPage({navigation, route}) {
                 
                 <View style={{paddingVertical: 15}}>
                     <Text style={STYLES.Header2}>Peformance</Text>
-                    <Text style={[STYLES.Header3, {color: COLORS.back,marginTop: 5}]}>Reporting</Text>
+                    <Text style={[STYLES.Header3, {color: COLORS.secondary_content,marginTop: 5}]}>Reporting</Text>
                     <Pressable
+                      onPress={() => setReported(true)}
                       style={{backgroundColor: COLORS.back, borderRadius: 8, alignSelf: 'baseline', marginVertical: 5}}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                           <FontAwesome
                             style={{margin: 10, marginRight: 0}}
                             name={"bug"}
                             size={25}
-                            color={COLORS.back_dark}
+                            color={COLORS.secondary_accent}
                           />
-                          <Text style={[STYLES.Header4, {color: COLORS.back_dark, padding: 10}]}>Report a bug</Text>
+                          <Text style={[STYLES.Header4, {color: COLORS.primary_content, padding: 10}]}>Report a bug</Text>
                         </View>
-                        <Text style={[STYLES.Note, {color: COLORS.secondary_accent}]}>{reported ? "Reporting not available" : null}</Text>
                     </Pressable>
+                    <Text style={[STYLES.Note, {color: COLORS.secondary_accent}]}>{reported ? "Reporting not available" : null}</Text>
                 </View>
             </View>
         </SafeAreaView>
