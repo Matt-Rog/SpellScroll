@@ -431,13 +431,16 @@ export default function SearchPage({ navigation, route }) {
           title={"No spells found"}
           body={"Try expanding your search :)"}
         ></Splash>
-        <SpellList
-          onResultPress={onResultPress}
-          spellIDs={getSpellIDs(getSortedSpells(resultSpells))}
-          navigation={navigation}
-          prevScreen="Search Spells"
-          scrollEnabled={true}
-        ></SpellList>
+        <View style={{height: HEIGHT*0.63}}>
+          <SpellList
+            onResultPress={onResultPress}
+            spellIDs={getSpellIDs(getSortedSpells(resultSpells))}
+            navigation={navigation}
+            prevScreen="Search Spells"
+            height={"90%"}
+            scrollEnabled={true}
+          ></SpellList>
+        </View>
       </View>
     </SafeAreaView>
   );

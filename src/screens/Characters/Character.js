@@ -6,7 +6,9 @@ import {
     Pressable,
     View,
     Image,
-    Modal,    
+    Modal,
+    ScrollView,
+    Dimensions
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -26,6 +28,9 @@ THEME.getTheme().then(
         STYLES = theme.STYLES
     }
 )
+
+const WIDTH = Dimensions.get('window').width
+const HEIGHT = Dimensions.get('window').height
 
 export default function CharacterPage({navigation, route}) {
 
@@ -66,36 +71,42 @@ export default function CharacterPage({navigation, route}) {
         for (const [key, value] of Object.entries(tempChar.spells)) {
           console.log("gerro")
           console.log(value)
-          var tempStats = <View style={STYLES.Container}>
+          var tempStats = <View>
+            <ScrollView style={[STYLES.Container, {borderRadius: 12, marginBottom: 0, height: HEIGHT*0.5, flexGrow: 0}]}>
             <View style={{marginBottom: 20}}>
               <Text style={STYLES.Header4}>KNOWN</Text>
-              {value.known.length == 0 ? <Text style={STYLES.ContentBody}>No spells found</Text> : null}
+              {value.known.length == 0 ? <Text style={[STYLES.ContentBody, {marginBottom: 20}]}>No spells found</Text> : 
               <SpellList
-                  onResultPress={onResultPress}
-                  spellIDs={value.known}
-                  navigation={navigation}
-                  prevScreen="Character"
-                  scrollEnabled={true}>
-              </SpellList>
+                onResultPress={onResultPress}
+                spellIDs={value.known}
+                navigation={navigation}
+                prevScreen="Character"
+                height={"100%"}
+                scrollEnabled={false}>
+              </SpellList>}
             </View>
             <Text style={STYLES.Header4}>PREPARED</Text>
-            {value.prepared.length == 0 ? <Text style={STYLES.ContentBody}>No spells found</Text> : null}
-            <SpellList
+            {value.prepared.length == 0 ? <Text style={[STYLES.ContentBody, {marginBottom: 20}]}>No spells found</Text> : 
+              <SpellList
                 onResultPress={onResultPress}
                 spellIDs={value.prepared}
                 navigation={navigation}
                 prevScreen="Character"
-                scrollEnabled={true}>
-            </SpellList>
-            <Pressable
-              onPress={() => {
-                updateFilter({Classes: [key]})
-                navigation.navigate('Spells', {screen: 'Search Spells'})
-              }}
-              style={[STYLES.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
-              <Text style={STYLES.Header4}>Add {key} spells</Text>
-            </Pressable>
-          </View>
+                height={"100%"}
+                scrollEnabled={false}>
+              </SpellList>}
+              <View style={{alignSelf: "center", marginTop: 10}}>
+              <Pressable
+                onPress={() => {
+                  updateFilter({Classes: [key]})
+                  navigation.navigate('Spells', {screen: 'Search Spells'})
+                }}
+                style={[STYLES.PrimaryButton, {}]}>
+                <Text style={STYLES.Header4}>Add {key} spells</Text>
+              </Pressable>
+            </View>
+          </ScrollView>
+        </View>
 
           newData[key] = tempStats
         };
@@ -227,36 +238,40 @@ export default function CharacterPage({navigation, route}) {
             <Text style={[STYLES.Header4, {paddingVertical: 10,}]}>{char.classes[0]}</Text>
             <View style={{height: 4, width: "auto",backgroundColor: char.color}}></View>
           </View>
-          <View style={STYLES.Container}>
-          <View style={{marginBottom: 20}}>
+          <ScrollView style={[STYLES.Container, {borderRadius: 12, marginBottom: 0, height: HEIGHT*0.5, flexGrow: 0}]}>
+            <View style={{marginBottom: 20}}>
               <Text style={STYLES.Header4}>KNOWN</Text>
-              {(Object.values(Object.values(spells)[0])[0]) == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
+              {(Object.values(Object.values(spells)[0])[0]) == 0 ? <Text style={[STYLES.ContentBody, {marginBottom: 20}]}>No spells found</Text> : 
               <SpellList
-                  onResultPress={onResultPress}
-                  spellIDs={Object.values(Object.values(spells)[0])[0]}
-                  navigation={navigation}
-                  prevScreen="Character"
-                  scrollEnabled={true}>
-              </SpellList>
+                onResultPress={onResultPress}
+                spellIDs={Object.values(Object.values(spells)[0])[0]}
+                navigation={navigation}
+                prevScreen="Character"
+                height={"100%"}
+                scrollEnabled={false}>
+              </SpellList>}
             </View>
             <Text style={STYLES.Header4}>PREPARED</Text>
-            {(Object.values(Object.values(spells)[0])[1]) == 0 ? <Text style={STYLES.ContentBody}>No spells found :(</Text> : null}
-            <SpellList
+            {(Object.values(Object.values(spells)[0])[1]) == 0 ? <Text style={[STYLES.ContentBody, {marginBottom: 20}]}>No spells found</Text> : 
+              <SpellList
                 onResultPress={onResultPress}
                 spellIDs={Object.values(Object.values(spells)[0])[1]}
                 navigation={navigation}
                 prevScreen="Character"
-                scrollEnabled={true}>
-            </SpellList>
-            <Pressable
-              onPress={() => {
-                updateFilter({Class: [char.classes[0]]})
-                navigation.navigate('Spells', {screen: 'Search Spells'})
-              }}
-              style={[STYLES.PrimaryButton, {justifyContent: 'center', alignSelf: 'center', marginTop: 30}]}>
-              <Text style={STYLES.Header4}>Add {char.classes[0]} spells</Text>
-            </Pressable>
-          </View>
+                height={"100%"}
+                scrollEnabled={false}>
+              </SpellList>}
+              <View style={{alignSelf: "center", marginTop: 10}}>
+              <Pressable
+                onPress={() => {
+                  updateFilter({Classes: [char.classes[0]]})
+                  navigation.navigate('Spells', {screen: 'Search Spells'})
+                }}
+                style={[STYLES.PrimaryButton, {}]}>
+                <Text style={STYLES.Header4}>Add {char.classes[0]} spells</Text>
+              </Pressable>
+            </View>
+          </ScrollView>
         </View>}
       </SafeAreaView>
     );
