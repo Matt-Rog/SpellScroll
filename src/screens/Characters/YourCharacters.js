@@ -116,7 +116,7 @@ export default function YourCharactersPage({navigation, route}) {
     return (
         <SafeAreaView style={[STYLES.Background]}>
           <View style={STYLES.Container}>
-          <Text style={STYLES.Header1}>Your Characters</Text>
+          <Text style={[STYLES.Header1, {marginBottom: 20}]}>Your Characters</Text>
           <Splash
             hide={hideSplash}
             image={"green_dragon"}
