@@ -12,19 +12,23 @@ const getTheme = async () => {
       switch (jsonValue) {
         case 'Light':
             colors = LightTheme;
+            images = LightImages
             break;
         case 'Dark':
             colors = DarkTheme;
+            images = DarkImages
             break;
         default: 
         colors = DarkTheme;
+        images = DarkImages
             break
     }
     let styles = getStyles(colors)
 
     theme = {
         COLORS: colors,
-        STYLES: styles
+        STYLES: styles,
+        IMAGES: images
     }
     return theme
     
@@ -37,7 +41,7 @@ const getTheme = async () => {
   const LightTheme = {
     back_dark: "#fff",
     back: "#ECEDF0",
-    back_light: "#CED2DA",
+    back_light: "#d9dce3",
 
     content: "#42526E",
     primary_content: "#42526E",
@@ -181,4 +185,78 @@ const DarkTheme = {
         }
     })}
 
-export {getTheme, getStyles, DarkTheme, LightTheme}
+    const DarkImages = {
+        school: {
+            abjuration: require('../../assets/abjuration.png'),
+            conjuration: require('../../assets/conjuration.png'),
+            divination: require('../../assets/divination.png'),
+            enchantment: require('../../assets/enchantment.png'),
+            illusion: require('../../assets/illusion.png'),
+            evocation: require('../../assets/evocation.png'),
+            necromancy: require('../../assets/necromancy.png'),
+            transmutation: require('../../assets/transmutation.png'),
+        },
+        icon: {
+            blacksmith: require('../../assets/blacksmith.png'),
+            warlock: require('../../assets/warlock.png'),
+            warrior1: require('../../assets/warrior1.png'),
+            warrior2: require('../../assets/warrior2.png'),
+            druid: require('../../assets/druid.png'),
+            cleric: require('../../assets/cleric.png'),
+            bard: require('../../assets/bard.png'),
+            genie: require('../../assets/genie.png'),
+            hat: require('../../assets/hat.png'),
+            wizard: require('../../assets/wizard.png'),
+            orc: require('../../assets/orc.png'),
+            elf1: require('../../assets/elf1.png'),
+            elf2: require('../../assets/elf2.png'),
+            gnome: require('../../assets/gnome.png'),
+            faun: require('../../assets/faun.png')
+        }, 
+        splash: {
+            default: require('../../assets/default-splash.png'),
+            red_dragon: require('../../assets/red-dragon.png'),
+            green_dragon: require('../../assets/green-dragon.png'),
+            blue_wizard: require('../../assets/blue-wizard.png'),
+            spell_scroll: require('../../assets/spell-scroll.png')
+        }
+    };
+
+    const LightImages = {
+        school: {
+            abjuration: require('../../assets/l-abjuration.png'),
+            conjuration: require('../../assets/l-conjuration.png'),
+            divination: require('../../assets/l-divination.png'),
+            enchantment: require('../../assets/l-enchantment.png'),
+            illusion: require('../../assets/l-illusion.png'),
+            evocation: require('../../assets/l-evocation.png'),
+            necromancy: require('../../assets/l-necromancy.png'),
+            transmutation: require('../../assets/l-transmutation.png'),
+        },
+        icon: {
+            blacksmith: require('../../assets/blacksmith.png'),
+            warlock: require('../../assets/warlock.png'),
+            warrior1: require('../../assets/warrior1.png'),
+            warrior2: require('../../assets/warrior2.png'),
+            druid: require('../../assets/druid.png'),
+            cleric: require('../../assets/cleric.png'),
+            bard: require('../../assets/bard.png'),
+            genie: require('../../assets/genie.png'),
+            hat: require('../../assets/hat.png'),
+            wizard: require('../../assets/wizard.png'),
+            orc: require('../../assets/orc.png'),
+            elf1: require('../../assets/elf1.png'),
+            elf2: require('../../assets/elf2.png'),
+            gnome: require('../../assets/gnome.png'),
+            faun: require('../../assets/faun.png')
+        }, 
+        splash: {
+            default: require('../../assets/default-splash.png'),
+            red_dragon: require('../../assets/red-dragon.png'),
+            green_dragon: require('../../assets/green-dragon.png'),
+            blue_wizard: require('../../assets/blue-wizard.png'),
+            spell_scroll: require('../../assets/spell-scroll.png')
+        }
+    };
+
+export {getTheme, getStyles, DarkTheme, DarkImages, LightTheme}

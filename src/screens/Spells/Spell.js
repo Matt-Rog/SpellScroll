@@ -7,13 +7,13 @@ import {
   Image,
   Modal,
   ScrollView,
+  Dimensions
 } from "react-native";
 import React, { useState } from "react";
 import { WebView } from 'react-native-webview';
 
 import MOCKDATA from "../../../ALL_SPELL_DATA.json";
 // Utility
-import Images from "../../utils/Images";
 import * as THEME from "../../utils/Theme";
 // Components
 import TopMenu from "../../components/TopMenu";
@@ -22,11 +22,15 @@ import SlidingTab from "../../components/SlidingTab";
 import SpellSettings from "../Characters/SpellSettings";
 import Tags from "../../components/Tags";
 
-var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)];
+var [COLORS, STYLES, IMAGES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme), THEME.DarkIMAGES];
 THEME.getTheme().then((theme) => {
   COLORS = theme.COLORS;
   STYLES = theme.STYLES;
+  IMAGES = theme.IMAGES
 });
+
+const HEIGHT = Dimensions.get("window").height;
+const WIDTH = Dimensions.get("window").width;
 
 export default function SpellPage({ navigation, route }) {
   const { id } = route.params;
@@ -312,13 +316,14 @@ export default function SpellPage({ navigation, route }) {
         >
           <Image
             style={styles.icon}
-            source={Images.school[Spell.school.toLowerCase()]}
+            source={IMAGES.school[Spell.school.toLowerCase()]}
             resizeMode="stretch"
           ></Image>
           <View style={{ justifyContent: "center" }}>
             <Text
               adjustsFontSizeToFit={true}
-              style={[STYLES.Header2, { maxWidth: 210, marginTop: 0 }]}
+              numberOfLines={1}
+              style={[STYLES.Header2, { maxWidth: 280, marginTop: 0 }]}
             >
               {Spell.name}
             </Text>

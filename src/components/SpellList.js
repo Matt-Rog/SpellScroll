@@ -10,16 +10,16 @@ import {
 import { useState, useEffect } from "react";
 import MOCKDATA from "../../ALL_SPELL_DATA.json";
 // Utility
-import Images from "../utils/Images";
 import * as THEME from "../utils/Theme";
 // Components
 import Tags from "./Tags";
 import SpellSettings from "../screens/Characters/SpellSettings";
 
-var [COLORS, STYLES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme)];
+var [COLORS, STYLES, IMAGES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme), THEME.DarkImages];
 THEME.getTheme().then((theme) => {
   COLORS = theme.COLORS;
   STYLES = theme.STYLES;
+  IMAGES = theme.IMAGES
 });
 
 const SpellList = (props) => {
@@ -116,7 +116,7 @@ const SpellList = (props) => {
             >
               <Image
                 style={styles.icon}
-                source={Images.school[item?.school.toLowerCase()]}
+                source={IMAGES.school[item?.school.toLowerCase()]}
                 resizeMode="stretch"
               ></Image>
             </View>
