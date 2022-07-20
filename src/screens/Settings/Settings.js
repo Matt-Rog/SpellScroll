@@ -64,6 +64,7 @@ export default function SettingsPage({navigation, route}) {
     const [selected, setSelected] = useState("Dark")
     const [changed, setChanged] = useState(false)
     const [deleted, setDeleted] = useState(false)
+    const [reported, setReported] = useState(false)
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
 
     const changeDeleteModalVisibility = (bool) => {
@@ -182,6 +183,7 @@ export default function SettingsPage({navigation, route}) {
                           />
                           <Text style={[STYLES.Header4, {color: COLORS.back_dark, padding: 10}]}>Report a bug</Text>
                         </View>
+                        <Text style={[STYLES.Note, {color: COLORS.secondary_accent}]}>{reported ? "Reporting not available" : null}</Text>
                     </Pressable>
                 </View>
             </View>
