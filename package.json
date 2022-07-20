@@ -35,7 +35,8 @@
     "react-native-vector-icons": "^9.1.0",
     "react-native-virtualized-view": "^0.1.5",
     "react-native-web": "0.17.7",
-    "react-native-webview": "^11.22.7"
+    "react-native-webview": "^11.22.7",
+    "expo-app-loading": "~2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

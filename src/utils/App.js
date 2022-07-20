@@ -3,6 +3,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {useFonts} from 'expo-font'
+import AppLoading from 'expo-app-loading'
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MOCKDATA from "../../ALL_SPELL_DATA.json";
 // Screens
@@ -92,6 +94,16 @@ function Settings() {
 }
 
 export default function App() {
+
+  let[fontsLoaded, error]= useFonts({
+      'BreatheFireIii-PKLOB':require('../../assets/fonts/BreatheFireIii-PKLOB.ttf'),
+      'Draconis-JRw6B':require('../../assets/fonts/Draconis-JRw6B.ttf')
+  })
+
+  if(!fontsLoaded){
+    return <AppLoading/>
+  }
+
   return (
     <NavigationContainer theme={Theme}>
       <MenuTab.Navigator
