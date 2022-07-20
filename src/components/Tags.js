@@ -19,7 +19,7 @@ const Tags = (props) => {
     return (
         <FlatList
             data={props.tags}
-            numColumns={3}
+            numColumns={(props.maxPerRow != undefined ? props.maxPerRow : 3)}
             scrollEnabled={false}
             renderItem={({item, index}) => {
             return (
