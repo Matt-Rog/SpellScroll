@@ -18,6 +18,7 @@ import * as THEME from "../../utils/Theme";
 // Components
 import TopMenu from "../../components/TopMenu";
 import Splash from "../../components/Splash";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import SlidingTab from "../../components/SlidingTab";
 import SpellSettings from "../Characters/SpellSettings";
 import Tags from "../../components/Tags";
@@ -102,17 +103,29 @@ export default function SpellPage({ navigation, route }) {
               { backgroundColor: COLORS.back },
             ]}
           >
-            <Text
-              style={[
-                [
-                  [styles.attributeName, { color: COLORS.secondary_content }],
+            <View style={{flexDirection: 'row', alignContent: "center"}}>
+              <Text
+                style={[
+                  [
+                    [styles.attributeName, { color: COLORS.secondary_content }],
+                    { color: COLORS.primary_content },
+                  ],
                   { color: COLORS.primary_content },
-                ],
-                { color: COLORS.primary_content },
-              ]}
-            >
-              Casting Time
-            </Text>
+                ]}
+              >
+                Casting Time
+              </Text>
+              {spell?.ritual == "YES" ? 
+                <View style={{flexDirection: "row"}}>
+                  <FontAwesome5
+                  style={{marginLeft: 8}}
+                  name={"hand-sparkles"}
+                  size={15}
+                  color={COLORS.secondary_content}/>
+                </View>:null}
+                
+            </View>
+            
             <Text
               numberOfLines={1}
               adjustsFontSizeToFit={true}
@@ -131,17 +144,27 @@ export default function SpellPage({ navigation, route }) {
             >
               Range/Area
             </Text>
-            <Text
-              numberOfLines={1}
-              adjustsFontSizeToFit={true}
-              adjustsFontSizeToFit={true}
-              style={[
-                [styles.attributeValue, { color: COLORS.primary_content }],
-                { color: COLORS.primary_content },
-              ]}
-            >
-              {spell.range}
-            </Text>
+            <View style={{flexDirection:"row", alignItems: "center"}}>
+              <Text
+                numberOfLines={1}
+                adjustsFontSizeToFit={true}
+                adjustsFontSizeToFit={true}
+                style={[
+                  [styles.attributeValue, { color: COLORS.primary_content }],
+                  { color: COLORS.primary_content },
+                ]}
+              >
+                {spell.range}
+              </Text>
+              {spell.aoe_shape != "None" ?
+                <Image 
+                style={{height: 20, width: 20, marginLeft: 5}} 
+                resizeMode="contain" 
+                source={IMAGES.shape[spell.aoe_shape.toLowerCase()]}></Image>: null}
+              {spell.aoe_size != "None" ?
+              <Text style={[STYLES.Note, {color: COLORS.primary_content, marginLeft: 5}]}>({spell.aoe_size})</Text> : null}
+            </View>
+            
           </View>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
@@ -199,14 +222,28 @@ export default function SpellPage({ navigation, route }) {
             </Text>
           </View>
           <View style={[styles.attributeTab, { backgroundColor: COLORS.back }]}>
-            <Text
-              style={[
-                [styles.attributeName, { color: COLORS.secondary_content }],
-                { color: COLORS.primary_content },
-              ]}
-            >
-              Duration
-            </Text>
+          <View style={{flexDirection: 'row', alignContent: "center"}}>
+              <Text
+                style={[
+                  [
+                    [styles.attributeName, { color: COLORS.secondary_content }],
+                    { color: COLORS.primary_content },
+                  ],
+                  { color: COLORS.primary_content },
+                ]}
+              >
+                Duration
+              </Text>
+              {spell?.concentration == "YES" ? 
+                <View style={{flexDirection: "row"}}>
+                  <FontAwesome5
+                  style={{marginLeft: 8}}
+                  name={"crosshairs"}
+                  size={15}
+                  color={COLORS.secondary_content}/>
+                </View>:null}
+                
+            </View>
             <Text
               numberOfLines={1}
               adjustsFontSizeToFit={true}
@@ -217,17 +254,17 @@ export default function SpellPage({ navigation, route }) {
           </View>
         </View>
 
-        <View style={{flexDirection: 'column'}}>
+        <View style={{flexDirection: 'column', marginLeft: WIDTH*0.06}}>
           {spell.classes.length != 0 ?
             <View>
               <Text style={STYLES.Header3}>Classes</Text>
-              <Tags tags={spell.classes} background={COLORS.back}></Tags>
+              <Tags tags={spell.classes} maxPerRow={4} background={COLORS.back}></Tags>
             </View>
             : null}
           {spell.subclasses.length != 0 ?
-            <View>
+            <View style={{marginTop: 20}}>
               <Text style={STYLES.Header3}>Subclasses</Text>
-              <Tags tags={spell.subclasses} background={COLORS.back}></Tags>
+              <Tags tags={spell.subclasses} maxPerRow={2} background={COLORS.back}></Tags>
             </View>
             : null}
         </View>

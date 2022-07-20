@@ -220,6 +220,14 @@ const DarkTheme = {
             blue_wizard: require('../../assets/blue-wizard.png'),
             spell_scroll: require('../../assets/spell-scroll.png'),
             dungeon: require('../../assets/dungeon.png')
+        },
+        shape: {
+            line: require('../../assets/line.png'),
+            square: require('../../assets/square.png'),
+            cube: require('../../assets/cube.png'),
+            cone: require('../../assets/cone.png'),
+            sphere: require('../../assets/sphere.png'),
+            cylinder: require('../../assets/cylinder.png')
         }
     };
 
@@ -258,6 +266,14 @@ const DarkTheme = {
             blue_wizard: require('../../assets/blue-wizard.png'),
             spell_scroll: require('../../assets/spell-scroll.png'),
             dungeon: require('../../assets/dungeon.png')
+        },
+        shape: {
+            line: require('../../assets/l-line.png'),
+            square: require('../../assets/l-square.png'),
+            cube: require('../../assets/l-cube.png'),
+            cone: require('../../assets/l-cone.png'),
+            sphere: require('../../assets/l-sphere.png'),
+            cylinder: require('../../assets/l-cylinder.png')
         }
     };
 
