@@ -91,7 +91,7 @@ const SpellList = (props) => {
       </Modal>
 
       <FlatList
-        style={{ borderRadius: 12 }}
+        style={{ borderRadius: 12, height: "85%"}}
         scrollEnabled={props.scrollEnabled}
         showsVerticalScrollIndicator={false}
         data={spells}

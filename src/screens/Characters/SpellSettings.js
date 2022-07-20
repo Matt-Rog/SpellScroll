@@ -208,9 +208,7 @@ const SpellSettings = (props) => {
                   <Pressable
                     onPress={() => {
                       changeModalVisibility(false);
-                      props.navigation.navigate("Add Character", {
-                        edit: false,
-                      });
+                      props.navigation.navigate("Characters", {screen: "Add Character", params: {edit: false}});
                     }}
                     style={[STYLES.PrimaryButton, { marginTop: 10 }]}
                   >

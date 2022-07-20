@@ -14,7 +14,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Level"
-            optionName="Filter by level"
+            optionName="Select level"
             options={[0,1,2,3,4,5,6,7,8,9]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -29,7 +29,7 @@ export default function FilterComponents(props) {
         component:
             <FilterList
             name="Classes"
-            optionName="Filter by classes"
+            optionName="Select classes"
             options={["Artificer", "Bard", "Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -92,7 +92,7 @@ export default function FilterComponents(props) {
         component:
             <FilterList
             name="Subclasses"
-            optionName="Filter by subclasses"
+            optionName="Select subclasses"
             options={[
                 "Alchemist",
                 "Arcana Domain",
@@ -155,7 +155,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="School"
-            optionName="Filter by school"
+            optionName="Select school"
             options={["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -170,7 +170,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterButton
             name="Components"
-            optionName="Filter by components"
+            optionName="Select components"
             options={["Material", "Verbal", "Somatic"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -185,7 +185,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Time"
-            optionName="Filter by casting time"
+            optionName="Select casting time"
             options={["1 Action", "1 Bonus Action" ,"1 Reaction", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "12 Hours", "24 Hours", "Special"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -200,7 +200,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterButton
             name="Ritual"
-            optionName="Filter by ritual"
+            optionName="Select ritual"
             options={["YES", "NO"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -215,7 +215,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Range"
-            optionName="Filter by range"
+            optionName="Select range"
             options={["Self","Touch","Sight","5 ft","10 ft","15 ft","20 ft","30 ft","60 ft","90 ft","100 ft","120 ft","150 ft","300 ft","500 ft","1,000 ft","1 mile","500 miles","Unlimited"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -230,7 +230,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Duration"
-            optionName="Filter by duration"
+            optionName="Select duration"
             options={["Instantaneous","1 Round","6 Rounds","1 Minute","10 Minutes","1 Hour","2 Hours","6 Hours","8 Hours","24 Hours","1 Day","7 Days","10 Days","30 Days","Until Dispelled","Until Dispelled or Triggered","Special"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -245,7 +245,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterButton
             name="Concentration"
-            optionName="Filter by concentration"
+            optionName="Select concentration"
             options={["YES", "NO"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -309,7 +309,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Effect"
-            optionName="Filter by effect"
+            optionName="Select effect"
             options={[
                 "Acid",
                 "Additional",
@@ -383,7 +383,7 @@ export default function FilterComponents(props) {
             component: 
                 <FilterList
                 name="Attack"
-                optionName="Filter by attack/save"
+                optionName="Select attack/save"
                 options={[
                     "None",
                     "CHA Save",
@@ -423,7 +423,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Source"
-            optionName="Filter by source"
+            optionName="Select source"
             options={[
                 "Acquisitions Incorporated",
                 "Basic Rules",
@@ -453,7 +453,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Aoe_size"
-            optionName="Filter by AOE"
+            optionName="Select AOE"
             options={["None","1 ft","5 ft","10 ft","15 ft","20 ft","30 ft","40 ft","50 ft","60 ft","100 ft","150 ft","200 ft","1 mile","5 miles","2,500 ft2","40,000 ft2"]}
             setFilterProp={(params) => props.setFilterProp(params)}
             filter={props.filter}
@@ -476,7 +476,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Aoe_shape"
-            optionName="Filter by AOE Shape"
+            optionName="Select AOE Shape"
             options={[
                 "None",
                 "Cone",
@@ -530,7 +530,7 @@ export default function FilterComponents(props) {
         component: 
             <FilterList
             name="Tags"
-            optionName="Filter by tags"
+            optionName="Select tags"
             options={[
                 "Banishment",
                 "Bard",

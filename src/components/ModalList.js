@@ -60,7 +60,7 @@ const ModalList = (props) => {
                                 color={((selected.length>0) ? COLORS.secondary_content : COLORS.primary_accent)}
                             />
                             <Text style={[STYLES.Header3, {marginLeft: 10}]}>
-                                All Items
+                                All
                             </Text>
                         </Pressable>
                     </View>

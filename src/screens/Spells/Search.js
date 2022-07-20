@@ -325,7 +325,7 @@ export default function SearchPage({ navigation, route }) {
                     style={[
                       styles.option,
                       {
-                        color: filter[item.title]
+                        color: filter[item.name]
                           ? COLORS.primary_content
                           : COLORS.secondary_content,
                       },

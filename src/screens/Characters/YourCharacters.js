@@ -98,12 +98,6 @@ export default function YourCharactersPage({navigation, route}) {
       updateData(Chars)
     }
 
-    const clearAsyncStorage = async() => {
-      AsyncStorage.removeItem('characters');
-      setChars([])
-      setHideSplash(false)
-    }
-
 
     const applyFromModal = async (data) => {
       Object.assign(data, {ID: Chars.length})
@@ -123,10 +117,6 @@ export default function YourCharactersPage({navigation, route}) {
         <SafeAreaView style={[STYLES.Background]}>
           <View style={STYLES.Container}>
           <Text style={STYLES.Header1}>Your Characters</Text>
-          <Pressable
-            onPress={()=>clearAsyncStorage()}>
-            <Text style={STYLES.Header3}>CLEAR ALL</Text>
-          </Pressable>
           <Splash
             hide={hideSplash}
             image={"red_dragon"}
