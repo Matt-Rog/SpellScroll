@@ -29,6 +29,7 @@ const Images = {
     splash: {
         default: require('../../assets/default-splash.png'),
         red_dragon: require('../../assets/red-dragon.png'),
+        green_dragon: require('../../assets/green-dragon.png'),
         blue_wizard: require('../../assets/blue-wizard.png'),
         spell_scroll: require('../../assets/spell-scroll.png')
     }

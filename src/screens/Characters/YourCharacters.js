@@ -119,7 +119,7 @@ export default function YourCharactersPage({navigation, route}) {
           <Text style={STYLES.Header1}>Your Characters</Text>
           <Splash
             hide={hideSplash}
-            image={"red_dragon"}
+            image={"green_dragon"}
             title={"No characters found"}
             component={
               <Pressable
