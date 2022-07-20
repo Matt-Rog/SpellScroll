@@ -66,7 +66,9 @@ export default function SpellPage({ navigation, route }) {
 
   function getStyledDescription(description) {
     return(
-      <FlatList
+      <View>
+        <FlatList
+        showsVerticalScrollIndicator={true}
         style={{ borderRadius: 12 }}
         data={description}
         renderItem={({ item }) => (
@@ -76,24 +78,9 @@ export default function SpellPage({ navigation, route }) {
 
         )}>
       </FlatList>
+      </View>
+      
     )
-    // const sections = description.split("\r\nAt Higher Levels. ");
-    // if (sections.length == 1) {
-    //   return (
-    //     <View style={[styles.description]}>
-    //       {/* <WebView source={{html: description}} style={styles.description}/> */}
-    //       <Text style={STYLES.ContentBody}>{description}</Text>
-    //     </View>
-    //   );
-    // } else {
-    //   var beforeHigher = 1;
-    //   return (
-    //     <View style={styles.description}>
-    //       <Text style={STYLES.ContentBody}>{sections[0]}</Text>
-    //       <Text style={[STYLES.Header3]}>At Higher Levels</Text>
-    //       <Text style={STYLES.ContentBody}>{sections[1]}</Text>
-    //     </View>
-    //   );
   }
 
   function getComponentList(components) {
@@ -253,9 +240,20 @@ export default function SpellPage({ navigation, route }) {
   function getTabContent(spell) {
     var tabData = {
       Description: (
-        <ScrollView bounces={true}>
-          {getStyledDescription(spell.description)}
-        </ScrollView>
+        <View>
+          {Spell.paywall == "TRUE" ?
+          <View>
+            <Image
+              style={{justifyContent: "center", alignSelf: "center",width: 100, height: 80, marginVertical: 10}}
+              source={IMAGES.splash['dungeon']}
+              resizeMode="stretch"
+            ></Image>
+          </View>: null}
+          <ScrollView contentContainerStyle={{flexGrow: 0}} bounces={true}>
+            {getStyledDescription(spell.description)}
+          </ScrollView>
+        </View>
+        
       ),
       Attributes: <View>{getStyledAttributes(spell)}</View>,
     };

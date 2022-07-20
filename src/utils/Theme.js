@@ -108,13 +108,13 @@ const DarkTheme = {
         },
         Header1: {
             color: COLORS.primary_content,
-            fontSize: 40,
+            fontSize: 45,
             fontFamily: 'BreatheFireIii-PKLOB'
         },
         Header2: {
             color: COLORS.primary_content,
-            fontSize: 35,
-            fontFamily: "BreatheFireIii-PKLOB"
+            fontSize: 30,
+            fontWeight: "bold"
         },
         Header3: {
             color: COLORS.primary_content,
@@ -218,7 +218,8 @@ const DarkTheme = {
             red_dragon: require('../../assets/red-dragon.png'),
             green_dragon: require('../../assets/green-dragon.png'),
             blue_wizard: require('../../assets/blue-wizard.png'),
-            spell_scroll: require('../../assets/spell-scroll.png')
+            spell_scroll: require('../../assets/spell-scroll.png'),
+            dungeon: require('../../assets/dungeon.png')
         }
     };
 
@@ -255,7 +256,8 @@ const DarkTheme = {
             red_dragon: require('../../assets/red-dragon.png'),
             green_dragon: require('../../assets/green-dragon.png'),
             blue_wizard: require('../../assets/blue-wizard.png'),
-            spell_scroll: require('../../assets/spell-scroll.png')
+            spell_scroll: require('../../assets/spell-scroll.png'),
+            dungeon: require('../../assets/dungeon.png')
         }
     };
 
