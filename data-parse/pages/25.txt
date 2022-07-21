@@ -1,0 +1,2966 @@
+<ul class="listing listing-rpgspell rpgspell-listing" data-ajax-set-window-state="true" data-row-selector=">li" data-page-inline="False" data-scroll-inline="False">
+
+     
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="thaumaturgy">
+    <div class="row spell-school">
+        <div class="school transmutation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>Cantrip</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/thaumaturgy" class="link">Thaumaturgy</a>
+            
+        </span>
+        <span>
+            <span>Transmutation</span>
+            
+                <span>•</span>    
+                <span>V</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Minute</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">30 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Control</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-thaumaturgy">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Cantrip
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        30 ft
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                         1 Minute
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Transmutation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Control
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>You manifest a minor wonder, a sign of supernatural power, within range. You create one of the following magical effects within range:</p>
+<ul>
+<li>Your voice booms up to three times as loud as normal for 1 minute.</li>
+<li>You cause flames to flicker, brighten, dim, or change color for 1 minute.</li>
+<li>You cause harmless tremors in the ground for 1 minute.</li>
+<li>You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.</li>
+<li>You instantaneously cause an unlocked door or window to fly open or slam shut.</li>
+<li>You alter the appearance of your eyes for 1 minute.</li>
+</ul>
+<p><br>If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/thaumaturgy">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Control</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Cleric</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="thorn-whip">
+    <div class="row spell-school">
+        <div class="school transmutation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>Cantrip</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/thorn-whip" class="link">Thorn Whip</a>
+            
+        </span>
+        <span>
+            <span>Transmutation</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">30 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-spell-melee"></i>
+        
+        <span>Melee</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-piercing"></i>
+            <span>Piercing</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+<div class="more-info more-info-spell">
+    <div class="more-info-body">
+        <div class="ddb-blocked-content">
+            
+                <div class="ddb-blocked-content-body">
+                      
+                        <div class="image" style="background-image: url('https://www.dndbeyond.com/avatars/thumbnails/10435/389/218/167/637248131811862290.jpeg');"></div>
+                    
+                    <div class="ddb-blocked-content-body-text">
+                        <div class="ddb-blocked-content-body-text-main">Player's Handbook</div>
+                        <div class="ddb-blocked-content-body-text-secondary">This spell is part of the Player's Handbook digital content pack. You can purchase this individual spell, all spells within this content, or save even more by purchasing the entire content pack.</div>
+                        <div class="ddb-blocked-content-body-text-secondary">Once a spell is purchased, you can view the details of the spell, and add it to your characters.</div>
+                        <div class="ddb-blocked-content-actions">
+                            <a href="/marketplace/sourcebooks/players-handbook" class="button">
+                                View Purchase Options
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="thunder-step">
+    <div class="row spell-school">
+        <div class="school conjuration"></div>
+    </div>
+    <div class="row spell-level">
+        <span>3rd</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/thunder-step" class="link">Thunder Step</a>
+            
+        </span>
+        <span>
+            <span>Conjuration</span>
+            
+                <span>•</span>    
+                <span>V</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">90 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-con-save"></i>
+        
+        <span>CON Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-thunder"></i>
+            <span>Thunder</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+<div class="more-info more-info-spell">
+    <div class="more-info-body">
+        <div class="ddb-blocked-content">
+            
+                <div class="ddb-blocked-content-body">
+                      
+                        <div class="image" style="background-image: url('https://www.dndbeyond.com/avatars/thumbnails/10449/803/218/167/637248709455777906.jpeg');"></div>
+                    
+                    <div class="ddb-blocked-content-body-text">
+                        <div class="ddb-blocked-content-body-text-main">Xanathar's Guide to Everything</div>
+                        <div class="ddb-blocked-content-body-text-secondary">This spell is part of the Xanathar's Guide to Everything digital content pack. You can purchase this individual spell, all spells within this content, or save even more by purchasing the entire content pack.</div>
+                        <div class="ddb-blocked-content-body-text-secondary">Once a spell is purchased, you can view the details of the spell, and add it to your characters.</div>
+                        <div class="ddb-blocked-content-actions">
+                            <a href="/marketplace/sourcebooks/xanathars-guide-to-everything" class="button">
+                                View Purchase Options
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="thunderclap">
+    <div class="row spell-school">
+        <div class="school evocation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>Cantrip</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/thunderclap" class="link">Thunderclap</a>
+            
+        </span>
+        <span>
+            <span>Evocation</span>
+            
+                <span>•</span>    
+                <span>S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">5 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-con-save"></i>
+        
+        <span>CON Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-thunder"></i>
+            <span>Thunder</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-thunderclap">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Cantrip
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        5 ft
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">S</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        Instantaneous
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Evocation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-con-save"></i>
+                        
+                        <span>CON Save</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-type-thunder"></i>
+                            Thunder
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p class="Core-Styles_Core-Body">You create a burst of thunderous sound that can be heard up to 100 feet away. Each creature within range, other than you, must succeed on a Constitution saving throw or take 1d6 thunder damage.</p>
+<p class="Core-Styles_Core-Body">The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/thunderclap">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Damage</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Druid</div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Warlock</div>
+                
+                    <div class="tag">Wizard</div>
+                
+                    <div class="tag">Artificer</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Elemental Evil Player's Companion
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="thunderous-smite">
+    <div class="row spell-school">
+        <div class="school evocation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>1st</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/thunderous-smite" class="link">Thunderous Smite</a>
+            
+                <i class="i-concentration">Concentration</i>
+            
+        </span>
+        <span>
+            <span>Evocation</span>
+            
+                <span>•</span>    
+                <span>V</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Bonus Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Minute</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Self</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-str-save"></i>
+        
+        <span>STR Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-thunder"></i>
+            <span>Thunder</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+<div class="more-info more-info-spell">
+    <div class="more-info-body">
+        <div class="ddb-blocked-content">
+            
+                <div class="ddb-blocked-content-body">
+                      
+                        <div class="image" style="background-image: url('https://www.dndbeyond.com/avatars/thumbnails/10435/389/218/167/637248131811862290.jpeg');"></div>
+                    
+                    <div class="ddb-blocked-content-body-text">
+                        <div class="ddb-blocked-content-body-text-main">Player's Handbook</div>
+                        <div class="ddb-blocked-content-body-text-secondary">This spell is part of the Player's Handbook digital content pack. You can purchase this individual spell, all spells within this content, or save even more by purchasing the entire content pack.</div>
+                        <div class="ddb-blocked-content-body-text-secondary">Once a spell is purchased, you can view the details of the spell, and add it to your characters.</div>
+                        <div class="ddb-blocked-content-actions">
+                            <a href="/marketplace/sourcebooks/players-handbook" class="button">
+                                View Purchase Options
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="thunderwave">
+    <div class="row spell-school">
+        <div class="school evocation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>1st</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/thunderwave" class="link">Thunderwave</a>
+            
+        </span>
+        <span>
+            <span>Evocation</span>
+            
+                <span>•</span>    
+                <span>V, S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Self</span>
+        
+                   <span class="aoe-size">(15 ft <i class="i-aoe-cube"></i>)</span>
+                
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-con-save"></i>
+        
+        <span>CON Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-thunder"></i>
+            <span>Thunder</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-thunderwave">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1st
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Self
+                        
+                                    <span class="aoe-size">(15 ft <i class="i-aoe-cube"></i>)</span>
+                                
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        Instantaneous
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Evocation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-con-save"></i>
+                        
+                        <span>CON Save</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-type-thunder"></i>
+                            Thunder
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed.</p>
+<p>In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell's effect, and the spell emits a thunderous boom audible out to 300 feet.</p>
+<p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/thunderwave">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Damage</div>
+                
+                    <div class="tag">Control</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Druid</div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Wizard</div>
+                
+                    <div class="tag">Tempest Domain</div>
+                
+                    <div class="tag">The Genie</div>
+                
+                    <div class="tag">The Fathomless</div>
+                
+                    <div class="tag">Artillerist</div>
+                
+                    <div class="tag">Armorer</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="tidal-wave">
+    <div class="row spell-school">
+        <div class="school conjuration"></div>
+    </div>
+    <div class="row spell-level">
+        <span>3rd</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/tidal-wave" class="link">Tidal Wave</a>
+            
+        </span>
+        <span>
+            <span>Conjuration</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">120 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-dex-save"></i>
+        
+        <span>DEX Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-bludgeoning"></i>
+            <span>Bludgeoning</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-tidal-wave">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        3rd
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        120 ft
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        Instantaneous
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Conjuration
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-dex-save"></i>
+                        
+                        <span>DEX Save</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-type-bludgeoning"></i>
+                            Bludgeoning
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>You conjure up a wave of water that crashes down on an area within range. The area can be up to 30 feet long, up to 10 feet wide, and up to 10 feet tall. Each creature in that area must make a Dexterity saving throw. On a failed save, a creature takes 4d8 bludgeoning damage and is knocked <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Prone" data-tooltip-href="//www.dndbeyond.com/conditions/12-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">prone</a>. On a successful save, a creature takes half as much damage and isn’t knocked <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Prone" data-tooltip-href="//www.dndbeyond.com/conditions/12-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">prone</a>. The water then spreads out across the ground in all directions, extinguishing unprotected flames in its area and within 30 feet of it, and then it vanishes.</p>    
+                
+                        <span class="components-blurb">* - (a drop of water)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/tidal-wave">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Damage</div>
+                
+                    <div class="tag">Control</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Druid</div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Elemental Evil Player's Companion
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="time-ravage">
+    <div class="row spell-school">
+        <div class="school necromancy"></div>
+    </div>
+    <div class="row spell-level">
+        <span>9th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/time-ravage" class="link">Time Ravage</a>
+            
+        </span>
+        <span>
+            <span>Necromancy</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">90 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-con-save"></i>
+        
+        <span>CON Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-necrotic"></i>
+            <span>Necrotic</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+<div class="more-info more-info-spell">
+    <div class="more-info-body">
+        <div class="ddb-blocked-content">
+            
+                <div class="ddb-blocked-content-body">
+                      
+                        <div class="image" style="background-image: url('https://www.dndbeyond.com/avatars/thumbnails/10367/769/218/167/637245363413951140.jpeg');"></div>
+                    
+                    <div class="ddb-blocked-content-body-text">
+                        <div class="ddb-blocked-content-body-text-main">Explorer's Guide to Wildemount</div>
+                        <div class="ddb-blocked-content-body-text-secondary">This spell is part of the Explorer's Guide to Wildemount digital content pack. You can purchase this individual spell, all spells within this content, or save even more by purchasing the entire content pack.</div>
+                        <div class="ddb-blocked-content-body-text-secondary">Once a spell is purchased, you can view the details of the spell, and add it to your characters.</div>
+                        <div class="ddb-blocked-content-actions">
+                            <a href="/marketplace/sourcebooks/explorers-guide-to-wildemount" class="button">
+                                View Purchase Options
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="time-stop">
+    <div class="row spell-school">
+        <div class="school transmutation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>9th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/time-stop" class="link">Time Stop</a>
+            
+        </span>
+        <span>
+            <span>Transmutation</span>
+            
+                <span>•</span>    
+                <span>V</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Self</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Control</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-time-stop" style="display: block;">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        9th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Self
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        Instantaneous
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Transmutation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Control
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4 + 1 turns in a row, during which you can use actions and move as normal.</p>
+<p>This spell ends if one of the actions you use during this period, or any effects that you create during this period, affects a creature other than you or an object being worn or carried by someone other than you. In addition, the spell ends if you move to a place more than 1,000 feet from the location where you cast it.</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/time-stop">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Control</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="tiny-hut">
+    <div class="row spell-school">
+        <div class="school evocation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>3rd</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/tiny-hut" class="link">Tiny Hut</a>
+            
+                <i class="i-ritual">Ritual</i>
+            
+        </span>
+        <span>
+            <span>Evocation</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Minute </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 8 Hours</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Self</span>
+        
+                   <span class="aoe-size">(10 ft <i class="i-aoe-sphere"></i>)</span>
+                
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Utility</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-tiny-hut">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        3rd
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Minute 
+                        
+                            <i class="i-ritual">Ritual</i>
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Self
+                        
+                                    <span class="aoe-size">(10 ft <i class="i-aoe-sphere"></i>)</span>
+                                
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                         8 Hours
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Evocation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Utility
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>A 10-foot-radius immobile dome of force springs into existence around and above you and remains stationary for the duration. The spell ends if you leave its area.</p>
+<p>Nine creatures of Medium size or smaller can fit inside the dome with you. The spell fails if its area includes a larger creature or more than nine creatures. Creatures and objects within the dome when you cast this spell can move through it freely. All other creatures and objects are barred from passing through it. Spells and other magical effects can't extend through the dome or be cast through it. The atmosphere inside the space is comfortable and dry, regardless of the weather outside.</p>
+<p>Until the spell ends, you can command the interior to become dimly lit or dark. The dome is opaque from the outside, of any color you choose, but it is transparent from the inside.</p>    
+                
+                        <span class="components-blurb">* - (a small crystal bead)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/tiny-hut">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Utility</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="tiny-servant">
+    <div class="row spell-school">
+        <div class="school transmutation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>3rd</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/tiny-servant" class="link">Tiny Servant</a>
+            
+        </span>
+        <span>
+            <span>Transmutation</span>
+            
+                <span>•</span>    
+                <span>V, S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Minute </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 8 Hours</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Touch</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Utility</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+<div class="more-info more-info-spell">
+    <div class="more-info-body">
+        <div class="ddb-blocked-content">
+            
+                <div class="ddb-blocked-content-body">
+                      
+                        <div class="image" style="background-image: url('https://www.dndbeyond.com/avatars/thumbnails/10449/803/218/167/637248709455777906.jpeg');"></div>
+                    
+                    <div class="ddb-blocked-content-body-text">
+                        <div class="ddb-blocked-content-body-text-main">Xanathar's Guide to Everything</div>
+                        <div class="ddb-blocked-content-body-text-secondary">This spell is part of the Xanathar's Guide to Everything digital content pack. You can purchase this individual spell, all spells within this content, or save even more by purchasing the entire content pack.</div>
+                        <div class="ddb-blocked-content-body-text-secondary">Once a spell is purchased, you can view the details of the spell, and add it to your characters.</div>
+                        <div class="ddb-blocked-content-actions">
+                            <a href="/marketplace/sourcebooks/xanathars-guide-to-everything" class="button">
+                                View Purchase Options
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="toll-the-dead">
+    <div class="row spell-school">
+        <div class="school necromancy"></div>
+    </div>
+    <div class="row spell-level">
+        <span>Cantrip</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/toll-the-dead" class="link">Toll the Dead</a>
+            
+        </span>
+        <span>
+            <span>Necromancy</span>
+            
+                <span>•</span>    
+                <span>V, S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">60 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-wis-save"></i>
+        
+        <span>WIS Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-necrotic"></i>
+            <span>Necrotic</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+<div class="more-info more-info-spell">
+    <div class="more-info-body">
+        <div class="ddb-blocked-content">
+            
+                <div class="ddb-blocked-content-body">
+                      
+                        <div class="image" style="background-image: url('https://www.dndbeyond.com/avatars/thumbnails/10449/803/218/167/637248709455777906.jpeg');"></div>
+                    
+                    <div class="ddb-blocked-content-body-text">
+                        <div class="ddb-blocked-content-body-text-main">Xanathar's Guide to Everything</div>
+                        <div class="ddb-blocked-content-body-text-secondary">This spell is part of the Xanathar's Guide to Everything digital content pack. You can purchase this individual spell, all spells within this content, or save even more by purchasing the entire content pack.</div>
+                        <div class="ddb-blocked-content-body-text-secondary">Once a spell is purchased, you can view the details of the spell, and add it to your characters.</div>
+                        <div class="ddb-blocked-content-actions">
+                            <a href="/marketplace/sourcebooks/xanathars-guide-to-everything" class="button">
+                                View Purchase Options
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="tongues">
+    <div class="row spell-school">
+        <div class="school divination"></div>
+    </div>
+    <div class="row spell-level">
+        <span>3rd</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/tongues" class="link">Tongues</a>
+            
+        </span>
+        <span>
+            <span>Divination</span>
+            
+                <span>•</span>    
+                <span>V, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Hour</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Touch</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Communication (...) </span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-tongues">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        3rd
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Touch
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                         1 Hour
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Divination
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Communication (...) 
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>This spell grants the creature you touch the ability to understand any spoken language it hears. Moreover, when the target speaks, any creature that knows at least one language and can hear the target understands what it says.</p>    
+                
+                        <span class="components-blurb">* - (a small clay model of a ziggurat)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/tongues">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Communication</div>
+                
+                    <div class="tag">Social</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Cleric</div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Warlock</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="transmute-rock">
+    <div class="row spell-school">
+        <div class="school transmutation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>5th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/transmute-rock" class="link">Transmute Rock</a>
+            
+        </span>
+        <span>
+            <span>Transmutation</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Until Dispelled</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">120 ft</span>
+        
+                   <span class="aoe-size">(40 ft <i class="i-aoe-cube"></i> *)</span>
+                
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-dex-save"></i>
+        
+        <span>DEX Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <i class="i-type-bludgeoning"></i>
+            <span>Bludgeoning</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-transmute-rock">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        5th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        120 ft
+                        
+                                    <span class="aoe-size">(40 ft <i class="i-aoe-cube"></i> *)</span>
+                                
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        Until Dispelled
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Transmutation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-dex-save"></i>
+                        
+                        <span>DEX Save</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-type-bludgeoning"></i>
+                            Bludgeoning
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p class="Core-Styles_Core-Body">You choose an area of stone or mud that you can see that fits within a 40-foot cube and is within range, and choose one of the following effects.</p>
+<p class="Core-Styles_Core-Body"><span class="Serif-Character-Style_Inline-Subhead-Serif"><strong>Transmute Rock to Mud.</strong>&nbsp;</span>Nonmagical rock of any sort in the area becomes an equal volume of thick, flowing mud that remains for the spell’s duration.</p>
+<p class="Core-Styles_Core-Body">The ground in the spell’s area becomes muddy enough that creatures can sink into it. Each foot that a creature moves through the mud costs 4 feet of movement, and any creature on the ground when you cast the spell must make a Strength saving throw. A creature must also make the saving throw when it moves into the area for the first time on a turn or ends its turn there. On a failed save, a creature sinks into the mud and is <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Restrained" data-tooltip-href="//www.dndbeyond.com/conditions/13-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">restrained</a>, though it can use an action to end the <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Restrained" data-tooltip-href="//www.dndbeyond.com/conditions/13-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">restrained</a> condition on itself by pulling itself free of the mud.</p>
+<p class="Core-Styles_Core-Body">If you cast the spell on a ceiling, the mud falls. Any creature under the mud when it falls must make a Dexterity saving throw. A creature takes 4d8 bludgeoning damage on a failed save, or half as much damage on a successful one.</p>
+<p class="Core-Styles_Core-Body"><strong><span class="Serif-Character-Style_Inline-Subhead-Serif">Transmute Mud to Rock.&nbsp;</span></strong>Nonmagical mud or quicksand in the area no more than 10 feet deep transforms into soft stone for the spell’s duration. Any creature in the mud when it transforms must make a Dexterity saving throw. On a successful save, a creature is shunted safely to the surface in an unoccupied space. On a failed save, a creature becomes <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Restrained" data-tooltip-href="//www.dndbeyond.com/conditions/13-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">restrained</a> by the rock. A <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Restrained" data-tooltip-href="//www.dndbeyond.com/conditions/13-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">restrained</a> creature, or another creature within reach, can use an action to try to break the rock by succeeding on a DC 20 Strength check or by dealing damage to it. The rock has AC 15 and 25 hit points, and it is immune to poison and psychic damage.</p>    
+                
+                        <span class="components-blurb">* - (clay and water)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/transmute-rock">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Damage</div>
+                
+                    <div class="tag">Control</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Druid</div>
+                
+                    <div class="tag">Wizard</div>
+                
+                    <div class="tag">Artificer</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Elemental Evil Player's Companion
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="transport-via-plants">
+    <div class="row spell-school">
+        <div class="school conjuration"></div>
+    </div>
+    <div class="row spell-level">
+        <span>6th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/transport-via-plants" class="link">Transport via Plants</a>
+            
+        </span>
+        <span>
+            <span>Conjuration</span>
+            
+                <span>•</span>    
+                <span>V, S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Round</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">10 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Teleportation</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-transport-via-plants">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        6th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        10 ft
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                         1 Round
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Conjuration
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Teleportation
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>This spell creates a magical link between a Large or larger inanimate plant within range and another plant, at any distance, on the same plane of existence. You must have seen or touched the destination plant at least once before. For the duration, any creature can step into the target plant and exit from the destination plant by using 5 feet of movement.</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/transport-via-plants">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Teleportation</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Druid</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="tree-stride">
+    <div class="row spell-school">
+        <div class="school conjuration"></div>
+    </div>
+    <div class="row spell-level">
+        <span>5th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/tree-stride" class="link">Tree Stride</a>
+            
+                <i class="i-concentration">Concentration</i>
+            
+        </span>
+        <span>
+            <span>Conjuration</span>
+            
+                <span>•</span>    
+                <span>V, S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Minute</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Self</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Movement (...) </span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-tree-stride">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        5th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Self
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-concentration">Concentration</i>
+                         1 Minute
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Conjuration
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Movement (...) 
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>You gain the ability to enter a tree and move from inside it to inside another tree of the same kind within 500 feet. Both trees must be living and at least the same size as you. You must use 5 feet of movement to enter a tree. You instantly know the location of all other trees of the same kind within 500 feet and, as part of the move used to enter the tree, can either pass into one of those trees or step out of the tree you're in. You appear in a spot of your choice within 5 feet of the destination tree, using another 5 feet of movement. If you have no movement left, you appear within 5 feet of the tree you entered.</p>
+<p>You can use this transportation ability once per round for the duration. You must end each turn outside a tree.</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/tree-stride">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Teleportation</div>
+                
+                    <div class="tag">Movement</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Druid</div>
+                
+                    <div class="tag">Ranger</div>
+                
+                    <div class="tag">Nature Domain</div>
+                
+                    <div class="tag">Circle of the Land (Forest)</div>
+                
+                    <div class="tag">Oath of the Ancients</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="true-polymorph">
+    <div class="row spell-school">
+        <div class="school transmutation"></div>
+    </div>
+    <div class="row spell-level">
+        <span>9th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/true-polymorph" class="link">True Polymorph</a>
+            
+                <i class="i-concentration">Concentration</i>
+            
+        </span>
+        <span>
+            <span>Transmutation</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Hour</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">30 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-wis-save"></i>
+        
+        <span>WIS Save</span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Buff (...) </span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-true-polymorph">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        9th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        30 ft
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-concentration">Concentration</i>
+                         1 Hour
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Transmutation
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-wis-save"></i>
+                        
+                        <span>WIS Save</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Buff (...) 
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>Choose one creature or nonmagical object that you can see within range. You transform the creature into a different creature, the creature into a nonmagical object, or the object into a creature (the object must be neither worn nor carried by another creature). The spell lasts for the duration, or until the target drops to 0 hit points or dies. If you concentrate on this spell for the full duration, the spell lasts until it is dispelled.</p>
+<p>This spell has no effect on a shapechanger or a creature with 0 hit points. An unwilling creature can make a Wisdom saving throw, and if it succeeds, it isn’t affected by this spell.</p>
+<p><em><strong>Creature into Creature.</strong></em> If you turn a creature into another kind of creature, the new form can be any kind you choose whose challenge rating is equal to or less than the target’s (or its level, if the target doesn’t have a challenge rating). The target’s game statistics, including mental ability scores, are replaced by the statistics of the new form. It retains its alignment and personality.</p>
+<p>The target assumes the hit points of its new form, and when it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn’t reduce the creature’s normal form to 0 hit points, it isn’t knocked <a class="tooltip-hover condition-tooltip" href="/compendium/rules/basic-rules/appendix-a-conditions#Unconscious" data-tooltip-href="//www.dndbeyond.com/conditions/15-tooltip?disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1&amp;disable-webm=1">unconscious</a>.</p>
+<p>The creature is limited in the actions it can perform by the nature of its new form, and it can’t speak, cast spells, or take any other action that requires hands or speech, unless its new form is capable of such actions.</p>
+<p>The target’s gear melds into the new form. The creature can’t activate, use, wield, or otherwise benefit from any of its equipment.</p>
+<p><em><strong>Object into Creature.</strong></em> You can turn an object into any kind of creature, as long as the creature’s size is no larger than the object’s size and the creature’s challenge rating is 9 or lower. The creature is friendly to you and your companions. It acts on each of your turns. You decide what action it takes and how it moves. The GM has the creature’s statistics and resolves all of its actions and movement.</p>
+<p>If the spell becomes permanent, you no longer control the creature. It might remain friendly to you, depending on how you have treated it.</p>
+<p><em><strong>Creature into Object.</strong></em> If you turn a creature into an object, it transforms along with whatever it is wearing and carrying into that form, as long as the object’s size is no larger than the creature’s size. The creature’s statistics become those of the object, and the creature has no memory of time spent in this form, after the spell ends and it returns to its normal form.</p>    
+                
+                        <span class="components-blurb">* - (a drop of mercury, a dollop of gum arabic, and a wisp of smoke)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/true-polymorph">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Control</div>
+                
+                    <div class="tag">Buff</div>
+                
+                    <div class="tag">Shapechanging</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Warlock</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="true-resurrection">
+    <div class="row spell-school">
+        <div class="school necromancy"></div>
+    </div>
+    <div class="row spell-level">
+        <span>9th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/true-resurrection" class="link">True Resurrection</a>
+            
+        </span>
+        <span>
+            <span>Necromancy</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Hour </span>
+    </div>
+    <div class="row spell-duration">
+        <span>Instantaneous</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Touch</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Healing</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-true-resurrection">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        9th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Hour 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Touch
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        Instantaneous
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Necromancy
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Healing
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>You touch a creature that has been dead for no longer than 200 years and that died for any reason except old age. If the creature's soul is free and willing, the creature is restored to life with all its hit points.</p>
+<p>This spell closes all wounds, neutralizes any poison, cures all diseases, and lifts any curses affecting the creature when it died. The spell replaces damaged or missing organs and limbs.&nbsp;If the creature was undead, it is restored to its non-undead form.</p>
+<p>The spell can even provide a new body if the original no longer exists, in which case you must speak the creature's name. The creature then appears in an unoccupied space you choose within 10 feet of you.</p>    
+                
+                        <span class="components-blurb">* - (a sprinkle of holy water and diamonds worth at least 25,000 gp, which the spell consumes)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/true-resurrection">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Healing</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Cleric</div>
+                
+                    <div class="tag">Druid</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="true-seeing">
+    <div class="row spell-school">
+        <div class="school divination"></div>
+    </div>
+    <div class="row spell-level">
+        <span>6th</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/true-seeing" class="link">True Seeing</a>
+            
+        </span>
+        <span>
+            <span>Divination</span>
+            
+                <span>•</span>    
+                <span>V, S, M</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Hour</span>
+    </div>
+    <div class="row spell-range">
+        
+            <span>Touch</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Detection</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-true-seeing">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        6th
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        Touch
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">V, S, M *</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                         1 Hour
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Divination
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Detection
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has <a class="tooltip-hover sense-tooltip" href="/compendium/rules/basic-rules/monsters#Truesight" data-tooltip-href="//www.dndbeyond.com/senses/4-tooltip?disable-webm=1">truesight</a>, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet.</p>    
+                
+                        <span class="components-blurb">* - (an ointment for the eyes that costs 25 gp; is made from mushroom powder, saffron, and fat; and is consumed by the spell)</span>
+                    
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/true-seeing">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Detection</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Cleric</div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Warlock</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+
+<div class="info silas-fleetfoot" data-isopen="true" data-isloading="false" data-isloaded="false" data-type="spells" data-slug="true-strike">
+    <div class="row spell-school">
+        <div class="school divination"></div>
+    </div>
+    <div class="row spell-level">
+        <span>Cantrip</span>
+    </div>
+    <div class="row spell-name">
+        <span class="name">
+            
+            <a href="/spells/true-strike" class="link">True Strike</a>
+            
+                <i class="i-concentration">Concentration</i>
+            
+        </span>
+        <span>
+            <span>Divination</span>
+            
+                <span>•</span>    
+                <span>S</span>
+            
+        </span>
+    </div>
+    <div class="row spell-cast-time">
+        <span>1 Action </span>
+    </div>
+    <div class="row spell-duration">
+        <span> 1 Round</span>
+    </div>
+    <div class="row spell-range">
+        
+                <span class="range-distance">30 ft</span>
+        
+    </div>
+    <div class="row spell-attack-save">
+        
+            <i class="i-"></i>
+        
+        <span></span>
+    </div>
+    <div class="row spell-damage-effect">
+        
+            <span>Foreknowledge</span>
+        
+    </div>
+    <div class="row fav-indicator">
+        <i class="i-favorite"></i>
+    </div>
+    <div class="row spell-indicator open-indicator">
+        <span id="open-indicator" class="spell-color minus"></span>
+    </div>
+</div>
+
+
+
+<div class="more-info more-info-spell more-info-spell-true-strike">
+    <div class="more-info-body">
+            
+        
+            <div class="ddb-statblock ddb-statblock-spell">
+                <div class="ddb-statblock-item ddb-statblock-item-level">
+                    <div class="ddb-statblock-item-label">
+                        Level
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Cantrip
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-casting-time">
+                    <div class="ddb-statblock-item-label">
+                        Casting Time
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        1 Action 
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-range-area">
+                    <div class="ddb-statblock-item-label">
+                        Range/Area
+                    </div>
+                    <div class="ddb-statblock-item-value">                   
+                        30 ft
+                        
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-components">
+                    <div class="ddb-statblock-item-label">
+                        Components
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span class="component-asterisks">S</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-duration">
+                    <div class="ddb-statblock-item-label">Duration</div>
+                    <div class="ddb-statblock-item-value">
+                        
+                            <i class="i-concentration">Concentration</i>
+                         1 Round
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-school">
+                    <div class="ddb-statblock-item-label">
+                        School
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Divination
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-attack-save">
+                    <div class="ddb-statblock-item-label">
+                        Attack/Save
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        
+                        <span>None</span>
+                    </div>
+                </div>
+                <div class="ddb-statblock-item ddb-statblock-item-damage-effect">
+                    <div class="ddb-statblock-item-label">
+                        Damage/Effect
+                    </div>
+                    <div class="ddb-statblock-item-value">
+                        Foreknowledge
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line spell height3 marginTop20 marginBottom20"></div>
+            <div class="more-info-body-description">
+                <p>You point a finger at a target in range. Your magic grants you a brief insight into the target's defenses. On your next turn, you gain advantage on your first attack roll against the target, provided that this spell hasn't ended.</p>    
+                
+            </div>
+        
+    </div>
+    <div class="more-info-footer">
+        <div class="more-info-footer-details-button">
+            <a class="button button-spells" href="/spells/true-strike">
+                View Details Page
+            </a>
+        </div>
+        
+            <div class="more-info-footer-tags">
+                <div class="label">Tags: </div>
+                
+                    <div class="tag">Foreknowledge</div>
+                
+            </div>
+        
+            <div class="more-info-footer-tags more-info-footer-classes">
+                <div class="label">Classes: </div>
+                
+                    <div class="tag">Bard</div>
+                
+                    <div class="tag">Sorcerer</div>
+                
+                    <div class="tag">Warlock</div>
+                
+                    <div class="tag">Wizard</div>
+                
+            </div>
+        
+            <div class="more-info-footer-source">
+                Basic Rules
+            </div>
+        
+    </div>
+
+    
+</div>
+
+
+</ul>
