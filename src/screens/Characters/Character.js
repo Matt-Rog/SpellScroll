@@ -39,10 +39,16 @@ export default function CharacterPage({navigation, route}) {
       classes: [],
       icon: "hat",
       notes: "",
-      spells: [0]
+      spells: {
+        known: [],
+        prepared: []
+      }
     })
     const [Chars, setChars] = useState([])
-    const[spells, setSpells] = useState([0])
+    const[spells, setSpells] = useState({
+        known: [],
+        prepared: []
+    })
     const[data, setData] = useState([])
     const {charID} = route.params;
     const [firstClass, setFirstClass] = useState(char.classes[0])
@@ -241,7 +247,7 @@ export default function CharacterPage({navigation, route}) {
           <ScrollView style={[STYLES.Container, {borderRadius: 12, marginBottom: 0, height: HEIGHT*0.5, flexGrow: 0}]}>
             <View style={{marginBottom: 20}}>
               <Text style={STYLES.Header4}>KNOWN</Text>
-              {(Object.values(Object.values(spells)[0])[0]) == 0 ? <Text style={[STYLES.ContentBody, {marginBottom: 20}]}>No spells found</Text> : 
+              {(Object.values(Object.values(spells)[0])[0]) == 0? <Text style={[STYLES.ContentBody, {marginBottom: 20}]}>No spells found</Text> : 
               <SpellList
                 onResultPress={onResultPress}
                 spellIDs={Object.values(Object.values(spells)[0])[0]}
