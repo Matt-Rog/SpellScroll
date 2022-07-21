@@ -109,7 +109,7 @@ const DarkTheme = {
         Header1: {
             color: COLORS.primary_content,
             fontSize: 45,
-            fontFamily: 'BreatheFireIii-PKLOB'
+            fontFamily: "BreatheFireIii-PKLOB"
         },
         Header2: {
             color: COLORS.primary_content,
