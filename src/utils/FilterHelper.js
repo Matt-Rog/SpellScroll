@@ -73,7 +73,7 @@ export function filterSpells() {
           }
 
           // Spell properties need to include at least one filter property
-          const intersect = false;
+          let intersect = false;
           if (Array.isArray(spellArr)) {
             intersect = filterArr.some(function (option) {
               return spellArr.indexOf(option) >= 0;
