@@ -63,10 +63,12 @@ export default function SearchPage({ navigation, route }) {
     }
     if (route.params?.INITDATA) {
       console.log("PASSED");
-      if (route.params.INITDATA.length > 0) {
+      if (route.params.INITDATA && route.params.INITDATA.length > 0) {
+        console.log("HERE1");
         setResultSpells(route.params.INITDATA);
         setFilterSpells(route.params.INITDATA);
       } else {
+        console.log("HERE2");
         if (route.params?.RESET && route.params.RESET == true) {
           setResultSpells(allSpells);
           setFilterSpells(allSpells);
@@ -270,6 +272,7 @@ export default function SearchPage({ navigation, route }) {
               name={"sliders-h"}
               size={20}
               color={
+                Object.keys(filter) !== undefined &&
                 Object.keys(filter).length === 0
                   ? COLORS.secondary_content
                   : COLORS.primary_accent
@@ -280,7 +283,8 @@ export default function SearchPage({ navigation, route }) {
 
         {/* Filter Horizontal Row */}
         <View style={styles.filterBox}>
-          {Object.keys(filter).length === 0 ? null : (
+          {Object.keys(filter) !== undefined &&
+          Object.keys(filter).length === 0 ? null : (
             <Pressable
               style={{
                 flexDirection: "row",
@@ -431,7 +435,7 @@ export default function SearchPage({ navigation, route }) {
           title={"No spells found"}
           body={"Try expanding your search :)"}
         ></Splash>
-        <View style={{height: HEIGHT*0.63}}>
+        <View style={{ height: HEIGHT * 0.63 }}>
           <SpellList
             onResultPress={onResultPress}
             spellIDs={getSpellIDs(getSortedSpells(resultSpells))}
