@@ -7,10 +7,10 @@ import {
   Image,
   Modal,
   ScrollView,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
-import { WebView } from 'react-native-webview';
+import { WebView } from "react-native-webview";
 
 import MOCKDATA from "../../../ALL_SPELL_DATA.json";
 // Utility
@@ -23,11 +23,15 @@ import SlidingTab from "../../components/SlidingTab";
 import SpellSettings from "../Characters/SpellSettings";
 import Tags from "../../components/Tags";
 
-var [COLORS, STYLES, IMAGES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme), THEME.DarkIMAGES];
+var [COLORS, STYLES, IMAGES] = [
+  THEME.DarkTheme,
+  THEME.getStyles(THEME.DarkTheme),
+  THEME.DarkImages,
+];
 THEME.getTheme().then((theme) => {
   COLORS = theme.COLORS;
   STYLES = theme.STYLES;
-  IMAGES = theme.IMAGES
+  IMAGES = theme.IMAGES;
 });
 
 const HEIGHT = Dimensions.get("window").height;
@@ -66,22 +70,20 @@ export default function SpellPage({ navigation, route }) {
   }
 
   function getStyledDescription(description) {
-    return(
+    return (
       <View>
         <FlatList
-        showsVerticalScrollIndicator={true}
-        style={{ borderRadius: 12 }}
-        data={description}
-        renderItem={({ item }) => (
-          <View style={[styles.description, {margin: 10}]}>
-            <Text style={STYLES.ContentBody}>{item}</Text>
-          </View>
-
-        )}>
-      </FlatList>
+          showsVerticalScrollIndicator={true}
+          style={{ borderRadius: 12 }}
+          data={description}
+          renderItem={({ item }) => (
+            <View style={[styles.description, { margin: 10 }]}>
+              <Text style={STYLES.ContentBody}>{item}</Text>
+            </View>
+          )}
+        ></FlatList>
       </View>
-      
-    )
+    );
   }
 
   function getComponentList(components) {
@@ -93,7 +95,7 @@ export default function SpellPage({ navigation, route }) {
   }
 
   function getStyledAttributes(spell) {
-    console.log(spell)
+    console.log(spell);
     var content = (
       <View style={{ width: "100%" }}>
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
@@ -103,7 +105,7 @@ export default function SpellPage({ navigation, route }) {
               { backgroundColor: COLORS.back },
             ]}
           >
-            <View style={{flexDirection: 'row', alignContent: "center"}}>
+            <View style={{ flexDirection: "row", alignContent: "center" }}>
               <Text
                 style={[
                   [
@@ -115,20 +117,20 @@ export default function SpellPage({ navigation, route }) {
               >
                 Casting Time
               </Text>
-              {spell?.ritual == "YES" ? 
-                <View style={{flexDirection: "row"}}>
+              {spell?.ritual == "YES" ? (
+                <View style={{ flexDirection: "row" }}>
                   <FontAwesome5
-                  style={{marginLeft: 8}}
-                  name={"hand-sparkles"}
-                  size={15}
-                  color={COLORS.secondary_content}/>
-                </View>:null}
-                
+                    style={{ marginLeft: 8 }}
+                    name={"hand-sparkles"}
+                    size={15}
+                    color={COLORS.secondary_content}
+                  />
+                </View>
+              ) : null}
             </View>
-            
+
             <Text
               numberOfLines={1}
-              adjustsFontSizeToFit={true}
               adjustsFontSizeToFit={true}
               style={[styles.attributeValue, { color: COLORS.primary_content }]}
             >
@@ -144,10 +146,9 @@ export default function SpellPage({ navigation, route }) {
             >
               Range/Area
             </Text>
-            <View style={{flexDirection:"row", alignItems: "center"}}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Text
                 numberOfLines={1}
-                adjustsFontSizeToFit={true}
                 adjustsFontSizeToFit={true}
                 style={[
                   [styles.attributeValue, { color: COLORS.primary_content }],
@@ -156,15 +157,24 @@ export default function SpellPage({ navigation, route }) {
               >
                 {spell.range}
               </Text>
-              {spell.aoe_shape != "None" ?
-                <Image 
-                style={{height: 20, width: 20, marginLeft: 5}} 
-                resizeMode="contain" 
-                source={IMAGES.shape[spell.aoe_shape.toLowerCase()]}></Image>: null}
-              {spell.aoe_size != "None" ?
-              <Text style={[STYLES.Note, {color: COLORS.primary_content, marginLeft: 5}]}>({spell.aoe_size})</Text> : null}
+              {spell.aoe_shape != "None" ? (
+                <Image
+                  style={{ height: 20, width: 20, marginLeft: 5 }}
+                  resizeMode="contain"
+                  source={IMAGES.shape[spell.aoe_shape.toLowerCase()]}
+                ></Image>
+              ) : null}
+              {spell.aoe_size != "None" ? (
+                <Text
+                  style={[
+                    STYLES.Note,
+                    { color: COLORS.primary_content, marginLeft: 5 },
+                  ]}
+                >
+                  ({spell.aoe_size})
+                </Text>
+              ) : null}
             </View>
-            
           </View>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
@@ -222,7 +232,7 @@ export default function SpellPage({ navigation, route }) {
             </Text>
           </View>
           <View style={[styles.attributeTab, { backgroundColor: COLORS.back }]}>
-          <View style={{flexDirection: 'row', alignContent: "center"}}>
+            <View style={{ flexDirection: "row", alignContent: "center" }}>
               <Text
                 style={[
                   [
@@ -234,15 +244,16 @@ export default function SpellPage({ navigation, route }) {
               >
                 Duration
               </Text>
-              {spell?.concentration == "YES" ? 
-                <View style={{flexDirection: "row"}}>
+              {spell?.concentration == "YES" ? (
+                <View style={{ flexDirection: "row" }}>
                   <FontAwesome5
-                  style={{marginLeft: 8}}
-                  name={"crosshairs"}
-                  size={15}
-                  color={COLORS.secondary_content}/>
-                </View>:null}
-                
+                    style={{ marginLeft: 8 }}
+                    name={"crosshairs"}
+                    size={15}
+                    color={COLORS.secondary_content}
+                  />
+                </View>
+              ) : null}
             </View>
             <Text
               numberOfLines={1}
@@ -254,19 +265,27 @@ export default function SpellPage({ navigation, route }) {
           </View>
         </View>
 
-        <View style={{flexDirection: 'column', marginLeft: WIDTH*0.06}}>
-          {spell.classes.length != 0 ?
+        <View style={{ flexDirection: "column", marginLeft: WIDTH * 0.06 }}>
+          {spell.classes.length != 0 ? (
             <View>
               <Text style={STYLES.Header3}>Classes</Text>
-              <Tags tags={spell.classes} maxPerRow={4} background={COLORS.back}></Tags>
+              <Tags
+                tags={spell.classes}
+                maxPerRow={4}
+                background={COLORS.back}
+              ></Tags>
             </View>
-            : null}
-          {spell.subclasses.length != 0 ?
-            <View style={{marginTop: 20}}>
+          ) : null}
+          {spell.subclasses.length != 0 ? (
+            <View style={{ marginTop: 20 }}>
               <Text style={STYLES.Header3}>Subclasses</Text>
-              <Tags tags={spell.subclasses} maxPerRow={2} background={COLORS.back}></Tags>
+              <Tags
+                tags={spell.subclasses}
+                maxPerRow={2}
+                background={COLORS.back}
+              ></Tags>
             </View>
-            : null}
+          ) : null}
         </View>
       </View>
     );
@@ -278,19 +297,25 @@ export default function SpellPage({ navigation, route }) {
     var tabData = {
       Description: (
         <View>
-          {Spell.paywall == "TRUE" ?
-          <View>
-            <Image
-              style={{justifyContent: "center", alignSelf: "center",width: 100, height: 80, marginVertical: 10}}
-              source={IMAGES.splash['dungeon']}
-              resizeMode="stretch"
-            ></Image>
-          </View>: null}
-          <ScrollView contentContainerStyle={{flexGrow: 0}} bounces={true}>
+          {Spell.paywall == "TRUE" ? (
+            <View>
+              <Image
+                style={{
+                  justifyContent: "center",
+                  alignSelf: "center",
+                  width: 100,
+                  height: 80,
+                  marginVertical: 10,
+                }}
+                source={IMAGES.splash["dungeon"]}
+                resizeMode="stretch"
+              ></Image>
+            </View>
+          ) : null}
+          <ScrollView contentContainerStyle={{ flexGrow: 0 }} bounces={true}>
             {getStyledDescription(spell.description)}
           </ScrollView>
         </View>
-        
       ),
       Attributes: <View>{getStyledAttributes(spell)}</View>,
     };

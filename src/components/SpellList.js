@@ -16,11 +16,15 @@ import * as THEME from "../utils/Theme";
 import Tags from "./Tags";
 import SpellSettings from "../screens/Characters/SpellSettings";
 
-var [COLORS, STYLES, IMAGES] = [THEME.DarkTheme, THEME.getStyles(THEME.DarkTheme), THEME.DarkImages];
+var [COLORS, STYLES, IMAGES] = [
+  THEME.DarkTheme,
+  THEME.getStyles(THEME.DarkTheme),
+  THEME.DarkImages,
+];
 THEME.getTheme().then((theme) => {
   COLORS = theme.COLORS;
   STYLES = theme.STYLES;
-  IMAGES = theme.IMAGES
+  IMAGES = theme.IMAGES;
 });
 
 const SpellList = (props) => {
@@ -92,7 +96,7 @@ const SpellList = (props) => {
       </Modal>
 
       <FlatList
-        style={{ borderRadius: 12, flexGrow: 0}}
+        style={{ borderRadius: 12, flexGrow: 0 }}
         scrollEnabled={props.scrollEnabled}
         showsVerticalScrollIndicator={false}
         data={spells}
@@ -123,22 +127,24 @@ const SpellList = (props) => {
             </View>
             <View style={styles.text}>
               <View style={styles.rowOne}>
-                <View style={{flexDirection: "row", alignItems: "center"}}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <Text
-                  numberOfLines={1}
-                  adjustsFontSizeToFit={true}
-                  style={[STYLES.Header4]}
+                    numberOfLines={1}
+                    adjustsFontSizeToFit={true}
+                    style={[STYLES.Header4]}
                   >
                     {item?.name}
                   </Text>
-                  {item?.paywall == "TRUE" ? 
-                  <FontAwesome5
-                    style={{marginLeft: 8}}
-                    name={"lock"}
-                    size={15}
-                    color={COLORS.back_light}/>:null}
+                  {item?.paywall == "TRUE" ? (
+                    <FontAwesome5
+                      style={{ marginLeft: 8 }}
+                      name={"lock"}
+                      size={15}
+                      color={COLORS.back_light}
+                    />
+                  ) : null}
                 </View>
-                
+
                 <Text
                   style={[styles.spellTXT, { color: COLORS.secondary_content }]}
                 >
@@ -154,28 +160,29 @@ const SpellList = (props) => {
                 >
                   {item?.school}
                 </Text>
-                <View style={{flexDirection: "row", alignItems: "center"}}>
-                  {item?.ritual == "YES" ? 
-                  <FontAwesome5
-                    style={{marginRight: 8}}
-                    name={"hand-sparkles"}
-                    size={15}
-                    color={COLORS.secondary_content}/>:null}
-                  {item?.concentration == "YES" ? 
-                  <FontAwesome5
-                    style={{marginRight: 8}}
-                    name={"crosshairs"}
-                    size={15}
-                    color={COLORS.secondary_content}/>:null}
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  {item?.ritual == "YES" ? (
+                    <FontAwesome5
+                      style={{ marginRight: 8 }}
+                      name={"hand-sparkles"}
+                      size={15}
+                      color={COLORS.secondary_content}
+                    />
+                  ) : null}
+                  {item?.concentration == "YES" ? (
+                    <FontAwesome5
+                      style={{ marginRight: 8 }}
+                      name={"crosshairs"}
+                      size={15}
+                      color={COLORS.secondary_content}
+                    />
+                  ) : null}
                   <Tags
-                  tags={
-                    [item.time]
-                  }
+                    tags={[item.time]}
                     background={COLORS.back_light}
                     fontSize={13}
                   ></Tags>
-                  </View>
-                
+                </View>
               </View>
             </View>
           </Pressable>
